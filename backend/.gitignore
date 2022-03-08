@@ -1,0 +1,6 @@
+.idea
+.minio/data
+node_modules
+.keystone/admin
+keystone.db
+*.log

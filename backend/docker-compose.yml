@@ -1,0 +1,53 @@
+version: '3.7'
+
+services:
+  postgres:
+    image: gitlab-registry.launchlytics.io/launchdrive/containers/seeded-postgres:latest
+    container_name: 'launchdrive_backend-postgres'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=mysecretpassword
+      - POSTGRES_DB=keystone
+    ports:
+      - 5432:5432
+
+  minio:
+    image: minio/minio:latest
+    container_name: 'launchdrive_backend-minio'
+    environment:
+      MINIO_ACCESS_KEY: minio
+      MINIO_SECRET_KEY: minio123
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+    command: server --console-address ":9001" /data
+    volumes:
+      - ./.minio/data:/data
+
+  nginx:
+    image: nginx:1.19.2-alpine
+    container_name: 'launchdrive_backend-minio_nginx'
+    hostname: nginx
+    volumes:
+      - ./.minio/nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    depends_on:
+      - minio
+
+  minio-user-api:
+    image: gitlab-registry.launchlytics.io/launchdrive/containers/minio-user-api:latest
+    container_name: 'launchdrive_backend-minio_user_api'
+    environment:
+      MINIO_ROOT_USER: minio
+      MINIO_ROOT_PASSWORD: minio123
+      MINIO_URL: http://myminio:9000
+      PYTHON_MAIN_FILE: app/main.py
+      ACCESS_KEY: M0NC0qWMLQgtHJdDyC5KNV5iE3MYr1xo2ie4wloZ+/
+    depends_on:
+      - minio
+    ports:
+      - "5000:5000"
