@@ -1,4 +1,6 @@
 import React from "react";
+import * as yup from "yup";
+import { useFormik } from "formik";
 import {
   Button,
   Stack,
@@ -6,17 +8,9 @@ import {
   Typography,
   CircularProgress,
   TextField,
+  Container,
+  Grid,
 } from "@mui/material";
-import { useFormik, Form } from "formik";
-import * as yup from "yup";
-
-// type SignInProps = {
-//   error: boolean;
-//   onSignIn?: () => any;
-//   loading?: boolean;
-//   error?: boolean;
-//   [key: string]: any;
-// };
 
 const validationSchema = yup.object({
   email: yup
@@ -29,7 +23,7 @@ const validationSchema = yup.object({
     .required("Password is required"),
 });
 
-const SignIn = ({
+export const SignIn = ({
   error = false,
   loading = false,
   onSignIn = () => {},
@@ -79,10 +73,12 @@ const SignIn = ({
 
           {!loading ? (
             <Button variant="text" fullWidth type="submit">
-              Submit
+              SignIn
             </Button>
           ) : (
-            <CircularProgress />
+            <Grid container justifyContent="center">
+              <CircularProgress size={36.5} />
+            </Grid>
           )}
         </Stack>
       </form>

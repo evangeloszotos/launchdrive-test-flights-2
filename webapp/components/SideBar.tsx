@@ -1,10 +1,13 @@
 import clsx from "clsx";
 
 export const SideBar = (props) => {
-  const { children, className } = props;
+  const { children, className, ...other } = props;
 
   return (
-    <div className={clsx("hidden lg:flex lg:flex-shrink-0", className)}>
+    <div
+      className={clsx("hidden lg:flex lg:flex-shrink-0", className)}
+      {...other}
+    >
       <div className="flex flex-col w-20">
         <div className="flex-1 flex flex-col min-h-0 overflow-y-auto bg-white">
           {/* </div><div className="flex-1 flex flex-col min-h-0 overflow-y-auto bg-indigo-600"> */}
