@@ -1,5 +1,4 @@
 import React from "react";
-import * as yup from "yup";
 import { useFormik } from "formik";
 import {
   Button,
@@ -10,38 +9,24 @@ import {
   TextField,
   Grid,
 } from "@mui/material";
+import { email, password, validateFields } from "../utils/form-validations";
 
-const validationSchema = yup.object({
-  email: yup
-    .string()
-    .email("Enter a valid email")
-    .required("Email is required"),
-  password: yup
-    .string()
-    .min(8, "Password should be of minimum 8 characters length")
-    .required("Password is required"),
-});
-
-type OnSignInData = { email: string; password: string };
-
-const func = (data: OnSignInData) => {};
-
-const func2 = createHandleSubmit<{ email: string; password: string }>();
-
+const validationSchema = validateFields({ email, password });
+export type OnSignInData = { email: string; password: string };
 export const SignIn = ({
   error = false,
   loading = false,
-  onSignIn = (data: OnSignInData) => {},
   initialEmail = "",
   initialPassword = "",
+  onSignIn: onSubmit = (data: OnSignInData) => {},
 }) => {
   const formik = useFormik({
+    validationSchema,
+    onSubmit,
     initialValues: {
       email: initialEmail,
       password: initialPassword,
     },
-    validationSchema: validationSchema,
-    onSubmit: onSignIn,
   });
 
   return (
