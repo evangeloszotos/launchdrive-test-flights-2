@@ -22,10 +22,16 @@ const validationSchema = yup.object({
     .required("Password is required"),
 });
 
+type OnSignInData = { email: string; password: string };
+
+const func = (data: OnSignInData) => {};
+
+const func2 = createHandleSubmit<{ email: string; password: string }>();
+
 export const SignIn = ({
   error = false,
   loading = false,
-  onSignIn = () => {},
+  onSignIn = (data: OnSignInData) => {},
   initialEmail = "",
   initialPassword = "",
 }) => {
