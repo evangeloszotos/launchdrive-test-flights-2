@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Typography } from "@mui/material";
+import { Container } from "@mui/material";
 import SignIn from "../containers/SignIn";
 
 import {
@@ -24,6 +24,3 @@ const SignInPage: React.FC = (props) => {
 };
 
 export default SignInPage;
-
-// DataFetching
-// StateManagement

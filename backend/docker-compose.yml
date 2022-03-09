@@ -5,11 +5,23 @@ services:
     image: gitlab-registry.launchlytics.io/launchdrive/containers/seeded-postgres:latest
     container_name: 'launchdrive_backend-postgres'
     environment:
+      - TZ=Europe/Berlin
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=mysecretpassword
       - POSTGRES_DB=keystone
     ports:
       - 5432:5432
+
+  adminer:
+    image: adminer
+    container_name: 'launchdrive_backend-adminer'
+    environment:
+      - TZ=Europe/Berlin
+      - ADMINER_DEFAULT_SERVER=postgres
+    ports:
+      - 127.0.0.1:5433:8080
+    depends_on:
+      - postgres
 
   minio:
     image: minio/minio:latest

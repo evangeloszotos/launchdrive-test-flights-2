@@ -1,9 +1,11 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 
-const client = new ApolloClient({
+const inMemoryCache = new InMemoryCache();
+
+export const apolloClient = new ApolloClient({
   uri: "https://countries.trevorblades.com",
-  cache: new InMemoryCache(),
+  cache: inMemoryCache,
   connectToDevTools: true,
 });
 
-export default client;
+export default apolloClient;
