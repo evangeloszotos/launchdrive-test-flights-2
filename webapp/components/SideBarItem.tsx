@@ -1,32 +1,37 @@
-import clsx from "clsx";
+import React from "react";
+import {alpha, Box, Tooltip} from "@mui/material";
+import NextLink from "next/link";
+import {theme} from "../mui-theme";
 
-export type SideBarItemProps = {
+type SideBarItemInput = {
+  label: string;
+  icon: any;//JSX.Element;
   selected?: boolean;
-  name: string;
-  icon: any;
-  onClick: any;
-};
+  href?: string;
+}
 
-const styles =
-  "flex items-center p-4 rounded-lg hover:text-indigo-200 hover:bg-indigo-700";
-
-export const SideBarItem: React.FC<SideBarItemProps> = (props) => {
-  const { name, icon: IconElement, selected, onClick, ...other } = props;
+export const SideBarItem: React.FC<SideBarItemInput> = (props: SideBarItemInput) => {
+  const { label, icon: IconElement, selected, href } = props;
 
   return (
-    <div
-      key={name}
-      onClick={onClick}
-      className={clsx(styles, {
-        "text-indigo-500": !selected,
-        "bg-indigo-700": selected,
-        "text-indigo-100": selected,
-      })}
-      {...other}
+    <NextLink
+      key={label}
+      href={href ?? "#"}
     >
-      <IconElement className="h-6 w-6" aria-hidden="true" />
-      <span className="sr-only">{name}</span>
-    </div>
+      <Tooltip title={label} placement="right">
+        <Box
+          sx={{
+            height: 40,
+            backgroundColor: selected ? alpha(theme.palette.primary.main, 0.12) : "transparent",
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center"
+          }}
+        >
+          <IconElement sx={{ mx: "auto", color: selected ? theme.palette.primary.main : theme.palette.grey["600"] }} />
+        </Box>
+      </Tooltip>
+    </NextLink>
   );
 };
 

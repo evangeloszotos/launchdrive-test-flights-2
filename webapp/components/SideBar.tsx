@@ -1,27 +1,17 @@
-import clsx from "clsx";
+import {Stack} from "@mui/material";
+import React from "react";
+import {theme} from "../mui-theme";
 
-export const SideBar = (props) => {
-  const { children, className, ...other } = props;
+export const SideBar: React.FC<any> = (props) => {
+  const { children } = props;
 
   return (
-    <div
-      className={clsx("hidden lg:flex lg:flex-shrink-0", className)}
-      {...other}
-    >
-      <div className="flex flex-col w-20">
-        <div className="flex-1 flex flex-col min-h-0 overflow-y-auto bg-white">
-          {/* </div><div className="flex-1 flex flex-col min-h-0 overflow-y-auto bg-indigo-600"> */}
-          <div className="flex-1">
-            <nav
-              aria-label="Sidebar"
-              className="py-6 flex flex-col items-center space-y-3"
-            >
-              {children}
-            </nav>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Stack spacing={2} sx={{
+      backgroundColor: theme.palette.grey["50"],
+      width: 64
+    }}>
+      {children}
+    </Stack>
   );
 };
 

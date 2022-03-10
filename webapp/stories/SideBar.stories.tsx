@@ -1,4 +1,4 @@
-import { AdbIcon, AirlineSeatLegroomNormalIcon } from "@mui/icons-material";
+import { Adb, AirlineSeatLegroomNormal } from "@mui/icons-material";
 import SideBar from "../components/SideBar";
 import SideBarItem from "../components/SideBarItem";
 
@@ -9,70 +9,34 @@ export default {
   component: SideBar,
 };
 
-export const Spannen = () => (
-  <SideBar>
-    <SideBarItem icon={AdbIcon} name="Home" {...onClickAction} />
-    <SideBarItem
-      name="Trending"
-      icon={AirlineSeatLegroomNormalIcon}
-      selected={true}
-      {...onClickAction}
-    />
-    <SideBarItem name="Bookmarks" icon={AdbIcon} {...onClickAction} />
-    <SideBarItem name="Messages" icon={AdbIcon} {...onClickAction} />
-    <SideBarItem
-      name="Profile"
-      icon={AirlineSeatLegroomNormalIcon}
-      {...onClickAction}
-    />
-  </SideBar>
-);
-
 export const Default = () => (
   <SideBar>
-    <SideBarItem name="Home" icon={AdbIcon} {...onClickAction} />
-    <SideBarItem
-      name="Trending"
-      icon={AirlineSeatLegroomNormalIcon}
-      selected={true}
-      {...onClickAction}
-    />
-    <SideBarItem
-      name="Bookmarks"
-      icon={AirlineSeatLegroomNormalIcon}
-      {...onClickAction}
-    />
-    <SideBarItem
-      name="Messages"
-      icon={AirlineSeatLegroomNormalIcon}
-      {...onClickAction}
-    />
-    <SideBarItem
-      name="Profile"
-      icon={AirlineSeatLegroomNormalIcon}
-      {...onClickAction}
-    />
+    <SideBarItem icon={Adb} label="Home" href="/home" />
+    <SideBarItem icon={AirlineSeatLegroomNormal} label="Trending" href="/trending" selected={true}/>
+    <SideBarItem icon={Adb} label="Bookmarks" href="/bookmarks" />
+    <SideBarItem icon={Adb} label="Messages" href="/messages" />
+    <SideBarItem icon={AirlineSeatLegroomNormal} label="Profile" href="/profile" />
   </SideBar>
 );
 
 export const NoSelection = () => (
   <SideBar>
     <SideBarItem
-      name="Home"
-      icon={AirlineSeatLegroomNormalIcon}
+      label="Home"
+      icon={AirlineSeatLegroomNormal}
       {...onClickAction}
     />
-    <SideBarItem name="Trending" icon={AdbIcon} {...onClickAction} />
+    <SideBarItem label="Trending" icon={Adb} {...onClickAction} />
     <SideBarItem
-      name="Bookmarks"
-      icon={AirlineSeatLegroomNormalIcon}
+      label="Bookmarks"
+      icon={AirlineSeatLegroomNormal}
       {...onClickAction}
     />
     <SideBarItem
-      name="Messages"
-      icon={AirlineSeatLegroomNormalIcon}
+      label="Messages"
+      icon={AirlineSeatLegroomNormal}
       {...onClickAction}
     />
-    <SideBarItem name="Profile" icon={AdbIcon} {...onClickAction} />
+    <SideBarItem label="Profile" icon={Adb} {...onClickAction} />
   </SideBar>
 );
