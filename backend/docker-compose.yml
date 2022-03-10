@@ -2,7 +2,8 @@ version: '3.7'
 
 services:
   postgres:
-    image: gitlab-registry.launchlytics.io/launchdrive/containers/seeded-postgres:latest
+    #image: gitlab-registry.launchlytics.io/launchdrive/containers/seeded-postgres:latest    
+    image: postgres:13-buster
     container_name: 'launchdrive_backend-postgres'
     environment:
       - TZ=Europe/Berlin

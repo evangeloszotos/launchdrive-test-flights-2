@@ -2,14 +2,6 @@ import React from "react";
 import { Container } from "@mui/material";
 import SignIn from "../containers/SignIn";
 
-import {
-  Button,
-  Stack,
-  Paper,
-  CircularProgress,
-  TextField,
-} from "@mui/material";
-
 const SignInPage: React.FC = (props) => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");

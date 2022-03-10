@@ -1,16 +1,16 @@
-import { User } from './User';
-import { UserRole } from './UserRole';
-import { Profile } from './Profile';
-import { Project } from './Project';
-import { Template } from './Template';
-import { Variant } from './Variant';
-import { ListSchemaConfig} from "@keystone-6/core/dist/declarations/src/types/config/lists";
+import { createListSchemaConfig } from "../utils/schemas/create-list-schema-config";
 
-export const lists: ListSchemaConfig = {
-  Profile,
-  Project,
-  Template,
-  User,
-  UserRole,
-  Variant,
-};
+export const lists = createListSchemaConfig([
+  // Auth
+  // require("./user-role"),
+  // User
+  require("./user"),
+  // require("./profile"),
+  // require("./address"),
+
+  // LaunchDrive
+  require("./fake-door-test"),
+  // require("./project"),
+  // require("./template"),
+  // require("./variant"),
+]);

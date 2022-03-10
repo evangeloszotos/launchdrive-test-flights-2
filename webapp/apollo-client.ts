@@ -1,11 +1,11 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 
-const inMemoryCache = new InMemoryCache();
-
+const cache = new InMemoryCache();
 export const apolloClient = new ApolloClient({
-  uri: "https://countries.trevorblades.com",
-  cache: inMemoryCache,
   connectToDevTools: true,
+  cache,
+  // uri: "https://countries.trevorblades.com",
+  uri: "http://localhost:1337/api/graphql",
 });
 
 export default apolloClient;
