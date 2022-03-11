@@ -1,38 +1,43 @@
 import React from "react";
-import {alpha, Box, Tooltip} from "@mui/material";
+import { alpha, Box } from "@mui/material";
+import PropTypes from "prop-types";
 import NextLink from "next/link";
-import {theme} from "../mui-theme";
+import { theme } from "../mui-theme";
 
-type SideBarItemInput = {
-  label: string;
-  icon: any;//JSX.Element;
-  selected?: boolean;
-  href?: string;
-}
-
-export const SideBarItem: React.FC<SideBarItemInput> = (props: SideBarItemInput) => {
-  const { label, icon: IconElement, selected, href } = props;
+export function SideBarItem(props) {
+  const { children, isSelected, onClick } = props;
 
   return (
-    <NextLink
-      key={label}
-      href={href ?? "#"}
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        cursor: "pointer",
+        backgroundColor: isSelected
+          ? alpha(theme.palette.primary.main, 0.12)
+          : "transparent",
+        color: isSelected
+          ? theme.palette.primary.main
+          : theme.palette.grey["600"],
+      }}
+      onClick={onClick}
     >
-      <Tooltip title={label} placement="right">
-        <Box
-          sx={{
-            height: 40,
-            backgroundColor: selected ? alpha(theme.palette.primary.main, 0.12) : "transparent",
-            cursor: "pointer",
-            display: "flex",
-            alignItems: "center"
-          }}
-        >
-          <IconElement sx={{ mx: "auto", color: selected ? theme.palette.primary.main : theme.palette.grey["600"] }} />
-        </Box>
-      </Tooltip>
-    </NextLink>
+      {children}
+    </Box>
   );
+}
+SideBarItem.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
+  isSelected: PropTypes.bool,
+  onClick: PropTypes.func,
+};
+SideBarItem.defaultProps = {
+  children: null,
+  isSelected: false,
+  onClick: () => {},
 };
 
 export default SideBarItem;

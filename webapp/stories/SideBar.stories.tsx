@@ -1,8 +1,16 @@
-import { Adb, AirlineSeatLegroomNormal } from "@mui/icons-material";
+import {
+  Adb,
+  AirlineSeatLegroomNormal,
+  ArrowRightRounded,
+} from "@mui/icons-material";
 import SideBar from "../components/SideBar";
-import SideBarItem from "../components/SideBarItem";
+import SideBarLinkItem from "../components/SideBarLinkItem";
 
-import { onClickAction } from "./on-click-action";
+import { action } from "@storybook/addon-actions";
+import React from "react";
+import SideBarIcon from "../components/SideBarIcon";
+import SideBarText from "../components/SideBarText";
+import SideBarItem from "../components/SideBarItem";
 
 export default {
   title: "Components/SideBar",
@@ -11,32 +19,71 @@ export default {
 
 export const Default = () => (
   <SideBar>
-    <SideBarItem icon={Adb} label="Home" href="/home" />
-    <SideBarItem icon={AirlineSeatLegroomNormal} label="Trending" href="/trending" selected={true}/>
-    <SideBarItem icon={Adb} label="Bookmarks" href="/bookmarks" />
-    <SideBarItem icon={Adb} label="Messages" href="/messages" />
-    <SideBarItem icon={AirlineSeatLegroomNormal} label="Profile" href="/profile" />
+    <SideBarLinkItem href={"/home"}>
+      <SideBarIcon icon={Adb} label={"Home"} />
+      <SideBarText label={"Home"} />
+    </SideBarLinkItem>
+    <SideBarLinkItem href={"/trending"} isSelected={true}>
+      <SideBarIcon icon={AirlineSeatLegroomNormal} label={"Trending"} />
+      <SideBarText label={"Trending"} />
+    </SideBarLinkItem>
+    <SideBarLinkItem href={"/bookmarks"}>
+      <SideBarIcon icon={Adb} label={"Bookmarks"} />
+      <SideBarText label={"Bookmarks"} />
+    </SideBarLinkItem>
+    <SideBarLinkItem href={"/messages"}>
+      <SideBarIcon icon={Adb} label={"Messages"} />
+      <SideBarText label={"Messages"} />
+    </SideBarLinkItem>
   </SideBar>
 );
 
+export const Expandable = ({ isExpanded }) => (
+  <SideBar isExpanded={isExpanded}>
+    <SideBarLinkItem href={"/home"}>
+      <SideBarIcon icon={Adb} label={"Home"} isExpanded={isExpanded} />
+      <SideBarText label={"Home"} />
+    </SideBarLinkItem>
+    <SideBarLinkItem href={"/trending"} isSelected={true}>
+      <SideBarIcon
+        icon={AirlineSeatLegroomNormal}
+        label={"Trending"}
+        isExpanded={isExpanded}
+      />
+      <SideBarText label={"Trending"} />
+    </SideBarLinkItem>
+    <SideBarItem onClick={action("onExpand")}>
+      <SideBarIcon
+        icon={ArrowRightRounded}
+        iconStyles={{
+          transform: `rotate(${isExpanded ? 180 : 0}deg)`,
+          transition: "transform .3s ease-in-out",
+        }}
+      />
+    </SideBarItem>
+  </SideBar>
+);
+Expandable.args = {
+  isExpanded: true,
+};
+
 export const NoSelection = () => (
   <SideBar>
-    <SideBarItem
-      label="Home"
-      icon={AirlineSeatLegroomNormal}
-      {...onClickAction}
-    />
-    <SideBarItem label="Trending" icon={Adb} {...onClickAction} />
-    <SideBarItem
-      label="Bookmarks"
-      icon={AirlineSeatLegroomNormal}
-      {...onClickAction}
-    />
-    <SideBarItem
-      label="Messages"
-      icon={AirlineSeatLegroomNormal}
-      {...onClickAction}
-    />
-    <SideBarItem label="Profile" icon={Adb} {...onClickAction} />
+    <SideBarLinkItem href={"/home"}>
+      <SideBarIcon icon={Adb} label={"Home"} />
+      <SideBarText label={"Home"} />
+    </SideBarLinkItem>
+    <SideBarLinkItem href={"/trending"}>
+      <SideBarIcon icon={AirlineSeatLegroomNormal} label={"Trending"} />
+      <SideBarText label={"Trending"} />
+    </SideBarLinkItem>
+    <SideBarLinkItem href={"/bookmarks"}>
+      <SideBarIcon icon={Adb} label={"Bookmarks"} />
+      <SideBarText label={"Bookmarks"} />
+    </SideBarLinkItem>
+    <SideBarLinkItem href={"/messages"}>
+      <SideBarIcon icon={Adb} label={"Messages"} />
+      <SideBarText label={"Messages"} />
+    </SideBarLinkItem>
   </SideBar>
 );
