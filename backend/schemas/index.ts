@@ -13,4 +13,9 @@ export const lists = createListSchemaConfig([
   // require("./project"),
   // require("./template"),
   // require("./variant"),
+
+  // GraphQL Testing
+  require("./product"),
+  require("./post"),
+  require("./comment"),
 ]);

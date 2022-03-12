@@ -25,3 +25,30 @@ model FakeDoorTest {
   id   String @id @default(cuid())
   name String @default("")
 }
+
+model Product {
+  id       String    @id @default(cuid())
+  name     String    @default("")
+  comments Comment[] @relation("Comment_product")
+}
+
+model Post {
+  id         String    @id @default(cuid())
+  name       String    @default("")
+  content    String    @default("")
+  viewsCount Int?      @default(0)
+  comments   Comment[] @relation("Comment_post")
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  name      String   @default("")
+  content   String   @default("")
+  product   Product? @relation("Comment_product", fields: [productId], references: [id])
+  productId String?  @map("product")
+  post      Post?    @relation("Comment_post", fields: [postId], references: [id])
+  postId    String?  @map("post")
+
+  @@index([productId])
+  @@index([postId])
+}

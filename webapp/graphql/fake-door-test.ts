@@ -8,3 +8,21 @@ export const GET_ONE_FAKE_DOOR_TEST = gql`
     }
   }
 `;
+
+export const GET_FAKE_DOOR_TESTS = gql`
+  query FakeDoorTests {
+    fakeDoorTests {
+      id
+      name
+    }
+  }
+`;
+
+export const ADD_FAKE_DOOR_TEST = gql`
+  mutation FakeDoorTest($data: FakeDoorTestCreateInput!) {
+    createFakeDoorTest(data: $data) {
+      id
+      name
+    }
+  }
+`;

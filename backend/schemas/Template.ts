@@ -1,4 +1,4 @@
-import { text } from "@keystone-6/core/fields";
+import { text, relationship } from "@keystone-6/core/fields";
 import { list } from "@keystone-6/core";
 import { AdminAccess } from "../utils/access-control/RoleBasedAccess";
 import { s3File } from "@launchdrive/keystone-s3-input";
@@ -15,6 +15,7 @@ export const schema = list({
   },
   fields: {
     name: text(),
+    //tags: relationship({ ref: "TagToTemplate", many: true }),
     preview: s3File({
       s3: {
         bucketName: "templates",
