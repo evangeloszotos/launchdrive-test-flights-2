@@ -1,0 +1,8 @@
+{
+  "id": "abc",
+  "name": "MyFakeDoor",
+  "variants": [
+    { "id": "abc1", "name": "Variant1wewew" },
+    { "id": "abc2", "name": "Varidsdsdsdant2" }
+  ]
+}

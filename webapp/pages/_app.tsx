@@ -1,8 +1,18 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import type { AppProps } from "next/app";
+import { ApolloProvider } from "@apollo/client";
+import { Provider } from "react-redux";
+import apolloClient from "../apollo-client";
+import { store } from "../store";
+import "../styles/globals.css";
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+function App({ Component, pageProps }: AppProps) {
+  return (
+    <ApolloProvider client={apolloClient}>
+      <Provider store={store}>
+        <Component {...pageProps} />
+      </Provider>
+    </ApolloProvider>
+  );
 }
 
-export default MyApp
+export default App;

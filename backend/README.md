@@ -1,3 +1,9 @@
+# Useful Links
+
+- hosted PostgreSQL - https://www.elephantsql.com/
+
+- Setup pgAdmin and postgres containers - https://migueldoctor.medium.com/how-to-run-postgresql-pgadmin-in-3-steps-using-docker-d6fe06e47ca1
+
 # Keystone Project Starter
 
 Welcome to Keystone!
