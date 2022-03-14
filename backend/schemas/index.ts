@@ -9,13 +9,12 @@ export const lists = createListSchemaConfig([
   // require("./address"),
 
   // LaunchDrive
-  require("./fake-door-test"),
-  // require("./project"),
-  // require("./template"),
-  // require("./variant"),
+  require("./test-flight"),
+  require("./test-flight-variant"),
+  require("./text-input"),
 
   // GraphQL Testing
-  require("./product"),
-  require("./post"),
-  require("./comment"),
+  //require("./product"),
+  //require("./post"),
+  //require("./comment"),
 ]);

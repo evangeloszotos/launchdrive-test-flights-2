@@ -13,6 +13,12 @@ export interface FakeDoorTests_fakeDoorTests {
   name: string | null;
 }
 
+export interface FakeDoorTests_posts {
+  __typename: "Post";
+  name: string | null;
+}
+
 export interface FakeDoorTests {
   fakeDoorTests: FakeDoorTests_fakeDoorTests[] | null;
+  posts: FakeDoorTests_posts[] | null;
 }

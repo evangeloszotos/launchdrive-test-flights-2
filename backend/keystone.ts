@@ -1,5 +1,5 @@
 import "dotenv/config";
-import { config } from "@keystone-6/core";
+import { config, graphQLSchemaExtension } from "@keystone-6/core";
 import { withAuth, session } from "./auth";
 import { lists } from "./schemas";
 //const lists = createListSchemaConfigFromDirectory("./schemas");

@@ -21,34 +21,28 @@ model User {
   @@index([s3Secret])
 }
 
-model FakeDoorTest {
-  id   String @id @default(cuid())
-  name String @default("")
+model TestFlight {
+  id       String              @id @default(cuid())
+  name     String              @default("")
+  variants TestFlightVariant[] @relation("TestFlightVariant_testFlight")
 }
 
-model Product {
-  id       String    @id @default(cuid())
-  name     String    @default("")
-  comments Comment[] @relation("Comment_product")
+model TestFlightVariant {
+  id                     String      @id @default(cuid())
+  name                   String      @default("")
+  testFlight             TestFlight? @relation("TestFlightVariant_testFlight", fields: [testFlightId], references: [id])
+  testFlightId           String?     @map("testFlight")
+  from_TextInput_variant TextInput[] @relation("TextInput_variant")
+
+  @@index([testFlightId])
 }
 
-model Post {
-  id         String    @id @default(cuid())
-  name       String    @default("")
-  content    String    @default("")
-  viewsCount Int?      @default(0)
-  comments   Comment[] @relation("Comment_post")
-}
+model TextInput {
+  id           String             @id @default(cuid())
+  variant      TestFlightVariant? @relation("TextInput_variant", fields: [variantId], references: [id])
+  variantId    String?            @map("variant")
+  inputFieldId String             @default("")
+  value        String             @default("")
 
-model Comment {
-  id        String   @id @default(cuid())
-  name      String   @default("")
-  content   String   @default("")
-  product   Product? @relation("Comment_product", fields: [productId], references: [id])
-  productId String?  @map("product")
-  post      Post?    @relation("Comment_post", fields: [postId], references: [id])
-  postId    String?  @map("post")
-
-  @@index([productId])
-  @@index([postId])
+  @@index([variantId])
 }

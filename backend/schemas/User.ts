@@ -1,7 +1,7 @@
 import { password, relationship, text } from "@keystone-6/core/fields";
 import { list } from "@keystone-6/core";
 import crypto from "crypto";
-import { Profile } from "./profile";
+import { Profile } from "./test-models/profile";
 
 export interface User {
   id: string;

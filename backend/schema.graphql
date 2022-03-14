@@ -104,238 +104,172 @@ input UserCreateInput {
   s3Secret: String
 }
 
-type FakeDoorTest {
+type TestFlight {
   id: ID!
   name: String
-}
-
-input FakeDoorTestWhereUniqueInput {
-  id: ID
-}
-
-input FakeDoorTestWhereInput {
-  AND: [FakeDoorTestWhereInput!]
-  OR: [FakeDoorTestWhereInput!]
-  NOT: [FakeDoorTestWhereInput!]
-  id: IDFilter
-  name: StringFilter
-}
-
-input FakeDoorTestOrderByInput {
-  id: OrderDirection
-  name: OrderDirection
-}
-
-input FakeDoorTestUpdateInput {
-  name: String
-}
-
-input FakeDoorTestUpdateArgs {
-  where: FakeDoorTestWhereUniqueInput!
-  data: FakeDoorTestUpdateInput!
-}
-
-input FakeDoorTestCreateInput {
-  name: String
-}
-
-type Product {
-  id: ID!
-  name: String
-  comments(
-    where: CommentWhereInput! = {}
-    orderBy: [CommentOrderByInput!]! = []
+  variants(
+    where: TestFlightVariantWhereInput! = {}
+    orderBy: [TestFlightVariantOrderByInput!]! = []
     take: Int
     skip: Int! = 0
-  ): [Comment!]
-  commentsCount(where: CommentWhereInput! = {}): Int
+  ): [TestFlightVariant!]
+  variantsCount(where: TestFlightVariantWhereInput! = {}): Int
 }
 
-input ProductWhereUniqueInput {
+input TestFlightWhereUniqueInput {
   id: ID
 }
 
-input ProductWhereInput {
-  AND: [ProductWhereInput!]
-  OR: [ProductWhereInput!]
-  NOT: [ProductWhereInput!]
+input TestFlightWhereInput {
+  AND: [TestFlightWhereInput!]
+  OR: [TestFlightWhereInput!]
+  NOT: [TestFlightWhereInput!]
   id: IDFilter
   name: StringFilter
-  comments: CommentManyRelationFilter
+  variants: TestFlightVariantManyRelationFilter
 }
 
-input CommentManyRelationFilter {
-  every: CommentWhereInput
-  some: CommentWhereInput
-  none: CommentWhereInput
+input TestFlightVariantManyRelationFilter {
+  every: TestFlightVariantWhereInput
+  some: TestFlightVariantWhereInput
+  none: TestFlightVariantWhereInput
 }
 
-input ProductOrderByInput {
+input TestFlightOrderByInput {
   id: OrderDirection
   name: OrderDirection
 }
 
-input ProductUpdateInput {
+input TestFlightUpdateInput {
   name: String
-  comments: CommentRelateToManyForUpdateInput
+  variants: TestFlightVariantRelateToManyForUpdateInput
 }
 
-input CommentRelateToManyForUpdateInput {
-  disconnect: [CommentWhereUniqueInput!]
-  set: [CommentWhereUniqueInput!]
-  create: [CommentCreateInput!]
-  connect: [CommentWhereUniqueInput!]
+input TestFlightVariantRelateToManyForUpdateInput {
+  disconnect: [TestFlightVariantWhereUniqueInput!]
+  set: [TestFlightVariantWhereUniqueInput!]
+  create: [TestFlightVariantCreateInput!]
+  connect: [TestFlightVariantWhereUniqueInput!]
 }
 
-input ProductUpdateArgs {
-  where: ProductWhereUniqueInput!
-  data: ProductUpdateInput!
+input TestFlightUpdateArgs {
+  where: TestFlightWhereUniqueInput!
+  data: TestFlightUpdateInput!
 }
 
-input ProductCreateInput {
+input TestFlightCreateInput {
   name: String
-  comments: CommentRelateToManyForCreateInput
+  variants: TestFlightVariantRelateToManyForCreateInput
 }
 
-input CommentRelateToManyForCreateInput {
-  create: [CommentCreateInput!]
-  connect: [CommentWhereUniqueInput!]
+input TestFlightVariantRelateToManyForCreateInput {
+  create: [TestFlightVariantCreateInput!]
+  connect: [TestFlightVariantWhereUniqueInput!]
 }
 
-type Post {
+type TestFlightVariant {
   id: ID!
   name: String
-  content: String
-  viewsCount: Int
-  comments(
-    where: CommentWhereInput! = {}
-    orderBy: [CommentOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-  ): [Comment!]
-  commentsCount(where: CommentWhereInput! = {}): Int
+  testFlight: TestFlight
 }
 
-input PostWhereUniqueInput {
+input TestFlightVariantWhereUniqueInput {
   id: ID
 }
 
-input PostWhereInput {
-  AND: [PostWhereInput!]
-  OR: [PostWhereInput!]
-  NOT: [PostWhereInput!]
+input TestFlightVariantWhereInput {
+  AND: [TestFlightVariantWhereInput!]
+  OR: [TestFlightVariantWhereInput!]
+  NOT: [TestFlightVariantWhereInput!]
   id: IDFilter
   name: StringFilter
-  content: StringFilter
-  viewsCount: IntNullableFilter
-  comments: CommentManyRelationFilter
+  testFlight: TestFlightWhereInput
 }
 
-input IntNullableFilter {
-  equals: Int
-  in: [Int!]
-  notIn: [Int!]
-  lt: Int
-  lte: Int
-  gt: Int
-  gte: Int
-  not: IntNullableFilter
-}
-
-input PostOrderByInput {
+input TestFlightVariantOrderByInput {
   id: OrderDirection
   name: OrderDirection
-  content: OrderDirection
-  viewsCount: OrderDirection
 }
 
-input PostUpdateInput {
+input TestFlightVariantUpdateInput {
   name: String
-  content: String
-  viewsCount: Int
-  comments: CommentRelateToManyForUpdateInput
+  testFlight: TestFlightRelateToOneForUpdateInput
 }
 
-input PostUpdateArgs {
-  where: PostWhereUniqueInput!
-  data: PostUpdateInput!
-}
-
-input PostCreateInput {
-  name: String
-  content: String
-  viewsCount: Int
-  comments: CommentRelateToManyForCreateInput
-}
-
-type Comment {
-  id: ID!
-  name: String
-  content: String
-  product: Product
-  post: Post
-}
-
-input CommentWhereUniqueInput {
-  id: ID
-}
-
-input CommentWhereInput {
-  AND: [CommentWhereInput!]
-  OR: [CommentWhereInput!]
-  NOT: [CommentWhereInput!]
-  id: IDFilter
-  name: StringFilter
-  content: StringFilter
-  product: ProductWhereInput
-  post: PostWhereInput
-}
-
-input CommentOrderByInput {
-  id: OrderDirection
-  name: OrderDirection
-  content: OrderDirection
-}
-
-input CommentUpdateInput {
-  name: String
-  content: String
-  product: ProductRelateToOneForUpdateInput
-  post: PostRelateToOneForUpdateInput
-}
-
-input ProductRelateToOneForUpdateInput {
-  create: ProductCreateInput
-  connect: ProductWhereUniqueInput
+input TestFlightRelateToOneForUpdateInput {
+  create: TestFlightCreateInput
+  connect: TestFlightWhereUniqueInput
   disconnect: Boolean
 }
 
-input PostRelateToOneForUpdateInput {
-  create: PostCreateInput
-  connect: PostWhereUniqueInput
+input TestFlightVariantUpdateArgs {
+  where: TestFlightVariantWhereUniqueInput!
+  data: TestFlightVariantUpdateInput!
+}
+
+input TestFlightVariantCreateInput {
+  name: String
+  testFlight: TestFlightRelateToOneForCreateInput
+}
+
+input TestFlightRelateToOneForCreateInput {
+  create: TestFlightCreateInput
+  connect: TestFlightWhereUniqueInput
+}
+
+type TextInput {
+  id: ID!
+  variant: TestFlightVariant
+  inputFieldId: String
+  value: String
+}
+
+input TextInputWhereUniqueInput {
+  id: ID
+}
+
+input TextInputWhereInput {
+  AND: [TextInputWhereInput!]
+  OR: [TextInputWhereInput!]
+  NOT: [TextInputWhereInput!]
+  id: IDFilter
+  variant: TestFlightVariantWhereInput
+  inputFieldId: StringFilter
+  value: StringFilter
+}
+
+input TextInputOrderByInput {
+  id: OrderDirection
+  inputFieldId: OrderDirection
+  value: OrderDirection
+}
+
+input TextInputUpdateInput {
+  variant: TestFlightVariantRelateToOneForUpdateInput
+  inputFieldId: String
+  value: String
+}
+
+input TestFlightVariantRelateToOneForUpdateInput {
+  create: TestFlightVariantCreateInput
+  connect: TestFlightVariantWhereUniqueInput
   disconnect: Boolean
 }
 
-input CommentUpdateArgs {
-  where: CommentWhereUniqueInput!
-  data: CommentUpdateInput!
+input TextInputUpdateArgs {
+  where: TextInputWhereUniqueInput!
+  data: TextInputUpdateInput!
 }
 
-input CommentCreateInput {
-  name: String
-  content: String
-  product: ProductRelateToOneForCreateInput
-  post: PostRelateToOneForCreateInput
+input TextInputCreateInput {
+  variant: TestFlightVariantRelateToOneForCreateInput
+  inputFieldId: String
+  value: String
 }
 
-input ProductRelateToOneForCreateInput {
-  create: ProductCreateInput
-  connect: ProductWhereUniqueInput
-}
-
-input PostRelateToOneForCreateInput {
-  create: PostCreateInput
-  connect: PostWhereUniqueInput
+input TestFlightVariantRelateToOneForCreateInput {
+  create: TestFlightVariantCreateInput
+  connect: TestFlightVariantWhereUniqueInput
 }
 
 """
@@ -353,39 +287,43 @@ type Mutation {
   updateUsers(data: [UserUpdateArgs!]!): [User]
   deleteUser(where: UserWhereUniqueInput!): User
   deleteUsers(where: [UserWhereUniqueInput!]!): [User]
-  createFakeDoorTest(data: FakeDoorTestCreateInput!): FakeDoorTest
-  createFakeDoorTests(data: [FakeDoorTestCreateInput!]!): [FakeDoorTest]
-  updateFakeDoorTest(
-    where: FakeDoorTestWhereUniqueInput!
-    data: FakeDoorTestUpdateInput!
-  ): FakeDoorTest
-  updateFakeDoorTests(data: [FakeDoorTestUpdateArgs!]!): [FakeDoorTest]
-  deleteFakeDoorTest(where: FakeDoorTestWhereUniqueInput!): FakeDoorTest
-  deleteFakeDoorTests(where: [FakeDoorTestWhereUniqueInput!]!): [FakeDoorTest]
-  createProduct(data: ProductCreateInput!): Product
-  createProducts(data: [ProductCreateInput!]!): [Product]
-  updateProduct(
-    where: ProductWhereUniqueInput!
-    data: ProductUpdateInput!
-  ): Product
-  updateProducts(data: [ProductUpdateArgs!]!): [Product]
-  deleteProduct(where: ProductWhereUniqueInput!): Product
-  deleteProducts(where: [ProductWhereUniqueInput!]!): [Product]
-  createPost(data: PostCreateInput!): Post
-  createPosts(data: [PostCreateInput!]!): [Post]
-  updatePost(where: PostWhereUniqueInput!, data: PostUpdateInput!): Post
-  updatePosts(data: [PostUpdateArgs!]!): [Post]
-  deletePost(where: PostWhereUniqueInput!): Post
-  deletePosts(where: [PostWhereUniqueInput!]!): [Post]
-  createComment(data: CommentCreateInput!): Comment
-  createComments(data: [CommentCreateInput!]!): [Comment]
-  updateComment(
-    where: CommentWhereUniqueInput!
-    data: CommentUpdateInput!
-  ): Comment
-  updateComments(data: [CommentUpdateArgs!]!): [Comment]
-  deleteComment(where: CommentWhereUniqueInput!): Comment
-  deleteComments(where: [CommentWhereUniqueInput!]!): [Comment]
+  createTestFlight(data: TestFlightCreateInput!): TestFlight
+  createTestFlights(data: [TestFlightCreateInput!]!): [TestFlight]
+  updateTestFlight(
+    where: TestFlightWhereUniqueInput!
+    data: TestFlightUpdateInput!
+  ): TestFlight
+  updateTestFlights(data: [TestFlightUpdateArgs!]!): [TestFlight]
+  deleteTestFlight(where: TestFlightWhereUniqueInput!): TestFlight
+  deleteTestFlights(where: [TestFlightWhereUniqueInput!]!): [TestFlight]
+  createTestFlightVariant(
+    data: TestFlightVariantCreateInput!
+  ): TestFlightVariant
+  createTestFlightVariants(
+    data: [TestFlightVariantCreateInput!]!
+  ): [TestFlightVariant]
+  updateTestFlightVariant(
+    where: TestFlightVariantWhereUniqueInput!
+    data: TestFlightVariantUpdateInput!
+  ): TestFlightVariant
+  updateTestFlightVariants(
+    data: [TestFlightVariantUpdateArgs!]!
+  ): [TestFlightVariant]
+  deleteTestFlightVariant(
+    where: TestFlightVariantWhereUniqueInput!
+  ): TestFlightVariant
+  deleteTestFlightVariants(
+    where: [TestFlightVariantWhereUniqueInput!]!
+  ): [TestFlightVariant]
+  createTextInput(data: TextInputCreateInput!): TextInput
+  createTextInputs(data: [TextInputCreateInput!]!): [TextInput]
+  updateTextInput(
+    where: TextInputWhereUniqueInput!
+    data: TextInputUpdateInput!
+  ): TextInput
+  updateTextInputs(data: [TextInputUpdateArgs!]!): [TextInput]
+  deleteTextInput(where: TextInputWhereUniqueInput!): TextInput
+  deleteTextInputs(where: [TextInputWhereUniqueInput!]!): [TextInput]
   endSession: Boolean!
   authenticateUserWithPassword(
     email: String!
@@ -424,38 +362,32 @@ type Query {
   ): [User!]
   user(where: UserWhereUniqueInput!): User
   usersCount(where: UserWhereInput! = {}): Int
-  fakeDoorTests(
-    where: FakeDoorTestWhereInput! = {}
-    orderBy: [FakeDoorTestOrderByInput!]! = []
+  testFlights(
+    where: TestFlightWhereInput! = {}
+    orderBy: [TestFlightOrderByInput!]! = []
     take: Int
     skip: Int! = 0
-  ): [FakeDoorTest!]
-  fakeDoorTest(where: FakeDoorTestWhereUniqueInput!): FakeDoorTest
-  fakeDoorTestsCount(where: FakeDoorTestWhereInput! = {}): Int
-  products(
-    where: ProductWhereInput! = {}
-    orderBy: [ProductOrderByInput!]! = []
+  ): [TestFlight!]
+  testFlight(where: TestFlightWhereUniqueInput!): TestFlight
+  testFlightsCount(where: TestFlightWhereInput! = {}): Int
+  testFlightVariants(
+    where: TestFlightVariantWhereInput! = {}
+    orderBy: [TestFlightVariantOrderByInput!]! = []
     take: Int
     skip: Int! = 0
-  ): [Product!]
-  product(where: ProductWhereUniqueInput!): Product
-  productsCount(where: ProductWhereInput! = {}): Int
-  posts(
-    where: PostWhereInput! = {}
-    orderBy: [PostOrderByInput!]! = []
+  ): [TestFlightVariant!]
+  testFlightVariant(
+    where: TestFlightVariantWhereUniqueInput!
+  ): TestFlightVariant
+  testFlightVariantsCount(where: TestFlightVariantWhereInput! = {}): Int
+  textInputs(
+    where: TextInputWhereInput! = {}
+    orderBy: [TextInputOrderByInput!]! = []
     take: Int
     skip: Int! = 0
-  ): [Post!]
-  post(where: PostWhereUniqueInput!): Post
-  postsCount(where: PostWhereInput! = {}): Int
-  comments(
-    where: CommentWhereInput! = {}
-    orderBy: [CommentOrderByInput!]! = []
-    take: Int
-    skip: Int! = 0
-  ): [Comment!]
-  comment(where: CommentWhereUniqueInput!): Comment
-  commentsCount(where: CommentWhereInput! = {}): Int
+  ): [TextInput!]
+  textInput(where: TextInputWhereUniqueInput!): TextInput
+  textInputsCount(where: TextInputWhereInput! = {}): Int
   keystone: KeystoneMeta!
   authenticatedItem: AuthenticatedItem
 }
