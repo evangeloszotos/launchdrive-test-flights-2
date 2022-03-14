@@ -3,22 +3,22 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { FakeDoorTestCreateInput } from "./../../types/globalTypes";
+import { TestFlightCreateInput } from "./../../types/globalTypes";
 
 // ====================================================
 // GraphQL mutation operation: FakeDoorTest
 // ====================================================
 
-export interface FakeDoorTest_createFakeDoorTest {
-  __typename: "FakeDoorTest";
+export interface FakeDoorTest_createTestFlight {
+  __typename: "TestFlight";
   id: string;
   name: string | null;
 }
 
 export interface FakeDoorTest {
-  createFakeDoorTest: FakeDoorTest_createFakeDoorTest | null;
+  createTestFlight: FakeDoorTest_createTestFlight | null;
 }
 
 export interface FakeDoorTestVariables {
-  data: FakeDoorTestCreateInput;
+  data: TestFlightCreateInput;
 }

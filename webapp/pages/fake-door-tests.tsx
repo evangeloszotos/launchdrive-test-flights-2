@@ -40,7 +40,7 @@ interface FakeDoor {
 interface Variant {
   id: string;
   name: string;
-  template: Template;
+  template?: Template;
 }
 
 const fakeDoor: FakeDoor = {

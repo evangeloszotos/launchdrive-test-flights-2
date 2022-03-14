@@ -7,14 +7,14 @@
 // GraphQL query operation: FakeDoorTestById
 // ====================================================
 
-export interface FakeDoorTestById_fakeDoorTest {
-  __typename: "FakeDoorTest";
+export interface FakeDoorTestById_testFlight {
+  __typename: "TestFlight";
   id: string;
   name: string | null;
 }
 
 export interface FakeDoorTestById {
-  fakeDoorTest: FakeDoorTestById_fakeDoorTest | null;
+  testFlight: FakeDoorTestById_testFlight | null;
 }
 
 export interface FakeDoorTestByIdVariables {
