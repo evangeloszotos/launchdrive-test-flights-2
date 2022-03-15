@@ -1,0 +1,1 @@
+sudo docker exec -it launchdrive_backend-postgres pg_restore -U postgres -d keystone --verbose --single-transaction /home/dump.pgdata
