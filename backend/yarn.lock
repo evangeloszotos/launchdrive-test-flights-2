@@ -754,10 +754,10 @@
     "@keystone-ui/popover" "^5.0.0"
     apply-ref "^1.0.0"
 
-"@launchdrive/keystone-s3-input@^1.0.3":
-  version "1.0.3"
-  resolved "https://gitlab.launchlytics.io/api/v4/projects/101/packages/npm/@launchdrive/keystone-s3-input/-/@launchdrive/keystone-s3-input-1.0.3.tgz#949440d19399f3b4f1d99b265a837947d4a54d8f"
-  integrity sha1-lJRA0ZOZ87Tx2ZsmWoN5R9SlTY8=
+"@launchdrive/keystone-s3-input@^1.0.4":
+  version "1.0.4"
+  resolved "https://gitlab.launchlytics.io/api/v4/projects/101/packages/npm/@launchdrive/keystone-s3-input/-/@launchdrive/keystone-s3-input-1.0.4.tgz#9fd83d3a60c1256c9515569eaae7baf650398920"
+  integrity sha1-n9g9OmDBJWyVFVaeque69lA5iSA=
   dependencies:
     "@babel/core" "^7.17.5"
     "@keystone-6/auth" "^1.0.1"
