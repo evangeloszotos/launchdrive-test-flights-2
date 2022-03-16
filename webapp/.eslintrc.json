@@ -10,6 +10,7 @@
     "prettier"
   ],
   "extends": [
+    "next/core-web-vitals",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     "airbnb",
@@ -91,5 +92,12 @@
   },
   "globals": {
     "JSX": true
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
   }
 }
