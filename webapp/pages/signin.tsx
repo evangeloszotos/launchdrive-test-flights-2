@@ -1,14 +1,6 @@
 import React from "react";
-import { Container, Typography } from "@mui/material";
+import { Container } from "@mui/material";
 import SignIn from "../containers/SignIn";
-
-import {
-  Button,
-  Stack,
-  Paper,
-  CircularProgress,
-  TextField,
-} from "@mui/material";
 
 const SignInPage: React.FC = (props) => {
   const [email, setEmail] = React.useState("");
@@ -24,6 +16,3 @@ const SignInPage: React.FC = (props) => {
 };
 
 export default SignInPage;
-
-// DataFetching
-// StateManagement
