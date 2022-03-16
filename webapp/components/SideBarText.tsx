@@ -1,22 +1,27 @@
 import React from "react";
-import { Box, Tooltip } from "@mui/material";
+import { Box } from "@mui/material";
 import PropTypes from "prop-types";
 
 export function SideBarText(props) {
-  const { label, className } = props;
+  const { label } = props;
 
   return (
-    <Box className={className} sx={{ mx: 2, typography: "subtitle2" }}>
+    <Box
+      sx={{
+        "font-size": "10px",
+        "line-height": "12px",
+        pt: 0.5,
+        "text-align": "center",
+      }}
+    >
       {label}
     </Box>
   );
 }
 SideBarText.propTypes = {
-  className: PropTypes.string,
   label: PropTypes.string,
 };
 SideBarText.defaultProps = {
-  className: "",
   label: "",
 };
 

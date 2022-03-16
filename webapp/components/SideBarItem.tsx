@@ -1,17 +1,18 @@
 import React from "react";
-import { alpha, Box } from "@mui/material";
+import { alpha, Grid } from "@mui/material";
 import PropTypes from "prop-types";
-import NextLink from "next/link";
 import { theme } from "../mui-theme";
 
 export function SideBarItem(props) {
   const { children, isSelected, onClick } = props;
 
   return (
-    <Box
+    <Grid
+      container
+      direction="column"
+      justifyContent="center"
+      alignItems="center"
       sx={{
-        display: "flex",
-        alignItems: "center",
         cursor: "pointer",
         backgroundColor: isSelected
           ? alpha(theme.palette.primary.main, 0.12)
@@ -20,10 +21,11 @@ export function SideBarItem(props) {
           ? theme.palette.primary.main
           : theme.palette.grey["600"],
       }}
+      p={1}
       onClick={onClick}
     >
       {children}
-    </Box>
+    </Grid>
   );
 }
 SideBarItem.propTypes = {
@@ -31,8 +33,8 @@ SideBarItem.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
   ]),
-  isSelected: PropTypes.bool,
   onClick: PropTypes.func,
+  isSelected: PropTypes.bool,
 };
 SideBarItem.defaultProps = {
   children: null,

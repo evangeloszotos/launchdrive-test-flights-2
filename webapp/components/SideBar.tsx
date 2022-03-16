@@ -4,13 +4,13 @@ import PropTypes from "prop-types";
 import { theme } from "../mui-theme";
 
 export function SideBar(props) {
-  const { children, isExpanded, collapsedSize } = props;
+  const { children, isExpanded, collapsedWidth } = props;
 
   return (
     <Collapse
       orientation="horizontal"
       in={isExpanded}
-      collapsedSize={collapsedSize}
+      collapsedSize={collapsedWidth}
       timeout={320}
       easing="ease-in-out"
     >
@@ -32,13 +32,13 @@ SideBar.propTypes = {
     PropTypes.node,
   ]),
   isExpanded: PropTypes.bool,
-  collapsedSize: PropTypes.number,
+  collapsedWidth: PropTypes.number,
 };
 SideBar.defaultProps = {
   className: "",
   children: null,
   isExpanded: false,
-  collapsedSize: 64,
+  collapsedWidth: 64,
 };
 
 export default SideBar;

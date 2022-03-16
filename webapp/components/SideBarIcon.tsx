@@ -1,48 +1,37 @@
 import React from "react";
-import { Box, Tooltip } from "@mui/material";
+import { Grid, Tooltip } from "@mui/material";
 import PropTypes from "prop-types";
 
 export function SideBarIcon(props) {
   const {
-    label,
+    //label,
     icon: IconElement,
-    isExpanded,
-    iconStyles,
-    width,
-    height,
+    //isExpanded,
+    iconProps,
   } = props;
 
   return (
-    <Tooltip title={!isExpanded ? label : ""} placement="right">
-      <Box
-        sx={{
-          height,
-          width,
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        <IconElement sx={{ mx: "auto", ...iconStyles }} />
-      </Box>
+    <Tooltip title={/*!isExpanded ? label : */ ""} placement="right">
+      <Grid container justifyContent="center" alignItems="center">
+        <IconElement {...iconProps} />
+      </Grid>
     </Tooltip>
   );
 }
 SideBarIcon.propTypes = {
-  className: PropTypes.string,
-  label: PropTypes.string,
+  //label: PropTypes.string,
   icon: PropTypes.object.isRequired,
-  iconStyles: PropTypes.object,
-  isExpanded: PropTypes.bool,
-  width: PropTypes.number,
-  height: PropTypes.number,
+  iconProps: PropTypes.object,
+  //isExpanded: PropTypes.bool,
 };
 SideBarIcon.defaultProps = {
-  className: "",
-  label: "",
-  iconStyles: {},
-  isExpanded: false,
-  width: 64,
-  height: 40,
+  //label: "",
+  iconProps: {
+    sx: {
+      mx: "auto",
+    },
+  },
+  //isExpanded: false,
 };
 
 export default SideBarIcon;
