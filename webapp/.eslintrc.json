@@ -1,4 +1,8 @@
 {
+  "env": {
+    "browser": true,
+    "node": true
+  },
   "plugins": [
     "react",
     "@typescript-eslint",
@@ -6,7 +10,6 @@
     "prettier"
   ],
   "extends": [
-    "next/core-web-vitals",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     "airbnb",
@@ -21,11 +24,11 @@
       }
     ],
     "@typescript-eslint/consistent-type-definitions": ["error", "interface"],
-    "@typescript-eslint/explicit-function-return-type": "warn",
     "@typescript-eslint/member-delimiter-style": "error",
     "@typescript-eslint/method-signature-style": "error",
     "@typescript-eslint/no-confusing-non-null-assertion": "error",
     "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-empty-function": "off",
     "@typescript-eslint/no-unused-vars": "error",
     //
     "react/forbid-prop-types": "off",
@@ -66,6 +69,9 @@
     "prettier/prettier": "error",
     //
     "curly": ["error", "multi-line"],
+    "import/extensions": "off",
+    "import/no-extraneous-dependencies": "off",
+    "lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }],
     "no-console": "off",
     "no-restricted-syntax": [
       "error",
