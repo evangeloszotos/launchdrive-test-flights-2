@@ -1,0 +1,21 @@
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
+import {{ name }} from './{{ name }}';
+
+export default {
+  title: 'Components/{{ name }}',
+  component: {{ name }},
+  argTypes: {},
+} as ComponentMeta<typeof {{ name }}>;
+
+const Template: ComponentStory<typeof {{ name }}> = (args) => <{{ name }} {...args} />;
+
+export const Default = Template.bind({});
+  Default.args = {
+  onClick: action('onClick'),
+};
+
+export const Secondary = Template.bind({});
+  Secondary.args = {
+  onClick: action('onClick'),
+};

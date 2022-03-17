@@ -2,14 +2,27 @@ version: '3.7'
 
 services:
   postgres:
-    image: gitlab-registry.launchlytics.io/launchdrive/containers/seeded-postgres:latest
+    #image: gitlab-registry.launchlytics.io/launchdrive/containers/seeded-postgres:latest    
+    image: postgres:13-buster
     container_name: 'launchdrive_backend-postgres'
     environment:
+      - TZ=Europe/Berlin
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=mysecretpassword
       - POSTGRES_DB=keystone
     ports:
       - 5432:5432
+
+  adminer:
+    image: adminer
+    container_name: 'launchdrive_backend-adminer'
+    environment:
+      - TZ=Europe/Berlin
+      - ADMINER_DEFAULT_SERVER=postgres
+    ports:
+      - 127.0.0.1:5433:8080
+    depends_on:
+      - postgres
 
   minio:
     image: minio/minio:latest
@@ -18,7 +31,13 @@ services:
       MINIO_ACCESS_KEY: minio
       MINIO_SECRET_KEY: minio123
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      test:
+        [
+          "CMD",
+          "curl",
+          "-f",
+          "http://localhost:9000/minio/health/live"
+        ]
       interval: 30s
       timeout: 20s
       retries: 3
