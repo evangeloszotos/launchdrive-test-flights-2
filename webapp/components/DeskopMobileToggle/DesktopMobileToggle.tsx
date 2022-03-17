@@ -3,7 +3,7 @@ import { DesktopWindows, Smartphone } from '@mui/icons-material';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
-export default function DesktopMobileToggle(props) {
+export const DesktopMobileToggle = (props) => {
   const { onChange, state, triggerOnChangeOnNullValue, handleStateInternally } = props;
   const [internalState, setInternalState] = useState(state);
 
@@ -31,7 +31,7 @@ export default function DesktopMobileToggle(props) {
       </ToggleButton>
     </ToggleButtonGroup>
   );
-}
+};
 DesktopMobileToggle.propTypes = {
   state: PropTypes.oneOf(['desktop', 'mobile']),
   onChange: PropTypes.func,
@@ -44,3 +44,5 @@ DesktopMobileToggle.defaultProps = {
   triggerOnChangeOnNullValue: false,
   handleStateInternally: false,
 };
+
+export default DesktopMobileToggle;

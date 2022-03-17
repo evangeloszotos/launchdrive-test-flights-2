@@ -1,7 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-
-import DesktopMobileToggle from './DesktopMobileToggle';
+import { DesktopMobileToggle } from './DesktopMobileToggle';
 
 export default {
   title: 'Example/DesktopMobileToggle',
@@ -14,11 +13,7 @@ export default {
   },
 } as ComponentMeta<typeof DesktopMobileToggle>;
 
-function TemplateComponent(args) {
-  return <DesktopMobileToggle {...args} />;
-}
-
-const Template: ComponentStory<typeof DesktopMobileToggle> = TemplateComponent;
+const Template: ComponentStory<typeof DesktopMobileToggle> = (args) => <DesktopMobileToggle {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

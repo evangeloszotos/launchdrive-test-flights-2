@@ -1,3 +1,3 @@
-import DesktopMobileToggle from './DesktopMobileToggle';
+import { DesktopMobileToggle } from './DesktopMobileToggle';
 
-export { DesktopMobileToggle };
+export default DesktopMobileToggle;
