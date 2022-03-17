@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-export default function {{name}}(props) {
+export const {{name}} = (props) => {
 const { onClick, children } = props;
 
 return (
@@ -10,10 +10,12 @@ return (
 );
 }
 {{name}}.propTypes = {
-children: PropTypes.oneOf([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]),
-onClick: PropTypes.func,
+  children: PropTypes.oneOf([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]),
+  onClick: PropTypes.func,
 };
 {{name}}.defaultProps = {
-children: [],
-onClick: () => {},
+  children: [],
+  onClick: () => {},
 };
+
+export default {{name}};
