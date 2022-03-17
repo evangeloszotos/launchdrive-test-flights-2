@@ -1,3 +1,3 @@
-import Centered from './Centered';
+import { Centered } from './Centered';
 
-export { Centered };
+export default Centered;

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Grid } from '@mui/material';
 
-export default function Centered(props) {
+export const Centered = (props) => {
   const { children, sx } = props;
 
   return (
@@ -9,7 +9,7 @@ export default function Centered(props) {
       {children}
     </Grid>
   );
-}
+};
 Centered.propTypes = {
   children: PropTypes.node,
   sx: PropTypes.object,
@@ -21,3 +21,5 @@ Centered.defaultProps = {
     height: '100%',
   },
 };
+
+export default Centered;

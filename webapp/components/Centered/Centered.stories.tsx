@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Box, Paper } from '@mui/material';
-import Centered from './Centered';
+import { Centered } from './Centered';
 
 export default {
   title: 'Components/Centered',
@@ -8,15 +8,13 @@ export default {
   argTypes: {},
 } as ComponentMeta<typeof Centered>;
 
-function TemplateComponent() {
-  return (
-    <Box sx={{ border: '1px solid red', width: 200, height: 200 }}>
-      <Centered>
-        <Paper sx={{ width: 32, height: 32 }} />
-      </Centered>
-    </Box>
-  );
-}
+const TemplateComponent = () => (
+  <Box sx={{ border: '1px solid red', width: 200, height: 200 }}>
+    <Centered>
+      <Paper sx={{ width: 32, height: 32 }} />
+    </Centered>
+  </Box>
+);
 
 const Template: ComponentStory<typeof Centered> = TemplateComponent;
 
