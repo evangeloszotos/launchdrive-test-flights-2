@@ -7,10 +7,11 @@ export const SideBarText = (props) => {
   return (
     <Box
       sx={{
-        'font-size': '10px',
-        'line-height': '12px',
+        fontSize: '10px',
+        lineHeight: '12px',
         pt: 0.5,
-        'text-align': 'center',
+        textAlign: 'center',
+        userSelect: 'none',
       }}
     >
       {label}
