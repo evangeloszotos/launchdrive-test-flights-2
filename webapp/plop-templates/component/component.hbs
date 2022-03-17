@@ -1,0 +1,21 @@
+import PropTypes from 'prop-types';
+
+function {{name}}(props) {
+const { onClick, children } = props;
+
+return (
+<div onClick={onClick} onKeyDown={onClick}>
+  {children}
+</div>
+);
+}
+{{name}}.propTypes = {
+children: PropTypes.oneOf([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]),
+onClick: PropTypes.func,
+};
+{{name}}.defaultProps = {
+children: [],
+onClick: () => {},
+};
+
+export { {{name}} };
