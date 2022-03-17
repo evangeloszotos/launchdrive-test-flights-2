@@ -10,6 +10,7 @@
     "prettier"
   ],
   "extends": [
+    "next/core-web-vitals",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     "airbnb",
@@ -71,6 +72,8 @@
     "curly": ["error", "multi-line"],
     "import/extensions": "off",
     "import/no-extraneous-dependencies": "off",
+    "import/prefer-default-export": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
     "lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }],
     "no-console": "off",
     "no-restricted-syntax": [
@@ -91,5 +94,12 @@
   },
   "globals": {
     "JSX": true
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
   }
 }
