@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions';
 import { DesktopMobileToggle } from './DesktopMobileToggle';
 
 export default {
-  title: 'Example/DesktopMobileToggle',
+  title: 'Components/DesktopMobileToggle',
   component: DesktopMobileToggle,
   argTypes: {
     state: {
