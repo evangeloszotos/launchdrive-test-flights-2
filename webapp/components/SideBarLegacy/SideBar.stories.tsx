@@ -11,7 +11,7 @@ import { SideBarText } from './SideBarText';
 import { SideBarItem } from './SideBarItem';
 
 export default {
-  title: 'Components/SideBar',
+  title: 'Components/SideBarLegacy',
   component: SideBar,
 } as ComponentMeta<typeof SideBar>;
 
