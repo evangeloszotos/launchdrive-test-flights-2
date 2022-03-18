@@ -1,6 +1,11 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import SideBar from './SideBar';
+import { Adb, AirlineSeatLegroomNormal } from '@mui/icons-material';
+import React from 'react';
+import { SideBar } from './SideBar';
+import { SideBarTestbuilderItem } from './SideBarTestbuilderItem';
+import { SideBarLinkItem } from './SideBarLinkItem';
+import { SideBarItem } from './SideBarItem';
 
 export default {
   title: 'Components/SideBar',
@@ -8,14 +13,48 @@ export default {
   argTypes: {},
 } as ComponentMeta<typeof SideBar>;
 
-const Template: ComponentStory<typeof SideBar> = (args) => <SideBar {...args} />;
+const Template: ComponentStory<typeof SideBar> = (args) => (
+  <SideBar>
+    <SideBarLinkItem href="/home">
+      <SideBarTestbuilderItem icon={<Adb />} label="Home" />
+    </SideBarLinkItem>
+    <SideBarLinkItem href="/trending" isSelected={true}>
+      <SideBarTestbuilderItem icon={<AirlineSeatLegroomNormal />} label="Trending" />
+    </SideBarLinkItem>
+    <SideBarLinkItem href="/bookmarks">
+      <SideBarTestbuilderItem icon={<Adb />} label="Landing Page" />
+    </SideBarLinkItem>
+    <SideBarItem onClick={action('onClick')}>
+      <SideBarTestbuilderItem icon={<Adb />} label="Event" />
+    </SideBarItem>
+    <SideBarItem onClick={action('onClick')}>
+      <SideBarTestbuilderItem icon={<Adb />} />
+    </SideBarItem>
+  </SideBar>
+);
 
 export const Default = Template.bind({});
-  Default.args = {
-  onClick: action('onClick'),
-};
+Default.args = {};
 
-export const Secondary = Template.bind({});
-  Secondary.args = {
-  onClick: action('onClick'),
-};
+const TemplateExpandable: ComponentStory<typeof SideBar> = ({ isExpanded }) => (
+  <SideBar isExpanded={isExpanded}>
+    <SideBarLinkItem href="/home">
+      <SideBarTestbuilderItem icon={<Adb />} label="Home" />
+    </SideBarLinkItem>
+    <SideBarLinkItem href="/trending" isSelected={true}>
+      <SideBarTestbuilderItem icon={<AirlineSeatLegroomNormal />} label="Trending" />
+    </SideBarLinkItem>
+    <SideBarLinkItem href="/bookmarks">
+      <SideBarTestbuilderItem icon={<Adb />} label="Landing Page" />
+    </SideBarLinkItem>
+    <SideBarItem onClick={action('onClick')}>
+      <SideBarTestbuilderItem icon={<Adb />} label="Event" />
+    </SideBarItem>
+    <SideBarItem onClick={action('onClick')}>
+      <SideBarTestbuilderItem icon={<Adb />} />
+    </SideBarItem>
+  </SideBar>
+);
+
+export const Expandable = TemplateExpandable.bind({});
+Expandable.args = {};

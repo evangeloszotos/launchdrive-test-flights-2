@@ -1,21 +1,34 @@
-import PropTypes from 'prop-types';
+import { Collapse, Stack } from '@mui/material';
+import React from 'react';
+import { theme } from '../../mui-theme';
 
-export const SideBar = (props) => {
-const { onClick, children } = props;
-
-return (
-<div onClick={onClick} onKeyDown={onClick}>
-  {children}
-</div>
-);
+interface SideBarProperties {
+  isExpanded?: boolean;
+  collapsedWidth?: number;
+  backgroundColor?: string;
 }
-SideBar.propTypes = {
-  children: PropTypes.oneOf([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]),
-  onClick: PropTypes.func,
-};
-SideBar.defaultProps = {
-  children: [],
-  onClick: () => {},
+
+export const SideBar: React.FC<SideBarProperties> = (props) => {
+  const { isExpanded = false, collapsedWidth = 64, backgroundColor = theme.palette.grey['50'], children } = props;
+
+  return (
+    <Collapse
+      orientation="horizontal"
+      in={isExpanded}
+      collapsedSize={collapsedWidth}
+      timeout={320}
+      easing="ease-in-out"
+    >
+      <Stack
+        spacing={2}
+        sx={{
+          backgroundColor,
+        }}
+      >
+        {children}
+      </Stack>
+    </Collapse>
+  );
 };
 
 export default SideBar;
