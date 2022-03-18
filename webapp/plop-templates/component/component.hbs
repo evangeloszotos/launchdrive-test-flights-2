@@ -1,21 +1,37 @@
-import PropTypes from 'prop-types';
+import { Box } from '@mui/material';
+import { styled } from '@mui/system';
+import React from 'react';
 
-export const {{name}} = (props) => {
-const { onClick, children } = props;
-
-return (
-<div onClick={onClick} onKeyDown={onClick}>
-  {children}
-</div>
-);
+interface {{name}}Props {
+  propName1: string;
+  propName2: number;
+  propName3: unknown;
+  propName4: unknown;
+  propName5: unknown;
+  propName6: unknown;
+  propName7: unknown;
+  propName8: unknown;
+  propName9: unknown;
 }
-{{name}}.propTypes = {
-  children: PropTypes.oneOf([PropTypes.node, PropTypes.arrayOf(PropTypes.node)]),
-  onClick: PropTypes.func,
-};
-{{name}}.defaultProps = {
-  children: [],
-  onClick: () => {},
+
+export const {{name}}Unstyled: React.FC<{{name}}Props> = (props) => {
+  const {
+    children,
+    propName1 = 'default',
+    propName2 = 42,
+    propName3,
+    propName4,
+    propName5,
+    propName6,
+    propName7,
+    propName8,
+    propName9,
+  } = props;
+
+  return <Box {...props} />;
 };
 
+export const {{name}} = styled({{name}}Unstyled)`
+  color: red;
+`;
 export default {{name}};
