@@ -1,17 +1,33 @@
-import PropTypes from 'prop-types';
-import MuiAppBar from '@mui/material/AppBar';
-import { Grid, IconButton, Toolbar } from '@mui/material';
+import React from 'react';
+import MuiAppBar, { AppBarTypeMap } from '@mui/material/AppBar';
+import { Grid, IconButton, IconButtonTypeMap, styled, Toolbar } from '@mui/material';
 import { ArrowBackIosNew, Notifications, Widgets } from '@mui/icons-material';
 import Link from 'next/link';
+import { OverridableComponent } from '@mui/material/OverridableComponent';
 import Logo from './Logo.svg';
 import Leslie from './Leslie.png';
 import TextWithIcon from '../TextWithIcon';
 
-export const AppBar = (props) => {
-  const { title, backHref } = props;
+interface AppBarBaseProps {
+  backgroundColor?: string;
+}
+interface AppBarProps extends AppBarBaseProps {
+  title: string;
+  backHref: string;
+}
+
+const StyledMuiAppBar = styled<OverridableComponent<AppBarTypeMap<AppBarBaseProps>>>(MuiAppBar)((props) => ({
+  backgroundColor: props.backgroundColor,
+}));
+const StyledIconButton = styled<OverridableComponent<IconButtonTypeMap<{ mr: number }>>>(IconButton)((props) => ({
+  marginRight: `${props.mr}rem`,
+}));
+
+export const AppBar: React.FC<AppBarProps> = (props) => {
+  const { title, backHref, backgroundColor = '#010D31' } = props;
 
   return (
-    <MuiAppBar position="static" sx={{ backgroundColor: '#010D31' }}>
+    <StyledMuiAppBar position="static" backgroundColor={backgroundColor}>
       <Toolbar variant="dense" disableGutters={true}>
         <Grid container={true} justifyContent="space-between" height="100%">
           <Grid container={true} width="auto" alignItems="center">
@@ -24,9 +40,9 @@ export const AppBar = (props) => {
               label={title}
               icon={
                 <Link href={backHref}>
-                  <IconButton size="medium" color="inherit" aria-label="menu" sx={{ mr: -0.5 }}>
+                  <StyledIconButton size="medium" color="inherit" aria-label="menu" mr={-0.5}>
                     <ArrowBackIosNew sx={{ fontSize: 20 }} />
-                  </IconButton>
+                  </StyledIconButton>
                 </Link>
               }
               letterSpacing={0.15}
@@ -35,23 +51,19 @@ export const AppBar = (props) => {
           </Grid>
 
           <Grid container={true} width="auto" alignItems="center" sx={{ pr: 4 }}>
-            <IconButton size="medium" color="inherit" aria-label="menu" sx={{ mr: 0.5 }}>
+            <StyledIconButton size="medium" color="inherit" aria-label="menu" mr={0.5}>
               <Notifications sx={{ fontSize: 20 }} />
-            </IconButton>
-            <IconButton size="medium" color="inherit" aria-label="menu" sx={{ mr: 1.5 }}>
+            </StyledIconButton>
+            <StyledIconButton size="medium" color="inherit" aria-label="menu" mr={1.5}>
               <Widgets sx={{ fontSize: 20 }} />
-            </IconButton>
+            </StyledIconButton>
 
             <TextWithIcon color="white" label="Leslie" icon={<img src={String(Leslie)} alt="Leslie" />} fontSize={12} />
           </Grid>
         </Grid>
       </Toolbar>
-    </MuiAppBar>
+    </StyledMuiAppBar>
   );
-};
-AppBar.propTypes = {
-  title: PropTypes.string.isRequired,
-  backHref: PropTypes.string.isRequired,
 };
 
 export default AppBar;
