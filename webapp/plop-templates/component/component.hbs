@@ -2,10 +2,6 @@ import React from 'react';
 import { Box } from '@mui/material';
 import { styled } from '@mui/system';
 
-const StyledBox = styled(Box)`
-  color: red;
-`;
-
 interface {{name}}Props {
   propName1: string;
   propName2: number;
@@ -17,6 +13,23 @@ interface {{name}}Props {
   propName8: unknown;
   propName9: unknown;
 }
+
+const StyledBox = styled<React.FC<{{name}}Props>>(Box)((props) => {
+  const {
+    propName1 = 'default',
+    propName2 = 42,
+  } = props;
+
+  return {
+    color: 'red',
+  };
+});
+
+/*
+const StyledBox = styled(Box)`
+  color: red;
+`;
+*/
 
 export const {{name}}: React.FC<{{name}}Props> = (props) => {
   const {
@@ -30,9 +43,10 @@ export const {{name}}: React.FC<{{name}}Props> = (props) => {
     propName7,
     propName8,
     propName9,
+    ...other,
   } = props;
 
-  return <StyledBox {...props} />;
+  return <StyledBox {...props}> {children} </StyledBox>;
 };
 
 export default {{name}};
