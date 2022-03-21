@@ -1,5 +1,5 @@
-import { NextPage } from "next";
-import Head from "next/head";
+import { NextPage } from 'next';
+import Head from 'next/head';
 import {
   Container,
   Stack,
@@ -7,7 +7,7 @@ import {
   TextField,
   Button,
   Typography,
-} from "@mui/material";
+} from '@mui/material';
 
 export const TestFlightVariantPage: NextPage = () => {
   return (

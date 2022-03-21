@@ -3,8 +3,8 @@ import {
   createSlice,
   PayloadAction,
   createEntityAdapter,
-} from "@reduxjs/toolkit";
-import { RootState, AppDispatch } from "./store";
+} from '@reduxjs/toolkit';
+import { RootState, AppDispatch } from './store';
 
 interface FakeDoor {
   id: string;
@@ -28,7 +28,7 @@ interface FakeDoorState {
 
 interface AddVariantPayload {
   fakeDoorId: string;
-  variantData: Omit<Variant, "id">;
+  variantData: Omit<Variant, 'id'>;
 }
 
 const fakeDoorAdapter = createEntityAdapter<FakeDoor>({
@@ -41,14 +41,14 @@ const fakeDoorAdapter = createEntityAdapter<FakeDoor>({
 export const { selectById } = fakeDoorAdapter.getSelectors();
 
 export const fakeDoorSlice = createSlice({
-  name: "fakeDoor",
+  name: 'fakeDoor',
   // `createSlice` will infer the state type from the `initialState` argument
   //initialState,
   initialState: fakeDoorAdapter.getInitialState(),
   reducers: {
     fakeDoorAdded(state, action: PayloadAction<string>) {
       fakeDoorAdapter.addOne(state, {
-        id: Math.random() + "id",
+        id: Math.random() + 'id',
         variants: [],
         name: action.payload,
       });
@@ -59,7 +59,7 @@ export const fakeDoorSlice = createSlice({
       if (fakeDoor) {
         const variant: Variant = {
           ...action.payload.variantData,
-          id: Math.random() + "id",
+          id: Math.random() + 'id',
         };
 
         fakeDoorAdapter.updateOne(state, {
@@ -75,7 +75,7 @@ export const fakeDoorSlice = createSlice({
     variantUpdated(state, action: PayloadAction<AddVariantPayload>) {
       const fakeDoor = selectById(state, action.payload.fakeDoorId);
 
-      const variant: Variant = { ...action.payload.variantData, id: "MyId" };
+      const variant: Variant = { ...action.payload.variantData, id: 'MyId' };
       fakeDoor?.variants.push(variant);
     },
   },
