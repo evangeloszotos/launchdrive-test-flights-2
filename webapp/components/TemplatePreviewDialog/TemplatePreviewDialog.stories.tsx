@@ -1,3 +1,4 @@
+import { IconButton } from '@mui/material';
 import { action } from '@storybook/addon-actions';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import DesktopMobileToggle from '../DeskopMobileToggle';
@@ -31,3 +32,72 @@ export const Default = Template.bind({});
 Default.args = {
   open: true,
 };
+
+export const Desktop = () => (
+  <TemplatePreviewDialog open={true}>
+    <TemplatePreviewDialogAppBar
+      sx={{ color: '#000000DE', backgroundColor: 'white' }}
+      startContent={
+        <Typography variant="h6" noWrap={true} sx={{ ml: '1.25rem' }}>
+          {templateName}
+        </Typography>
+      }
+      endContent={[
+        <IconButton>
+          <CloseIcon />
+        </IconButton>,
+      ]}
+    >
+      <DesktopMobileToggle state="mobile" onChange={action('onChange')} />
+    </TemplatePreviewDialogAppBar>
+    <TemplatePreviewDialogContent templateWidth="800px" marginTop="2.5vh" sx={{ backgroundColor: '#FFFFFFF2' }}>
+      <TemplatePreviewDialogImage src="favicon.ico" />
+    </TemplatePreviewDialogContent>
+  </TemplatePreviewDialog>
+);
+
+export const Mobile = () => (
+  <TemplatePreviewDialog open={true}>
+    <TemplatePreviewDialogAppBar
+      sx={{ color: '#000000DE', backgroundColor: 'white' }}
+      startContent={
+        <Typography variant="h6" noWrap={true} sx={{ ml: '1.25rem' }}>
+          {templateName}
+        </Typography>
+      }
+      endContent={[
+        <IconButton>
+          <CloseIcon />
+        </IconButton>,
+      ]}
+    >
+      <DesktopMobileToggle state="mobile" onChange={action('onChange')} />
+    </TemplatePreviewDialogAppBar>
+    <TemplatePreviewDialogContent templateWidth="800px" marginTop="2.5vh" sx={{ backgroundColor: '#FFFFFFF2' }}>
+      <TemplatePreviewDialogImage src="favicon.ico" />
+    </TemplatePreviewDialogContent>
+  </TemplatePreviewDialog>
+);
+
+export const MobileVeryLongTitle = () => (
+  <TemplatePreviewDialog open={true}>
+    <TemplatePreviewDialogAppBar
+      sx={{ color: '#000000DE', backgroundColor: 'white' }}
+      startContent={
+        <Typography variant="h6" noWrap={true} sx={{ ml: '1.25rem' }}>
+          {templateName}
+        </Typography>
+      }
+      endContent={[
+        <IconButton>
+          <CloseIcon />
+        </IconButton>,
+      ]}
+    >
+      <DesktopMobileToggle state="mobile" onChange={action('onChange')} />
+    </TemplatePreviewDialogAppBar>
+    <TemplatePreviewDialogContent templateWidth="800px" marginTop="2.5vh" sx={{ backgroundColor: '#FFFFFFF2' }}>
+      <TemplatePreviewDialogImage src="favicon.ico" />
+    </TemplatePreviewDialogContent>
+  </TemplatePreviewDialog>
+);
