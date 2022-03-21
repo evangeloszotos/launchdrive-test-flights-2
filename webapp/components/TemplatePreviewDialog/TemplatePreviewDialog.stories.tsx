@@ -1,3 +1,4 @@
+/* eslint-disable react/no-multi-comp */
 import { IconButton, Typography } from '@mui/material';
 import { action } from '@storybook/addon-actions';
 import { ComponentMeta } from '@storybook/react';
@@ -22,14 +23,13 @@ export const DesktopViewSelected = () => (
           Startup Website
         </Typography>
       }
+      centerContent={<DesktopMobileToggle state="desktop" onChange={action('onChange')} />}
       endContent={
         <IconButton onClick={action('onClose')}>
           <CloseIcon />
         </IconButton>
       }
-    >
-      <DesktopMobileToggle state="desktop" onChange={action('onChange')} />
-    </TemplatePreviewDialogAppBar>
+    />
     <TemplatePreviewDialogContent>
       <TemplatePreviewDialogImage src="favicon.ico" />
     </TemplatePreviewDialogContent>
@@ -44,14 +44,13 @@ export const MobileViewSelected = () => (
           Startup Website
         </Typography>
       }
+      centerContent={<DesktopMobileToggle state="mobile" onChange={action('onChange')} />}
       endContent={
         <IconButton onClick={action('onClose')}>
           <CloseIcon />
         </IconButton>
       }
-    >
-      <DesktopMobileToggle state="mobile" onChange={action('onChange')} />
-    </TemplatePreviewDialogAppBar>
+    />
     <TemplatePreviewDialogContent>
       <TemplatePreviewDialogImage src="vercel.svg" />
     </TemplatePreviewDialogContent>
@@ -67,14 +66,14 @@ export const VeryLongTitle = () => (
           dolore magna aliquyam erat, sed diam voluptua.
         </Typography>
       }
+      centerContent={<DesktopMobileToggle state="desktop" onChange={action('onChange')} />}
       endContent={
         <IconButton onClick={action('onClose')}>
           <CloseIcon />
         </IconButton>
       }
-    >
-      <DesktopMobileToggle state="desktop" onChange={action('onChange')} />
-    </TemplatePreviewDialogAppBar>
+    />
+
     <TemplatePreviewDialogContent>
       <TemplatePreviewDialogImage src="favicon.ico" />
     </TemplatePreviewDialogContent>
@@ -89,14 +88,13 @@ export const SmallPicture = () => (
           Startup Website
         </Typography>
       }
+      centerContent={<DesktopMobileToggle state="desktop" onChange={action('onChange')} />}
       endContent={
         <IconButton onClick={action('onClose')}>
           <CloseIcon />
         </IconButton>
       }
-    >
-      <DesktopMobileToggle state="desktop" onChange={action('onChange')} />
-    </TemplatePreviewDialogAppBar>
+    />
     <TemplatePreviewDialogContent templateWidth="100px">
       <TemplatePreviewDialogImage src="favicon.ico" />
     </TemplatePreviewDialogContent>
@@ -111,15 +109,40 @@ export const OversizedPicture = () => (
           Startup Website
         </Typography>
       }
+      centerContent={<DesktopMobileToggle state="desktop" onChange={action('onChange')} />}
       endContent={
         <IconButton onClick={action('onClose')}>
           <CloseIcon />
         </IconButton>
       }
-    >
-      <DesktopMobileToggle state="desktop" onChange={action('onChange')} />
-    </TemplatePreviewDialogAppBar>
+    />
     <TemplatePreviewDialogContent templateWidth="120vw">
+      <TemplatePreviewDialogImage src="favicon.ico" />
+    </TemplatePreviewDialogContent>
+  </TemplatePreviewDialog>
+);
+
+export const MultipleCenterContent = () => (
+  <TemplatePreviewDialog open={true}>
+    <TemplatePreviewDialogAppBar
+      startContent={
+        <Typography variant="h6" noWrap={true}>
+          Startup Website
+        </Typography>
+      }
+      centerContent={
+        <>
+          <DesktopMobileToggle state="desktop" onChange={action('onChange')} />
+          <DesktopMobileToggle state="desktop" onChange={action('onChange')} />
+        </>
+      }
+      endContent={
+        <IconButton onClick={action('onClose')}>
+          <CloseIcon />
+        </IconButton>
+      }
+    />
+    <TemplatePreviewDialogContent>
       <TemplatePreviewDialogImage src="favicon.ico" />
     </TemplatePreviewDialogContent>
   </TemplatePreviewDialog>

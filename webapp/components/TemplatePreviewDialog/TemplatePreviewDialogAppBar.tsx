@@ -3,6 +3,7 @@ import { AppBar, AppBarProps, Grid, styled, Toolbar } from '@mui/material';
 
 interface TemplatePreviewDialogAppBarProps extends AppBarProps {
   startContent: React.ReactNode;
+  centerContent: React.ReactNode;
   endContent: React.ReactNode;
 }
 
@@ -12,7 +13,7 @@ const StyledAppBar = styled(AppBar)`
 `;
 
 export const TemplatePreviewDialogAppBar: React.FC<TemplatePreviewDialogAppBarProps> = (props) => {
-  const { startContent, children, endContent, ...other } = props;
+  const { startContent, centerContent, endContent, ...other } = props;
 
   return (
     <StyledAppBar position="sticky" elevation={0} {...other}>
@@ -23,7 +24,7 @@ export const TemplatePreviewDialogAppBar: React.FC<TemplatePreviewDialogAppBarPr
           </Grid>
 
           <Grid container={true} item={true} sm={4} justifyContent="center">
-            {children}
+            {centerContent}
           </Grid>
 
           <Grid container={true} item={true} sm={4} justifyContent="flex-end">
