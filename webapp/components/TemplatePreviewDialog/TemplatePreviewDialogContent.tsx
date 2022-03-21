@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box, Stack, StackProps } from '@mui/material';
+import { Grid, GridProps } from '@mui/material';
 
-interface TemplatePreviewDialogContentProps extends StackProps {
+interface TemplatePreviewDialogContentProps extends GridProps {
   templateWidth: string;
 }
 
@@ -9,11 +9,11 @@ export const TemplatePreviewDialogContent: React.FC<TemplatePreviewDialogContent
   const { templateWidth, children, ...other } = props;
 
   return (
-    <Stack direction="row" justifyContent="center" {...other}>
-      <Box width={templateWidth} height="full" position="relative">
+    <Grid container={true} direction="row" justifyContent="center" {...other}>
+      <Grid item={true} width={templateWidth} height="full" position="relative">
         {children}
-      </Box>
-    </Stack>
+      </Grid>
+    </Grid>
   );
 };
 

@@ -15,11 +15,13 @@ export default {
 const Template: ComponentStory<typeof TemplatePreviewDialog> = (args) => (
   <TemplatePreviewDialog {...args}>
     <TemplatePreviewDialogAppBar
-      templateName="TemplateName"
+      templateName="TemplateNameTemplateNameTemplateNameTemplateNameTemplateNameTemplateName"
       onClose={action('onClose')}
-      appBarActions={<DesktopMobileToggle state="mobile" onChange={action('onChange')} />}
-    />
-    <TemplatePreviewDialogContent templateWidth="100px" marginTop="2.5vh">
+      sx={{ color: '#000000DE', backgroundColor: 'white' }}
+    >
+      <DesktopMobileToggle state="mobile" onChange={action('onChange')} />
+    </TemplatePreviewDialogAppBar>
+    <TemplatePreviewDialogContent templateWidth="800px" marginTop="2.5vh" sx={{ backgroundColor: '#FFFFFFF2' }}>
       <TemplatePreviewDialogImage src="favicon.ico" />
     </TemplatePreviewDialogContent>
   </TemplatePreviewDialog>
