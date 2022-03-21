@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 // import { action } from '@storybook/addon-actions';
-import { {{name}}, {{name}}Unstyled } from './{{name}}';
+import { {{name}} } from './{{name}}';
 
 export default {
   title: 'Components/{{name}}',
@@ -11,11 +11,5 @@ export default {
 const Template: ComponentStory<typeof {{name}}> = (args) => <{{name}} {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-  // onClick: action('onClick'),
-};
-
-const TemplateUnstyled: ComponentStory<typeof {{name}}Unstyled> = (args) => <{{name}}Unstyled {...args} />;
-export const Unstyled = TemplateUnstyled.bind({});
-Unstyled.args = {
   // onClick: action('onClick'),
 };

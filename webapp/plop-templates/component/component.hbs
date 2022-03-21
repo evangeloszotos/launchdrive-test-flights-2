@@ -1,6 +1,10 @@
+import React from 'react';
 import { Box } from '@mui/material';
 import { styled } from '@mui/system';
-import React from 'react';
+
+const StyledBox = styled(Box)`
+  color: red;
+`;
 
 interface {{name}}Props {
   propName1: string;
@@ -14,7 +18,7 @@ interface {{name}}Props {
   propName9: unknown;
 }
 
-export const {{name}}Unstyled: React.FC<{{name}}Props> = (props) => {
+export const {{name}}: React.FC<{{name}}Props> = (props) => {
   const {
     children,
     propName1 = 'default',
@@ -28,10 +32,7 @@ export const {{name}}Unstyled: React.FC<{{name}}Props> = (props) => {
     propName9,
   } = props;
 
-  return <Box {...props} />;
+  return <StyledBox {...props} />;
 };
 
-export const {{name}} = styled({{name}}Unstyled)`
-  color: red;
-`;
 export default {{name}};
