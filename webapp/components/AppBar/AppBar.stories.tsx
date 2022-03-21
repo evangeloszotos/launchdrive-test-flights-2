@@ -35,3 +35,16 @@ export const Secondary = Template.bind({});
 Secondary.args = {
   onClick: action('onClick'),
 };
+
+const RightElement = <Grid></Grid>;
+
+export const WithoutActions = () => <AppBar />;
+export const WithActions = () => <AppBar title="LaunchDrive" backHref="myLink" />;
+
+export const FlexibleActions = () => (
+  <AppBar logo={<IconButton onClick />} start={<TextWithIcon />} end={RightElement} />
+);
+
+// AppBar
+// AppBarTextWithIcon
+// AppBarBlaBla
