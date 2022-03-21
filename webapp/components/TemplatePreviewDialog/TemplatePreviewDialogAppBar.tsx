@@ -10,6 +10,7 @@ interface TemplatePreviewDialogAppBarProps extends AppBarProps {
 const StyledAppBar = styled(AppBar)`
   color: #000000de;
   background-color: white;
+  box-shadow: 0px 1px 0px #dddfe5;
 `;
 
 export const TemplatePreviewDialogAppBar: React.FC<TemplatePreviewDialogAppBarProps> = (props) => {
