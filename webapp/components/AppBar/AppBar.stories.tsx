@@ -1,21 +1,13 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
-// import PropTypes from 'prop-types';
+import { ComponentMeta } from '@storybook/react';
+import Link from 'next/link';
+import { ArrowBackIosNew, Notifications, Widgets } from '@mui/icons-material';
+import React from 'react';
+import { IconButton, IconButtonTypeMap, styled } from '@mui/material';
+import { OverridableComponent } from '@mui/material/OverridableComponent';
+import TextWithIcon from '../TextWithIcon';
 import { AppBar } from './AppBar';
-
-/** const AppBar = (props) => {
-  const { title, backHref } = props;
-
-  return (
-    <div>
-      {title} {backHref}
-    </div>
-  );
-};
-AppBar.propTypes = {
-  title: PropTypes.string.isRequired,
-  backHref: PropTypes.string.isRequired,
-}; */
+import Leslie from './Leslie.png';
+import Logo from './Logo.svg';
 
 export default {
   title: 'Components/AppBar',
@@ -23,28 +15,109 @@ export default {
   argTypes: {},
 } as ComponentMeta<typeof AppBar>;
 
-const Template: ComponentStory<typeof AppBar> = (args) => <AppBar {...args} />;
+const StyledIconButton = styled<OverridableComponent<IconButtonTypeMap<{ mr: number }>>>(IconButton)((props) => ({
+  marginRight: `${props.mr}rem`,
+}));
 
-export const Default = Template.bind({});
-Default.args = {
-  title: 'LaunchDrive',
-  backHref: '/foo',
-};
+export const Default = () => (
+  <AppBar
+    logoContent={<img src={Logo} alt="Logo" />}
+    startContent={
+      <TextWithIcon
+        color="white"
+        label="LaunchDrive"
+        icon={
+          <Link href="/foo">
+            <StyledIconButton size="medium" color="inherit" aria-label="menu" mr={-0.5}>
+              <ArrowBackIosNew sx={{ fontSize: 20 }} />
+            </StyledIconButton>
+          </Link>
+        }
+        letterSpacing={0.15}
+        fontSize={16}
+      />
+    }
+    endContent={
+      <>
+        <StyledIconButton size="medium" color="inherit" aria-label="menu" mr={0.5}>
+          <Notifications sx={{ fontSize: 20 }} />
+        </StyledIconButton>
+        <StyledIconButton size="medium" color="inherit" aria-label="menu" mr={1.5}>
+          <Widgets sx={{ fontSize: 20 }} />
+        </StyledIconButton>
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-  onClick: action('onClick'),
-};
-
-const RightElement = <Grid></Grid>;
-
-export const WithoutActions = () => <AppBar />;
-export const WithActions = () => <AppBar title="LaunchDrive" backHref="myLink" />;
-
-export const FlexibleActions = () => (
-  <AppBar logo={<IconButton onClick />} start={<TextWithIcon />} end={RightElement} />
+        <TextWithIcon color="white" label="Leslie" icon={<img src={String(Leslie)} alt="Leslie" />} fontSize={12} />
+      </>
+    }
+  />
 );
 
-// AppBar
-// AppBarTextWithIcon
-// AppBarBlaBla
+export const NoLogo = () => (
+  <AppBar
+    noLogo={true}
+    logoContent={<img src={Logo} alt="Logo" />}
+    startContent={
+      <TextWithIcon
+        color="white"
+        label="LaunchDrive"
+        icon={
+          <Link href="/foo">
+            <StyledIconButton size="medium" color="inherit" aria-label="menu" mr={-0.5}>
+              <ArrowBackIosNew sx={{ fontSize: 20 }} />
+            </StyledIconButton>
+          </Link>
+        }
+        letterSpacing={0.15}
+        fontSize={16}
+      />
+    }
+    endContent={
+      <>
+        <StyledIconButton size="medium" color="inherit" aria-label="menu" mr={0.5}>
+          <Notifications sx={{ fontSize: 20 }} />
+        </StyledIconButton>
+        <StyledIconButton size="medium" color="inherit" aria-label="menu" mr={1.5}>
+          <Widgets sx={{ fontSize: 20 }} />
+        </StyledIconButton>
+
+        <TextWithIcon color="white" label="Leslie" icon={<img src={String(Leslie)} alt="Leslie" />} fontSize={12} />
+      </>
+    }
+  />
+);
+
+export const WideLogo = () => (
+  <AppBar
+    logoWidth={128}
+    logoContent={<img src={Logo} alt="Logo" />}
+    startContent={
+      <TextWithIcon
+        color="white"
+        label="LaunchDrive"
+        icon={
+          <Link href="/foo">
+            <StyledIconButton size="medium" color="inherit" aria-label="menu" mr={-0.5}>
+              <ArrowBackIosNew sx={{ fontSize: 20 }} />
+            </StyledIconButton>
+          </Link>
+        }
+        letterSpacing={0.15}
+        fontSize={16}
+      />
+    }
+    endContent={
+      <>
+        <StyledIconButton size="medium" color="inherit" aria-label="menu" mr={0.5}>
+          <Notifications sx={{ fontSize: 20 }} />
+        </StyledIconButton>
+        <StyledIconButton size="medium" color="inherit" aria-label="menu" mr={1.5}>
+          <Widgets sx={{ fontSize: 20 }} />
+        </StyledIconButton>
+
+        <TextWithIcon color="white" label="Leslie" icon={<img src={String(Leslie)} alt="Leslie" />} fontSize={12} />
+      </>
+    }
+  />
+);
+
+export const WithoutActions = () => <AppBar logoContent={<img src={Logo} alt="Logo" />} />;
