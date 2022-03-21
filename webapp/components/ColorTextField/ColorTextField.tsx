@@ -1,49 +1,75 @@
-import { Grid, Paper, TextField } from '@mui/material';
+import { Box, Grid, TextField } from '@mui/material';
 import { styled } from '@mui/system';
 import React from 'react';
 
-interface ColorTextFieldProps {
-  label: string;
-  onInput: (string) => void;
-  onValidInput: (string) => void;
+interface ColorTextFieldBoxProps {
   value: string;
+  regex?: RegExp;
+}
+interface ColorTextFieldProps extends ColorTextFieldBoxProps {
+  label: string;
+  onChange: React.ChangeEventHandler<HTMLInputElement & { isValid: boolean }>;
 }
 
-export const ColorTextFieldUnstyled: React.FC<ColorTextFieldProps> = (props) => {
-  const { label, onInput, onValidInput, value, ...other } = props;
-  const regex = /^#([0-9a-fA-F]{3}){1,2}$/;
+/* ============
+      Styles
+   ============ */
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    onInput(event.target.value);
-    if (event.target.value.match(regex)) {
-      onValidInput(event.target.value);
-    }
+const StyledBox = styled<React.FC<ColorTextFieldBoxProps>>(Box)((props) => {
+  const { value, regex = /^#([0-9a-fA-F]{3}){1,2}$/ } = props;
+
+  return {
+    backgroundColor: value?.match(regex) ? value : '#000',
+    width: '40px',
+    height: '40px',
+    borderRadius: '4px',
   };
+});
 
-  return (
-    <Grid {...other} container={true}>
-      <TextField label={label} value={value} onChange={handleChange} size="small" />
-      <Paper
-        elevation={0}
-        sx={{
-          backgroundColor: value?.match(regex) ? value : '#000',
-        }}
-      />
-    </Grid>
-  );
-};
-
-export const ColorTextField = styled(ColorTextFieldUnstyled)`
+const StyledGrid = styled(Grid)`
   width: 100%;
   height: 100%;
 
   & .MuiTextField-root {
     margin-right: 0.625rem;
   }
-
-  & .MuiPaper-root {
-    width: 40px;
-    height: 40px;
-  }
 `;
+
+const StyledTextField = styled(TextField)`
+  margin-right: 0.625rem;
+`;
+
+/* =============
+     Component
+   ============= */
+
+export const ColorTextField: React.VoidFunctionComponent<ColorTextFieldProps> = (props) => {
+  const { label, onChange, value, regex = /^#([0-9a-fA-F]{3}){1,2}$/, ...other } = props;
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const isValid = !!event.target.value.match(regex);
+
+    const newEventResult: React.ChangeEvent<HTMLInputElement & { isValid: boolean }> = {
+      ...event,
+      target: {
+        ...event.target,
+        isValid,
+      },
+      currentTarget: {
+        ...event.currentTarget,
+        isValid,
+      },
+    };
+
+    onChange(newEventResult);
+  };
+
+  return (
+    <StyledGrid {...other} container={true}>
+      <StyledTextField label={label} value={value} onChange={handleChange} size="small" />
+      <StyledBox value={value} regex={regex} />
+    </StyledGrid>
+  );
+};
+
 export default ColorTextField;
