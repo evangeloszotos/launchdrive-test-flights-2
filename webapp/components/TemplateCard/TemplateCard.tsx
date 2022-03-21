@@ -1,40 +1,18 @@
-import React, { useState } from 'react';
-import { Box, Button, ButtonProps, Card, CardContent, Chip, Stack, Typography } from '@mui/material';
-import { styled } from '@mui/system';
-import { teal } from '@mui/material/colors';
-import PlaceholderPreviewImage from './PlaceholderPreviewImage.png';
+import React, { ReactElement, useState } from 'react';
+import { Box, Card, CardContent, Stack, Typography } from '@mui/material';
 import CardMediaWithOverlay from '../CardMediaWithOverlay';
 import Centered from '../Centered';
-import Image from 'next/image';
 
 interface TemplateCardProps {
+  actions: Array<ReactElement>;
   templatePreviewImage: string;
-  headerText: string;
-  bodyText: string;
-  chips: Array<string>;
-  'onClick:select': () => void;
-  'onClick:preview': () => void;
+  title: string;
+  description?: string;
+  tags?: Array<ReactElement>;
 }
 
-const ColorButton = styled(Button)<
-  ButtonProps & {
-    mainColor?: string;
-    mainColorHover?: string;
-    textColor: string;
-    borderColor?: string;
-    borderColorHover?: string;
-  }
->(({ mainColor, mainColorHover, textColor, borderColor, borderColorHover }) => ({
-  color: textColor,
-  borderColor,
-  backgroundColor: mainColor,
-  '&:hover': {
-    backgroundColor: mainColorHover,
-    borderColor: borderColor || borderColorHover,
-  },
-}));
-
 export const TemplateCard: React.FC<TemplateCardProps> = (props) => {
+  const { actions, tags, templatePreviewImage, title, description } = props;
   const [showOverlay, setShowOverlay] = useState(false);
 
   return (
@@ -48,39 +26,26 @@ export const TemplateCard: React.FC<TemplateCardProps> = (props) => {
       onMouseLeave={() => setShowOverlay(false)}
     >
       <CardMediaWithOverlay
-        // component="img"
-        component={Image}
+        component="img"
+        // component={Image} <= Geht nicht
         height="176"
-        src={PlaceholderPreviewImage}
+        src={templatePreviewImage}
         alt="green iguana"
         showOverlay={showOverlay}
       >
         <Box sx={{ backgroundColor: '#00000080', width: '100%', height: '100%' }}>
           <Centered>
             <Stack direction="row" spacing={1}>
-              <ColorButton
-                variant="contained"
-                color="primary"
-                mainColor={teal[500]}
-                mainColorHover={teal[700]}
-                textColor="#fff"
-              >
-                Select
-              </ColorButton>
-              <ColorButton variant="outlined" color="primary" textColor="#fff" borderColor="#fff">
-                Preview
-              </ColorButton>
+              {actions}
             </Stack>
           </Centered>
         </Box>
       </CardMediaWithOverlay>
       <CardContent>
-        <Typography sx={{ fontSize: 24, mb: 0.5 }}> Card header </Typography>
-        <Typography sx={{ fontSize: 14, lineHeight: '20px', mb: 0.75 }}> Body </Typography>
+        <Typography sx={{ fontSize: 24, mb: 0.5 }}> {title} </Typography>
+        <Typography sx={{ fontSize: 14, lineHeight: '20px', mb: 0.75 }}> {description} </Typography>
         <Stack direction="row" spacing={0.75}>
-          <Chip label="Chip" variant="outlined" size="small" sx={{ px: 0.25 }} />
-          <Chip label="Chip" variant="outlined" size="small" sx={{ px: 0.25 }} />
-          <Chip label="Chip" variant="outlined" size="small" sx={{ px: 0.25 }} />
+          {tags}
         </Stack>
       </CardContent>
     </Card>

@@ -1,6 +1,8 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
-import { action } from '@storybook/addon-actions';
+import { teal } from '@mui/material/colors';
+import { styled } from '@mui/system';
+import { Box, Button, ButtonProps, Chip, Grid } from '@mui/material';
 import { TemplateCard } from './TemplateCard';
 
 export default {
@@ -9,32 +11,128 @@ export default {
   argTypes: {},
 } as ComponentMeta<typeof TemplateCard>;
 
-const Template: ComponentStory<typeof TemplateCard> = (args) => <TemplateCard {...args} />;
-export const Default = Template.bind({});
-Default.args = {
-  'onClick:select': action('onClick:select'),
-  'onClick:preview': action('onClick:preview'),
-};
+const ColorButton = styled(Button)<
+  ButtonProps & {
+    mainColor?: string;
+    mainColorHover?: string;
+    textColor: string;
+    borderColor?: string;
+    borderColorHover?: string;
+  }
+>(({ mainColor, mainColorHover, textColor, borderColor, borderColorHover }) => ({
+  color: textColor,
+  borderColor,
+  backgroundColor: mainColor,
+  '&:hover': {
+    backgroundColor: mainColorHover,
+    borderColor: borderColor || borderColorHover,
+  },
+}));
 
-export const Test = Template.bind({});
-Test.args = {
-  templatePreviewImage: 'sadasd',
-  actions: [<ColorButton />, <ColorButton />],
-  title: '',
-  description: '',
-  headerText: 'sd', // title - remove?
-  bodyText: 'sd', // description - remove?
-  tags: [<Chip />, <Chip />],
-};
-
-export const Sample = (args) => (
+export const Default: ComponentStory<typeof TemplateCard> = () => (
   <TemplateCard
-    templatePreviewImage="sadasd"
-    actions={[<ColorButton />, <ColorButton />]}
-    title=""
-    description=""
-    headerText="sd" // title - remove?
-    bodyText="sd" // description - remove?
-    tags={[<Chip />, <Chip />]}
+    templatePreviewImage="http://placekitten.com/300/200"
+    actions={[
+      <ColorButton
+        variant="contained"
+        color="primary"
+        mainColor={teal[500]}
+        mainColorHover={teal[700]}
+        textColor="#fff"
+      >
+        Select
+      </ColorButton>,
+      <ColorButton variant="outlined" color="primary" textColor="#fff" borderColor="#fff">
+        Preview
+      </ColorButton>,
+    ]}
+    title="title"
+    description="description"
+    tags={[
+      <Chip label="Chip" variant="outlined" size="small" />,
+      <Chip label="Chip" variant="outlined" size="small" />,
+      <Chip label="Chip" variant="outlined" size="small" />,
+    ]}
   />
+);
+
+export const NoDescription: ComponentStory<typeof TemplateCard> = () => (
+  <TemplateCard
+    templatePreviewImage="http://placekitten.com/300/200"
+    actions={[
+      <ColorButton
+        variant="contained"
+        color="primary"
+        mainColor={teal[500]}
+        mainColorHover={teal[700]}
+        textColor="#fff"
+      >
+        Select
+      </ColorButton>,
+      <ColorButton variant="outlined" color="primary" textColor="#fff" borderColor="#fff">
+        Preview
+      </ColorButton>,
+    ]}
+    title="title"
+    tags={[
+      <Chip label="Chip" variant="outlined" size="small" />,
+      <Chip label="Chip" variant="outlined" size="small" />,
+      <Chip label="Chip" variant="outlined" size="small" />,
+    ]}
+  />
+);
+
+export const NoTags: ComponentStory<typeof TemplateCard> = () => (
+  <TemplateCard
+    templatePreviewImage="http://placekitten.com/300/200"
+    actions={[
+      <ColorButton
+        variant="contained"
+        color="primary"
+        mainColor={teal[500]}
+        mainColorHover={teal[700]}
+        textColor="#fff"
+      >
+        Select
+      </ColorButton>,
+      <ColorButton variant="outlined" color="primary" textColor="#fff" borderColor="#fff">
+        Preview
+      </ColorButton>,
+    ]}
+    title="title"
+    description="description"
+  />
+);
+
+export const TemplateCardGrid: ComponentStory<typeof TemplateCard> = () => (
+  <Grid container={true} spacing={2} columns={3}>
+    {[...Array(7)].map((i, j) => (
+      <Grid item={true} xs={1}>
+        <TemplateCard
+          templatePreviewImage={`https://placekitten.com/300/200?image=${j}`}
+          actions={[
+            <ColorButton
+              variant="contained"
+              color="primary"
+              mainColor={teal[500]}
+              mainColorHover={teal[700]}
+              textColor="#fff"
+            >
+              Select
+            </ColorButton>,
+            <ColorButton variant="outlined" color="primary" textColor="#fff" borderColor="#fff">
+              Preview
+            </ColorButton>,
+          ]}
+          title={`title ${j}`}
+          description="description"
+          tags={[
+            <Chip label="Chip" variant="outlined" size="small" />,
+            <Chip label="Chip" variant="outlined" size="small" />,
+            <Chip label="Chip" variant="outlined" size="small" />,
+          ]}
+        />
+      </Grid>
+    ))}
+  </Grid>
 );

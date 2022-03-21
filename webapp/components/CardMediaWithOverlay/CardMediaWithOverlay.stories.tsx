@@ -27,6 +27,8 @@ export const Default = Template.bind({});
 Default.args = {
   component: 'img',
   height: '176',
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   src: PlaceholderPreviewImage,
   alt: 'green iguana',
   showOverlay: true,
