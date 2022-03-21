@@ -1,6 +1,7 @@
-import { IconButton } from '@mui/material';
+import { IconButton, Typography } from '@mui/material';
 import { action } from '@storybook/addon-actions';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta } from '@storybook/react';
+import CloseIcon from '@mui/icons-material/Close';
 import DesktopMobileToggle from '../DeskopMobileToggle';
 import { TemplatePreviewDialog } from './TemplatePreviewDialog';
 import TemplatePreviewDialogAppBar from './TemplatePreviewDialogAppBar';
@@ -13,90 +14,112 @@ export default {
   argTypes: {},
 } as ComponentMeta<typeof TemplatePreviewDialog>;
 
-const Template: ComponentStory<typeof TemplatePreviewDialog> = (args) => (
-  <TemplatePreviewDialog {...args}>
+export const DesktopViewSelected = () => (
+  <TemplatePreviewDialog open={true}>
     <TemplatePreviewDialogAppBar
-      templateName="TemplateNameTemplateNameTemplateNameTemplateNameTemplateNameTemplateName"
-      onClose={action('onClose')}
-      sx={{ color: '#000000DE', backgroundColor: 'white' }}
+      startContent={
+        <Typography variant="h6" noWrap={true}>
+          Startup Website
+        </Typography>
+      }
+      endContent={
+        <IconButton onClick={action('onClose')}>
+          <CloseIcon />
+        </IconButton>
+      }
     >
-      <DesktopMobileToggle state="mobile" onChange={action('onChange')} />
+      <DesktopMobileToggle state="desktop" onChange={action('onChange')} />
     </TemplatePreviewDialogAppBar>
-    <TemplatePreviewDialogContent templateWidth="800px" marginTop="2.5vh" sx={{ backgroundColor: '#FFFFFFF2' }}>
+    <TemplatePreviewDialogContent>
       <TemplatePreviewDialogImage src="favicon.ico" />
     </TemplatePreviewDialogContent>
   </TemplatePreviewDialog>
 );
 
-export const Default = Template.bind({});
-Default.args = {
-  open: true,
-};
-
-export const Desktop = () => (
+export const MobileViewSelected = () => (
   <TemplatePreviewDialog open={true}>
     <TemplatePreviewDialogAppBar
-      sx={{ color: '#000000DE', backgroundColor: 'white' }}
       startContent={
-        <Typography variant="h6" noWrap={true} sx={{ ml: '1.25rem' }}>
-          {templateName}
+        <Typography variant="h6" noWrap={true}>
+          Startup Website
         </Typography>
       }
-      endContent={[
-        <IconButton>
+      endContent={
+        <IconButton onClick={action('onClose')}>
           <CloseIcon />
-        </IconButton>,
-      ]}
+        </IconButton>
+      }
     >
       <DesktopMobileToggle state="mobile" onChange={action('onChange')} />
     </TemplatePreviewDialogAppBar>
-    <TemplatePreviewDialogContent templateWidth="800px" marginTop="2.5vh" sx={{ backgroundColor: '#FFFFFFF2' }}>
+    <TemplatePreviewDialogContent>
+      <TemplatePreviewDialogImage src="vercel.svg" />
+    </TemplatePreviewDialogContent>
+  </TemplatePreviewDialog>
+);
+
+export const VeryLongTitle = () => (
+  <TemplatePreviewDialog open={true}>
+    <TemplatePreviewDialogAppBar
+      startContent={
+        <Typography variant="h6" noWrap={true}>
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+          dolore magna aliquyam erat, sed diam voluptua.
+        </Typography>
+      }
+      endContent={
+        <IconButton onClick={action('onClose')}>
+          <CloseIcon />
+        </IconButton>
+      }
+    >
+      <DesktopMobileToggle state="desktop" onChange={action('onChange')} />
+    </TemplatePreviewDialogAppBar>
+    <TemplatePreviewDialogContent>
       <TemplatePreviewDialogImage src="favicon.ico" />
     </TemplatePreviewDialogContent>
   </TemplatePreviewDialog>
 );
 
-export const Mobile = () => (
+export const SmallPicture = () => (
   <TemplatePreviewDialog open={true}>
     <TemplatePreviewDialogAppBar
-      sx={{ color: '#000000DE', backgroundColor: 'white' }}
       startContent={
-        <Typography variant="h6" noWrap={true} sx={{ ml: '1.25rem' }}>
-          {templateName}
+        <Typography variant="h6" noWrap={true}>
+          Startup Website
         </Typography>
       }
-      endContent={[
-        <IconButton>
+      endContent={
+        <IconButton onClick={action('onClose')}>
           <CloseIcon />
-        </IconButton>,
-      ]}
+        </IconButton>
+      }
     >
-      <DesktopMobileToggle state="mobile" onChange={action('onChange')} />
+      <DesktopMobileToggle state="desktop" onChange={action('onChange')} />
     </TemplatePreviewDialogAppBar>
-    <TemplatePreviewDialogContent templateWidth="800px" marginTop="2.5vh" sx={{ backgroundColor: '#FFFFFFF2' }}>
+    <TemplatePreviewDialogContent templateWidth="100px">
       <TemplatePreviewDialogImage src="favicon.ico" />
     </TemplatePreviewDialogContent>
   </TemplatePreviewDialog>
 );
 
-export const MobileVeryLongTitle = () => (
+export const OversizedPicture = () => (
   <TemplatePreviewDialog open={true}>
     <TemplatePreviewDialogAppBar
-      sx={{ color: '#000000DE', backgroundColor: 'white' }}
       startContent={
-        <Typography variant="h6" noWrap={true} sx={{ ml: '1.25rem' }}>
-          {templateName}
+        <Typography variant="h6" noWrap={true}>
+          Startup Website
         </Typography>
       }
-      endContent={[
-        <IconButton>
+      endContent={
+        <IconButton onClick={action('onClose')}>
           <CloseIcon />
-        </IconButton>,
-      ]}
+        </IconButton>
+      }
     >
-      <DesktopMobileToggle state="mobile" onChange={action('onChange')} />
+      <DesktopMobileToggle state="desktop" onChange={action('onChange')} />
     </TemplatePreviewDialogAppBar>
-    <TemplatePreviewDialogContent templateWidth="800px" marginTop="2.5vh" sx={{ backgroundColor: '#FFFFFFF2' }}>
+    <TemplatePreviewDialogContent templateWidth="120vw">
       <TemplatePreviewDialogImage src="favicon.ico" />
     </TemplatePreviewDialogContent>
   </TemplatePreviewDialog>

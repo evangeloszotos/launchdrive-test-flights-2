@@ -1,20 +1,29 @@
 import React from 'react';
-import { Grid, GridProps } from '@mui/material';
+import { Grid, GridProps, styled } from '@mui/material';
 
 interface TemplatePreviewDialogContentProps extends GridProps {
-  templateWidth: string;
+  templateWidth?: string;
 }
 
+const StyledGrid = styled(Grid)`
+  margin-top: 2.5vh;
+  background-color: #fffffff2;
+`;
+
 export const TemplatePreviewDialogContent: React.FC<TemplatePreviewDialogContentProps> = (props) => {
-  const { templateWidth = '800px', children, ...other } = props;
+  const { templateWidth, children, ...other } = props;
 
   return (
-    <Grid container={true} direction="row" justifyContent="center" {...other}>
+    <StyledGrid container={true} direction="row" justifyContent="center" {...other}>
       <Grid item={true} width={templateWidth} height="full" position="relative">
         {children}
       </Grid>
-    </Grid>
+    </StyledGrid>
   );
+};
+
+TemplatePreviewDialogContent.defaultProps = {
+  templateWidth: '800px',
 };
 
 export default TemplatePreviewDialogContent;

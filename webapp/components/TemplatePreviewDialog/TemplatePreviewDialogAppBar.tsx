@@ -1,26 +1,25 @@
 import React from 'react';
-import { AppBar, AppBarProps, Grid, IconButton, styled, Toolbar, Typography } from '@mui/material';
-
-import CloseIcon from '@mui/icons-material/Close';
+import { AppBar, AppBarProps, Grid, styled, Toolbar } from '@mui/material';
 
 interface TemplatePreviewDialogAppBarProps extends AppBarProps {
-  templateName: string;
-  onClose: () => void;
+  startContent: React.ReactNode;
+  endContent: React.ReactNode;
 }
 
-const StyledAppBar = styled(AppBar)``;
+const StyledAppBar = styled(AppBar)`
+  color: #000000de;
+  background-color: white;
+`;
 
 export const TemplatePreviewDialogAppBar: React.FC<TemplatePreviewDialogAppBarProps> = (props) => {
-  const { templateName, children, onClose, ...other } = props;
+  const { startContent, children, endContent, ...other } = props;
 
   return (
-    <AppBar position="sticky" elevation={0} {...other}>
-      <Toolbar disableGutters={false}>
+    <StyledAppBar position="sticky" elevation={0} {...other}>
+      <Toolbar>
         <Grid container={true} direction="row" alignItems="center" paddingY="0.25rem">
           <Grid item={true} sm={4}>
-            <Typography variant="h6" noWrap={true} sx={{ ml: '1.25rem' }}>
-              {templateName}
-            </Typography>
+            {startContent}
           </Grid>
 
           <Grid container={true} item={true} sm={4} justifyContent="center">
@@ -28,17 +27,11 @@ export const TemplatePreviewDialogAppBar: React.FC<TemplatePreviewDialogAppBarPr
           </Grid>
 
           <Grid container={true} item={true} sm={4} justifyContent="flex-end">
-            {/* <Grid sx={{ mr: '1rem' }}> */}
-            {/* {endActions} */}
-
-            <IconButton onClick={onClose}>
-              <CloseIcon />
-            </IconButton>
-            {/* </Grid> */}
+            {endContent}
           </Grid>
         </Grid>
       </Toolbar>
-    </AppBar>
+    </StyledAppBar>
   );
 };
 
