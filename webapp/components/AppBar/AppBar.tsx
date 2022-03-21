@@ -24,10 +24,10 @@ const StyledIconButton = styled<OverridableComponent<IconButtonTypeMap<{ mr: num
 }));
 
 export const AppBar: React.FC<AppBarProps> = (props) => {
-  const { title, backHref, backgroundColor = '#010D31' } = props;
+  const { title, backHref, backgroundColor = '#010D31', ...other } = props;
 
   return (
-    <StyledMuiAppBar position="static" backgroundColor={backgroundColor}>
+    <StyledMuiAppBar {...other} position="static" backgroundColor={backgroundColor}>
       <Toolbar variant="dense" disableGutters={true}>
         <Grid container={true} justifyContent="space-between" height="100%">
           <Grid container={true} width="auto" alignItems="center">
