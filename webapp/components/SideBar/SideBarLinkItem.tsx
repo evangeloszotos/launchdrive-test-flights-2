@@ -1,19 +1,18 @@
 import NextLink from 'next/link';
 import React from 'react';
-import { SideBarItem } from './SideBarItem';
+import { SideBarItem, SideBarItemProperties } from './SideBarItem';
 
-interface SideBarLinkItemProperties {
+interface SideBarLinkItemProperties extends SideBarItemProperties {
   href: string;
-  isSelected?: boolean;
 }
 
 export const SideBarLinkItem: React.FC<SideBarLinkItemProperties> = (props) => {
-  const { children, href, isSelected } = props;
+  const { children, href, ...other } = props;
 
   return (
     <NextLink key={href} href={href ?? '#'} passHref={true}>
       <div>
-        <SideBarItem isSelected={isSelected}>{children}</SideBarItem>
+        <SideBarItem {...other}>{children}</SideBarItem>
       </div>
     </NextLink>
   );

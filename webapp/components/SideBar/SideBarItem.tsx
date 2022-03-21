@@ -1,9 +1,9 @@
-import { alpha, Box } from '@mui/material';
+import { alpha, Box, styled } from '@mui/material';
 import React from 'react';
 import Centered from '../Centered';
 import { theme } from '../../mui-theme';
 
-interface SideBarItemProperties {
+export interface SideBarItemProperties {
   onClick?: () => void;
   isSelected?: boolean;
   backgroundColor?: string;
@@ -12,10 +12,8 @@ interface SideBarItemProperties {
   colorSelected?: string;
 }
 
-export const SideBarItem: React.FC<SideBarItemProperties> = (props) => {
+const StyledBox = styled<React.FC<SideBarItemProperties>>(Box)((props) => {
   const {
-    children,
-    onClick,
     isSelected,
     backgroundColor = 'transparent',
     backgroundColorSelected = alpha(theme.palette.primary.main, 0.12),
@@ -23,18 +21,21 @@ export const SideBarItem: React.FC<SideBarItemProperties> = (props) => {
     colorSelected = theme.palette.primary.main,
   } = props;
 
+  return {
+    cursor: 'pointer',
+    backgroundColor: isSelected ? backgroundColorSelected : backgroundColor,
+    color: isSelected ? colorSelected : color,
+    padding: '0.5rem',
+  };
+});
+
+export const SideBarItem: React.FC<SideBarItemProperties> = (props) => {
+  const { children, onClick, ...other } = props;
+
   return (
-    <Box
-      onClick={onClick}
-      sx={{
-        cursor: 'pointer',
-        backgroundColor: isSelected ? backgroundColorSelected : backgroundColor,
-        color: isSelected ? colorSelected : color,
-      }}
-      p={1}
-    >
+    <StyledBox {...other} onClick={onClick}>
       <Centered>{children}</Centered>
-    </Box>
+    </StyledBox>
   );
 };
 

@@ -13,7 +13,7 @@ export default {
   argTypes: {},
 } as ComponentMeta<typeof SideBar>;
 
-const Template: ComponentStory<typeof SideBar> = (args) => (
+const Template: ComponentStory<typeof SideBar> = () => (
   <SideBar>
     <SideBarLinkItem href="/home">
       <SideBarTestbuilderItem icon={<Adb />} label="Home" />
@@ -35,6 +35,33 @@ const Template: ComponentStory<typeof SideBar> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {};
+
+//
+
+const TemplateCustomColor: ComponentStory<typeof SideBar> = () => (
+  <SideBar>
+    <SideBarLinkItem href="/home" isSelected={true} colorSelected="#347C3C" backgroundColorSelected="#347C3C1E">
+      <SideBarTestbuilderItem icon={<Adb />} label="Home" />
+    </SideBarLinkItem>
+    <SideBarLinkItem href="/trending" isSelected={true}>
+      <SideBarTestbuilderItem icon={<AirlineSeatLegroomNormal />} label="Trending" />
+    </SideBarLinkItem>
+    <SideBarLinkItem href="/bookmarks" isSelected={true} colorSelected="#ebd63d" backgroundColorSelected="#ebd63d1E">
+      <SideBarTestbuilderItem icon={<Adb />} label="Landing Page" />
+    </SideBarLinkItem>
+    <SideBarItem onClick={action('onClick')} backgroundColor="#a89be080">
+      <SideBarTestbuilderItem icon={<Adb />} label="Event" />
+    </SideBarItem>
+    <SideBarItem onClick={action('onClick')}>
+      <SideBarTestbuilderItem icon={<Adb />} />
+    </SideBarItem>
+  </SideBar>
+);
+
+export const CustomColors = TemplateCustomColor.bind({});
+CustomColors.args = {};
+
+//
 
 const TemplateExpandable: ComponentStory<typeof SideBar> = ({ isExpanded }) => (
   <SideBar isExpanded={isExpanded}>
