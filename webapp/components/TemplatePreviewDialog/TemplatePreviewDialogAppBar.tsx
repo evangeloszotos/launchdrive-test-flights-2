@@ -10,6 +10,7 @@ interface TemplatePreviewDialogAppBarProps extends AppBarProps {
 const StyledAppBar = styled(AppBar)`
   color: #000000de;
   background-color: white;
+  box-shadow: 0px 1px 0px #dddfe5;
 `;
 
 export const TemplatePreviewDialogAppBar: React.FC<TemplatePreviewDialogAppBarProps> = (props) => {
@@ -18,7 +19,7 @@ export const TemplatePreviewDialogAppBar: React.FC<TemplatePreviewDialogAppBarPr
   return (
     <StyledAppBar position="sticky" elevation={0} {...other}>
       <Toolbar>
-        <Grid container={true} direction="row" alignItems="center" paddingY="0.25rem">
+        <Grid container={true} direction="row" alignItems="center">
           <Grid item={true} sm={4}>
             {startContent}
           </Grid>
