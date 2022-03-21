@@ -5,6 +5,7 @@ import { teal } from '@mui/material/colors';
 import PlaceholderPreviewImage from './PlaceholderPreviewImage.png';
 import CardMediaWithOverlay from '../CardMediaWithOverlay';
 import Centered from '../Centered';
+import Image from 'next/image';
 
 interface TemplateCardProps {
   templatePreviewImage: string;
@@ -47,7 +48,8 @@ export const TemplateCard: React.FC<TemplateCardProps> = (props) => {
       onMouseLeave={() => setShowOverlay(false)}
     >
       <CardMediaWithOverlay
-        component="img"
+        // component="img"
+        component={Image}
         height="176"
         src={PlaceholderPreviewImage}
         alt="green iguana"

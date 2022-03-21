@@ -15,3 +15,26 @@ Default.args = {
   'onClick:select': action('onClick:select'),
   'onClick:preview': action('onClick:preview'),
 };
+
+export const Test = Template.bind({});
+Test.args = {
+  templatePreviewImage: 'sadasd',
+  actions: [<ColorButton />, <ColorButton />],
+  title: '',
+  description: '',
+  headerText: 'sd', // title - remove?
+  bodyText: 'sd', // description - remove?
+  tags: [<Chip />, <Chip />],
+};
+
+export const Sample = (args) => (
+  <TemplateCard
+    templatePreviewImage="sadasd"
+    actions={[<ColorButton />, <ColorButton />]}
+    title=""
+    description=""
+    headerText="sd" // title - remove?
+    bodyText="sd" // description - remove?
+    tags={[<Chip />, <Chip />]}
+  />
+);
