@@ -9,7 +9,9 @@ export default {
 } as ComponentMeta<typeof {{name}}>;
 
 const Template: ComponentStory<typeof {{name}}> = (args) => <{{name}} {...args} />;
-export const Default = Template.bind({});
-Default.args = {
+export const Playground = Template.bind({});
+Playground.args = {
   // onClick: action('onClick'),
 };
+
+const Foo: ComponentStory<typeof {{name}}> = (args) => <{{name}} {/* onClick={action('onClick')} */ } />;
