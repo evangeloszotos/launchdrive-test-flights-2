@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Fade } from '@mui/material';
 import { styled } from '@mui/system';
+import { BoxProps } from '@mui/material/Box/Box';
 
 interface HoverOverlayStyleProps {
   overlayBackgroundColor?: string;
@@ -8,6 +9,7 @@ interface HoverOverlayStyleProps {
 interface HoverOverlayProps extends HoverOverlayStyleProps {
   overlayContent: React.ReactElement;
   activatorContent?: React.ReactElement;
+  enabled?: boolean;
 }
 
 const OverlayBackgroundBox = styled<React.FC<HoverOverlayStyleProps>>(Box)((props) => {
@@ -23,15 +25,32 @@ const OverlayBackgroundBox = styled<React.FC<HoverOverlayStyleProps>>(Box)((prop
   };
 });
 
-export const HoverOverlay: React.FC<HoverOverlayProps> = (props) => {
-  const { activatorContent, children, overlayContent, overlayBackgroundColor, ...other } = props;
+export const HoverOverlay: React.FC<BoxProps<'div', HoverOverlayProps>> = (props) => {
+  const {
+    activatorContent,
+    children,
+    overlayContent,
+    overlayBackgroundColor,
+    enabled = true,
+    onMouseEnter,
+    onMouseLeave,
+    sx,
+    ...other
+  } = props;
   const [showOverlay, setShowOverlay] = useState(false);
 
   return (
     <Box
-      sx={{ position: 'relative', width: '100%', height: '100%' }}
-      onMouseEnter={() => setShowOverlay(true)}
-      onMouseLeave={() => setShowOverlay(false)}
+      onMouseEnter={(e) => {
+        if (enabled) setShowOverlay(true);
+        onMouseEnter?.(e);
+      }}
+      onMouseLeave={(e) => {
+        if (enabled) setShowOverlay(false);
+        onMouseLeave?.(e);
+      }}
+      sx={{ position: 'relative', width: '100%', height: '100%', ...sx }}
+      {...other}
     >
       {activatorContent ?? children}
       <Fade in={showOverlay}>

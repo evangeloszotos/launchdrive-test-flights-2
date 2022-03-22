@@ -10,16 +10,19 @@ interface ImagePreviewStyleProps {
   borderRadius?: string;
 }
 interface ImagePreviewBaseProps extends ImagePreviewStyleProps {
-  value?: ImageFileType;
   emptyContent: React.ReactElement;
   overlayContent: React.ReactElement;
-  renderImage?: (value: ImageFileType) => React.ReactElement;
   overlayBackgroundColor?: string;
+  overlayEnabled?: boolean;
+  value?: ImageFileType;
+  renderImage?: (value: ImageFileType) => React.ReactElement;
 }
 
 const StyledImageComponent = styled('img')`
   display: block;
   width: 100%;
+  height: 100%;
+  object-fit: contain;
 `;
 
 const StyledBox = styled<React.FC<ImagePreviewStyleProps>>(Box)((props) => {
@@ -41,13 +44,18 @@ export const ImagePreviewBase: React.FC<BoxProps<'div', ImagePreviewBaseProps>> 
     renderImage = (src) => <StyledImageComponent src={src} alt="logo" />,
     overlayContent,
     overlayBackgroundColor = '#00000080',
+    overlayEnabled = true,
     ...other
   } = props;
 
   return (
     <StyledBox border={border} borderRadius={borderRadius} {...other}>
-      <HoverOverlay overlayBackgroundColor={overlayBackgroundColor} overlayContent={overlayContent}>
-        <Centered>{value ? renderImage(value) : emptyContent}</Centered>
+      <HoverOverlay
+        overlayBackgroundColor={overlayBackgroundColor}
+        overlayContent={overlayContent}
+        enabled={overlayEnabled}
+      >
+        {value ? <Centered>{renderImage(value)}</Centered> : emptyContent}
       </HoverOverlay>
     </StyledBox>
   );
