@@ -23,25 +23,21 @@ const OverlayBackgroundBox = styled<React.FC<HoverOverlayStyleProps>>(Box)((prop
   };
 });
 
-const InlineBox = styled(Box)`
-  display: inline-block;
-`;
-
 export const HoverOverlay: React.FC<HoverOverlayProps> = (props) => {
-  const { activatorContent, children, overlayContent, ...other } = props;
+  const { activatorContent, children, overlayContent, overlayBackgroundColor, ...other } = props;
   const [showOverlay, setShowOverlay] = useState(false);
 
   return (
-    <InlineBox
-      sx={{ position: 'relative' }}
+    <Box
+      sx={{ position: 'relative', width: '100%', height: '100%' }}
       onMouseEnter={() => setShowOverlay(true)}
       onMouseLeave={() => setShowOverlay(false)}
     >
-      <InlineBox>{activatorContent ?? children}</InlineBox>
+      {activatorContent ?? children}
       <Fade in={showOverlay}>
-        <OverlayBackgroundBox>{overlayContent}</OverlayBackgroundBox>
+        <OverlayBackgroundBox overlayBackgroundColor={overlayBackgroundColor}>{overlayContent}</OverlayBackgroundBox>
       </Fade>
-    </InlineBox>
+    </Box>
   );
 };
 
