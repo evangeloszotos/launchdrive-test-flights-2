@@ -42,8 +42,9 @@
     "react/no-multi-comp": "warn",
     "react/no-this-in-sfc": "error",
     "react/prefer-stateless-function": "error",
+    "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
-    "react/require-default-props": "error",
+    "react/require-default-props": "off",
     "react/jsx-boolean-value": [
       "error",
       "always"
