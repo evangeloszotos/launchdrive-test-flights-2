@@ -7,6 +7,7 @@ interface TemplatePreviewDialogAppBarProps extends AppBarProps {
   endContent: React.ReactNode;
 }
 
+// FIXME: Rename to AppBarStyled => conform to naming convention
 const StyledAppBar = styled(AppBar)`
   color: #000000de;
   background-color: white;
