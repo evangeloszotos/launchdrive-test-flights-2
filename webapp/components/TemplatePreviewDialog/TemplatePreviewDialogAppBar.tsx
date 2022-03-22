@@ -16,12 +16,10 @@ interface TemplatePreviewDialogAppBarProps extends AppBarProps {
 const defaultProps = {
   position: 'sticky',
   elevation: 0,
-};
+} as TemplatePreviewDialogAppBarProps;
 
-export const TemplatePreviewDialogAppBar: React.FC<TemplatePreviewDialogAppBarProps & typeof defaultProps> = (
-  props
-) => {
-  const { startContent, centerContent, endContent, ...other } = props;
+export const TemplatePreviewDialogAppBar: React.FC<TemplatePreviewDialogAppBarProps> = (props) => {
+  const { startContent, centerContent, endContent, ...other } = { ...defaultProps, ...props };
 
   return (
     <AppBarStyled {...other}>
@@ -43,5 +41,7 @@ export const TemplatePreviewDialogAppBar: React.FC<TemplatePreviewDialogAppBarPr
     </AppBarStyled>
   );
 };
+
+TemplatePreviewDialogAppBar.defaultProps = defaultProps;
 
 export default TemplatePreviewDialogAppBar;

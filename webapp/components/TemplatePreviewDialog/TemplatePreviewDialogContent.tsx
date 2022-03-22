@@ -12,12 +12,10 @@ interface TemplatePreviewDialogContentProps extends GridProps {
 
 const defaultProps = {
   templateWidth: '800px',
-};
+} as TemplatePreviewDialogContentProps;
 
-export const TemplatePreviewDialogContent: React.FC<TemplatePreviewDialogContentProps & typeof defaultProps> = (
-  props
-) => {
-  const { templateWidth, children, ...other } = props;
+export const TemplatePreviewDialogContent: React.FC<TemplatePreviewDialogContentProps> = (props) => {
+  const { templateWidth, children, ...other } = { ...defaultProps, ...props };
 
   return (
     <GridStyled container={true} direction="row" justifyContent="center" {...other}>
