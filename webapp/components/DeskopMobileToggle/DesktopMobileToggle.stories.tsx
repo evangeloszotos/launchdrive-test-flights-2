@@ -6,7 +6,7 @@ export default {
   title: 'Components/DesktopMobileToggle',
   component: DesktopMobileToggle,
   argTypes: {
-    state: {
+    value: {
       options: ['desktop', 'mobile'],
       control: { type: 'radio' },
     },
@@ -17,6 +17,6 @@ const Template: ComponentStory<typeof DesktopMobileToggle> = (args) => <DesktopM
 
 export const Default = Template.bind({});
 Default.args = {
-  state: 'desktop',
+  value: 'desktop',
   onChange: action('onChange'),
 };

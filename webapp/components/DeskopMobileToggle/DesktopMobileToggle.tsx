@@ -4,7 +4,7 @@ import { DesktopWindows, Smartphone } from '@mui/icons-material';
 
 interface DesktopMobileToggleProps {
   onChange: (event: React.MouseEvent<HTMLElement>, value: any) => void;
-  state: 'desktop' | 'mobile';
+  value: 'desktop' | 'mobile';
 }
 
 const DesktopIconStyled = styled(DesktopWindows)`
@@ -20,10 +20,10 @@ const TypographyStyled = styled(Typography)`
 `;
 
 export const DesktopMobileToggle: React.FC<DesktopMobileToggleProps> = (props) => {
-  const { onChange, state = 'desktop' } = props;
+  const { onChange, value = 'desktop' } = props;
 
   return (
-    <ToggleButtonGroup size="small" value={state} exclusive={true} onChange={onChange}>
+    <ToggleButtonGroup size="small" value={value} exclusive={true} onChange={onChange}>
       <ToggleButton value="desktop">
         <DesktopIconStyled />
         <TypographyStyled> Desktop </TypographyStyled>
