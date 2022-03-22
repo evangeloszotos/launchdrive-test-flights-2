@@ -1,0 +1,5 @@
+- Tooltip should be on SideBarItem level
+- Remove SideBarIcon Component
+  - Normal Icons can be used
+- Hover effect of SideBarItem is missing
+- SideBarText should be SideBarItemLabel

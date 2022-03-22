@@ -13,8 +13,12 @@ export const SideBarLinkItem = (props) => {
     </NextLink>
   );
 };
+
 SideBarLinkItem.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
   href: PropTypes.string.isRequired,
   isSelected: PropTypes.bool,
 };

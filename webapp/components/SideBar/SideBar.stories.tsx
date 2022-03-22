@@ -1,6 +1,10 @@
 import { ComponentMeta } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { Adb, AirlineSeatLegroomNormal, ArrowRightRounded } from '@mui/icons-material';
+import {
+  Adb,
+  AirlineSeatLegroomNormal,
+  ArrowRightRounded,
+} from '@mui/icons-material';
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -9,6 +13,7 @@ import { SideBarLinkItem } from './SideBarLinkItem';
 import { SideBarIcon } from './SideBarIcon';
 import { SideBarText } from './SideBarText';
 import { SideBarItem } from './SideBarItem';
+import { Menu } from '@mui/icons-material';
 
 export default {
   title: 'Components/SideBar',
@@ -77,3 +82,27 @@ Expandable.propTypes = {
 Expandable.args = {
   isExpanded: true,
 };
+
+Menu;
+
+export const WithLessExtra = () => (
+  <SideBar>
+    <SideBarLinkItem href="/home">
+      <Menu />
+      <SideBarText label="Home" />
+    </SideBarLinkItem>
+    <SideBarLinkItem href="/trending" isSelected={true}>
+      <SideBarIcon icon={AirlineSeatLegroomNormal} />
+      <SideBarText label="Trending" />
+    </SideBarLinkItem>
+    <SideBarLinkItem href="/bookmarks">
+      <SideBarIcon icon={Adb} />
+      <SideBarText label="Landing Page" />
+    </SideBarLinkItem>
+    <SideBarLinkItem href="/messages">
+      <SideBarIcon icon={Adb} />
+      <SideBarText label="Landing Page" />
+    </SideBarLinkItem>
+    <SideBarItem onClick={action('onExpand')}></SideBarItem>
+  </SideBar>
+);

@@ -1,5 +1,5 @@
-import React from "react";
-import { useFormik } from "formik";
+import React from 'react';
+import { useFormik } from 'formik';
 import {
   Button,
   Stack,
@@ -8,16 +8,16 @@ import {
   CircularProgress,
   TextField,
   Grid,
-} from "@mui/material";
-import { email, password, validateFields } from "../utils/form-validations";
+} from '@mui/material';
+import { email, password, validateFields } from '../utils/form-validations';
 
 const validationSchema = validateFields({ email, password });
 export type OnSignInData = { email: string; password: string };
 export const SignIn = ({
   error = false,
   loading = false,
-  initialEmail = "",
-  initialPassword = "",
+  initialEmail = '',
+  initialPassword = '',
   onSignIn: onSubmit = (data: OnSignInData) => {},
 }) => {
   const formik = useFormik({
