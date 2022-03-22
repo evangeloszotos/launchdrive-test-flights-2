@@ -1,10 +1,6 @@
 import { Box, Grid, TextField } from '@mui/material';
 import { styled } from '@mui/system';
-import React, { useEffect } from 'react';
-
-/* ============
-      Styles
-   ============ */
+import React from 'react';
 
 interface ColorTextFieldBoxProps {
   value: string;
@@ -14,6 +10,10 @@ interface ColorTextFieldProps extends ColorTextFieldBoxProps {
   label?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>, hexCodeValid: boolean) => void;
 }
+
+/* ============
+      Styles
+   ============ */
 
 const ColorBox = styled(Box)`
   width: 40px;
@@ -41,24 +41,15 @@ const StyledTextField = styled(TextField)`
 const validHexRegex = /^#([0-9a-fA-F]{3}){1,2}$/;
 export const ColorTextField: React.VoidFunctionComponent<ColorTextFieldProps> = (props) => {
   const { label, onChange, value, regex = validHexRegex, ...other } = props;
-  const hexCodeValid = regex.test(value);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    onChange(event, hexCodeValid);
+    onChange(event, regex.test(event.target.value));
   };
-
-  /**
-   * This is a hack to live update
-   * Comment out and it wont be up to date
-   */
-  useEffect(() => {
-    onChange({ target: { value } }, hexCodeValid);
-  });
 
   return (
     <StyledGrid {...other} container={true}>
       <StyledTextField label={label} value={value} onChange={handleChange} size="small" />
-      <ColorBox sx={{ bgcolor: hexCodeValid ? value : '#000' }} />
+      <ColorBox sx={{ bgcolor: regex.test(value) ? value : '#000' }} />
     </StyledGrid>
   );
 };
