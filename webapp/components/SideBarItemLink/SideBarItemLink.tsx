@@ -1,12 +1,12 @@
 import NextLink from 'next/link';
 import React from 'react';
-import { SideBarItem, SideBarItemProperties } from './SideBarItem';
+import { SideBarItem, SideBarItemProperties } from '../SideBarItem/SideBarItem';
 
 interface SideBarLinkItemProperties extends SideBarItemProperties {
   href: string;
 }
 
-export const SideBarLinkItem: React.FC<SideBarLinkItemProperties> = (props) => {
+export const SideBarItemLink: React.FC<SideBarLinkItemProperties> = (props) => {
   const { children, href, ...other } = props;
 
   return (
@@ -18,4 +18,4 @@ export const SideBarLinkItem: React.FC<SideBarLinkItemProperties> = (props) => {
   );
 };
 
-export default SideBarLinkItem;
+export default SideBarItemLink;
