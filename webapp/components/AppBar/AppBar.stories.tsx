@@ -54,7 +54,7 @@ export const Default = () => (
 
 export const NoLogo = () => (
   <AppBar
-    noLogo={true}
+    showLogo={false}
     logoContent={<img src={Logo} alt="Logo" />}
     startContent={
       <TextWithIcon
