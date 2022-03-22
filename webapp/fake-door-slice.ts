@@ -4,7 +4,7 @@ import {
   PayloadAction,
   createEntityAdapter,
 } from '@reduxjs/toolkit';
-import { RootState, AppDispatch } from './store';
+import { RootState, AppDispatch } from './store/store';
 
 interface FakeDoor {
   id: string;

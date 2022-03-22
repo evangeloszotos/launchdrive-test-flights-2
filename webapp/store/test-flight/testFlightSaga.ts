@@ -1,3 +1,4 @@
+import cuid from 'cuid';
 import { select, call, put, takeLeading } from 'redux-saga/effects';
 import { createAction, PayloadAction } from '@reduxjs/toolkit';
 import testFlightSlice from './testFlightSlice';
@@ -12,7 +13,7 @@ function* createTestFlight(action: PayloadAction<string>) {
     console.log('createTestFlight:', action);
 
     // Create TestFlight
-    const testFlightId = Math.random() + 'id';
+    const testFlightId = cuid();
     yield put(
       testFlightSlice.actions.created({
         id: testFlightId,
@@ -21,7 +22,7 @@ function* createTestFlight(action: PayloadAction<string>) {
     );
 
     // Create TestFlightVariant
-    const testFlightVariantId = Math.random() + 'id';
+    const testFlightVariantId = cuid();
     yield put(
       testFlightVariantSlice.actions.created({
         id: testFlightVariantId,

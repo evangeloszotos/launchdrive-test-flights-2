@@ -1,19 +1,7 @@
-import {
-  createSlice,
-  PayloadAction,
-  createEntityAdapter,
-  createSelector,
-} from '@reduxjs/toolkit';
-import { RootState } from '../../store';
-
-interface VariantSelection {
-  testFlightVariant;
-}
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export const selectedVariantSlice = createSlice({
   name: 'selectedVariant',
-  // `createSlice` will infer the state type from the `initialState` argument
-  //initialState,
   initialState: '',
   reducers: {
     changed(state, action: PayloadAction<string>) {
@@ -21,7 +9,5 @@ export const selectedVariantSlice = createSlice({
     },
   },
 });
-
-export const selectedVariantId = (state: RootState) => state.selectedVariantId;
 
 export default selectedVariantSlice;

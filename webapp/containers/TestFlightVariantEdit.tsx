@@ -1,33 +1,71 @@
 import React from 'react';
 import {
-  Container,
-  Button,
-  Stack,
-  Paper,
-  Typography,
-  CircularProgress,
-  TextField,
+  Box,
   Grid,
+  Stepper,
+  styled,
+  Step,
+  StepLabel,
+  StepContent,
+  Typography,
+  Button,
+  GlobalStyles,
 } from '@mui/material';
-import { email, password, validateFields } from '../utils/form-validations';
-import SideBar from '../components/SideBar';
-import SideBarItem from '../components/SideBar/SideBarItem';
-import SideBarText from '../components/SideBar/SideBarText';
+import { Menu } from '@mui/icons-material';
 
-const validationSchema = validateFields({ email, password });
-export type OnSignInData = { email: string; password: string };
-export const TestFlightVariantEdit = ({}) => {
-  return (
-    <Grid container>
-      <Grid item>
-        <SideBar>
-          <SideBarItem onClick={() => console.log('Clicked')}>
-            <SideBarText label="MenuItem" />
-          </SideBarItem>
-        </SideBar>
-      </Grid>
-    </Grid>
-  );
-};
+const SideBarPane = styled(Grid)`
+  //background-color: red;
+  border: thin solid blue;
+  padding: 1rem;
+  width: 64px;
+`;
 
-export default TestFlightVariantEdit;
+const StepperPane = styled(Grid)`
+  //background-color: red;
+  border: thin solid black;
+  padding-left: 20px;
+  width: 214px;
+`;
+
+const ContentPane = styled(Grid)`
+  //background-color: red;
+  border: thin solid black;
+  padding-left: 20px;
+  flex-grow: 1;
+`;
+
+export const TestFlightVariantDetail = () => (
+  <Grid container={true}>
+    <SideBarPane item={true}></SideBarPane>
+
+    <StepperPane item={true}>
+      <Typography variant="h6" sx={{ mt: '16px', mb: '32px' }}>
+        Setup
+      </Typography>
+
+      <Stepper orientation="vertical">
+        <Step>
+          <StepLabel>Template</StepLabel>
+        </Step>
+        <Step>
+          <StepLabel>Name &amp; Logo</StepLabel>
+        </Step>
+        <Step>
+          <StepLabel>Color</StepLabel>
+        </Step>
+        <Step>
+          <StepLabel>Font</StepLabel>
+        </Step>
+      </Stepper>
+    </StepperPane>
+
+    <ContentPane item={true}>
+      <Typography sx={{ mt: '32px', mb: '20px' }} variant="h5">
+        Select a template
+      </Typography>
+      <Typography variant="h5">TemplateCardGrid here</Typography>
+    </ContentPane>
+  </Grid>
+);
+
+export default TestFlightVariantDetail;

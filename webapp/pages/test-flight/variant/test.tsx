@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 import { NextPage } from 'next';
 import {
   Stack,
@@ -9,32 +8,11 @@ import {
   IconButton,
   Button,
 } from '@mui/material';
-import { selectTax } from '../../../store/test-flight/testFlightVariantSlice';
-import { useSelector } from 'react-redux';
-import TestFlightVariantEdit from '../../../containers/TestFlightVariantEdit';
 import { Menu } from '@mui/icons-material';
+import { useSelector } from 'react-redux';
 
-export const TestFlightVariantPage: NextPage = () => {
-  const variant = useSelector(selectTax);
-
-  return (
-    <Stack>
-      <Head>
-        <title>TestFlightVariantPage</title>
-        <meta name="description" content="" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      {AppBarMockUp}
-
-      <Typography variant="body1">TestFlight: {variant?.testFlight}</Typography>
-      <Typography variant="body1">Variant: {variant?.id}</Typography>
-
-      <TestFlightVariantEdit />
-    </Stack>
-  );
-};
-
-export default TestFlightVariantPage;
+import TestFlightVariantDetail from '../../../containers/TestFlightVariantEdit';
+import * as selectors from '../../../store/test-flight/selectors';
 
 const AppBarMockUp = (
   <AppBar position="static" elevation={0}>
@@ -55,3 +33,22 @@ const AppBarMockUp = (
     </Toolbar>
   </AppBar>
 );
+
+export const TestFlightVariantPage: NextPage = () => {
+  const variant = useSelector(selectors.selectTestFlightVariant);
+
+  return (
+    <Stack>
+      <Head>
+        <title>TestFlightVariantPage</title>
+        <meta name="description" content="" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      {AppBarMockUp}
+
+      <TestFlightVariantDetail />
+    </Stack>
+  );
+};
+
+export default TestFlightVariantPage;
