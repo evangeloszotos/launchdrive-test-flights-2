@@ -7,9 +7,8 @@ interface AppBarBaseProps {
   backgroundColor?: string;
 }
 interface AppBarProps extends AppBarBaseProps {
-  showLogo?: boolean;
   logoWidth?: number;
-  logoContent: React.ReactElement;
+  logo: React.ReactElement;
   startContent?: React.ReactElement;
   centerContent?: React.ReactElement;
   endContent?: React.ReactElement;
@@ -31,10 +30,9 @@ const ContentContainer = styled(Grid)`
 
 export const AppBar: React.VoidFunctionComponent<AppBarProps> = (props) => {
   const {
-    showLogo = true,
     logoWidth = 64,
     backgroundColor = '#010D31',
-    logoContent,
+    logo,
     startContent,
     centerContent,
     endContent,
@@ -45,11 +43,11 @@ export const AppBar: React.VoidFunctionComponent<AppBarProps> = (props) => {
     <StyledMuiAppBar {...other} backgroundColor={backgroundColor}>
       <StyledToolbar variant="dense">
         <Grid container={true} alignItems="center">
-          {showLogo ? (
+          {logo && (
             <LogoContainer container={true} justifyContent="center" width={logoWidth}>
-              {logoContent}
+              {logo}
             </LogoContainer>
-          ) : null}
+          )}
           <ContentContainer container={true} justifyContent="space-between" alignItems="center" height="100%">
             <Grid container={true} width="auto" alignItems="center" justifyContent="flex-start">
               {startContent}

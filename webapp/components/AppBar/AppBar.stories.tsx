@@ -21,7 +21,7 @@ const StyledIconButton = styled<OverridableComponent<IconButtonTypeMap<{ mr: num
 
 export const Default = () => (
   <AppBar
-    logoContent={<img src={Logo} alt="Logo" />}
+    logo={<img src={Logo} alt="Logo" />}
     startContent={
       <TextWithIcon
         color="white"
@@ -54,8 +54,6 @@ export const Default = () => (
 
 export const NoLogo = () => (
   <AppBar
-    showLogo={false}
-    logoContent={<img src={Logo} alt="Logo" />}
     startContent={
       <TextWithIcon
         color="white"
@@ -89,7 +87,7 @@ export const NoLogo = () => (
 export const WideLogo = () => (
   <AppBar
     logoWidth={128}
-    logoContent={<img src={Logo} alt="Logo" />}
+    logo={<img src={Logo} alt="Logo" />}
     startContent={
       <TextWithIcon
         color="white"
@@ -120,4 +118,4 @@ export const WideLogo = () => (
   />
 );
 
-export const WithoutActions = () => <AppBar logoContent={<img src={Logo} alt="Logo" />} />;
+export const WithoutActions = () => <AppBar logo={<img src={Logo} alt="Logo" />} />;
