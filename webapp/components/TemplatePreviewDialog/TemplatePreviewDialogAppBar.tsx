@@ -7,8 +7,7 @@ interface TemplatePreviewDialogAppBarProps extends AppBarProps {
   endContent: React.ReactNode;
 }
 
-// FIXME: Rename to AppBarStyled => conform to naming convention
-const StyledAppBar = styled(AppBar)`
+const AppBarStyled = styled(AppBar)`
   color: #000000de;
   background-color: white;
   box-shadow: 0px 1px 0px #dddfe5;
@@ -18,7 +17,7 @@ export const TemplatePreviewDialogAppBar: React.FC<TemplatePreviewDialogAppBarPr
   const { startContent, centerContent, endContent, ...other } = props;
 
   return (
-    <StyledAppBar position="sticky" elevation={0} {...other}>
+    <AppBarStyled position="sticky" elevation={0} {...other}>
       <Toolbar>
         <Grid container={true} direction="row" alignItems="center">
           <Grid item={true} sm={4}>
@@ -34,7 +33,7 @@ export const TemplatePreviewDialogAppBar: React.FC<TemplatePreviewDialogAppBarPr
           </Grid>
         </Grid>
       </Toolbar>
-    </StyledAppBar>
+    </AppBarStyled>
   );
 };
 
