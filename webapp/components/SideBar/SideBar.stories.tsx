@@ -1,3 +1,4 @@
+/* eslint-disable react/no-multi-comp */
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { Adb, AirlineSeatLegroomNormal } from '@mui/icons-material';
