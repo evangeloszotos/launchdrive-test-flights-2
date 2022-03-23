@@ -1,38 +1,28 @@
 import { Collapse, Stack } from '@mui/material';
-import PropTypes from 'prop-types';
+import React from 'react';
 import { theme } from '../../mui-theme';
 
-export const SideBar = (props) => {
-  const { children, isExpanded, collapsedWidth } = props;
+interface SideBarProperties {
+  expanded?: boolean;
+  collapsedWidth?: number;
+  backgroundColor?: string;
+}
+
+export const SideBar: React.FC<SideBarProperties> = (props) => {
+  const { expanded = false, collapsedWidth = 64, backgroundColor = theme.palette.grey['50'], children } = props;
 
   return (
-    <Collapse
-      orientation="horizontal"
-      in={isExpanded}
-      collapsedSize={collapsedWidth}
-      timeout={320}
-      easing="ease-in-out"
-    >
+    <Collapse orientation="horizontal" in={expanded} collapsedSize={collapsedWidth} timeout={320} easing="ease-in-out">
       <Stack
         spacing={2}
         sx={{
-          backgroundColor: theme.palette.grey['50'],
+          backgroundColor,
         }}
       >
         {children}
       </Stack>
     </Collapse>
   );
-};
-SideBar.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
-  isExpanded: PropTypes.bool,
-  collapsedWidth: PropTypes.number,
-};
-SideBar.defaultProps = {
-  children: null,
-  isExpanded: false,
-  collapsedWidth: 64,
 };
 
 export default SideBar;
