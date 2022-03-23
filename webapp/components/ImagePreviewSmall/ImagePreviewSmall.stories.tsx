@@ -27,9 +27,18 @@ export const Empty: ComponentStory<typeof ImagePreviewSmall> = () => (
 
 export const Default: ComponentStory<typeof ImagePreviewSmall> = () => (
   <ImagePreviewSmall label="Logo" onClick={action('onClick')}>
-    <Centered>
-      <ImagePreviewImage src={LogoPlaceholder} />
-    </Centered>
+    {!LogoPlaceholder && (
+      <Box onClick={action('onClickEmpty')} height="100%">
+        <Centered>
+          <Box> Click here to select a logo </Box>
+        </Centered>
+      </Box>
+    )}
+    {LogoPlaceholder && (
+      <Centered>
+        <ImagePreviewImage src={LogoPlaceholder} />
+      </Centered>
+    )}
   </ImagePreviewSmall>
 );
 
