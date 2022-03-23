@@ -5,14 +5,14 @@ import Centered from '../Centered';
 
 interface TemplateCardProps {
   actions: Array<ReactElement>;
-  templatePreviewImage: string;
+  templatePreviewImageSrc: string;
   title: string;
   description?: string;
   tags?: Array<ReactElement>;
 }
 
 export const TemplateCard: React.FC<TemplateCardProps> = (props) => {
-  const { actions, tags, templatePreviewImage, title, description } = props;
+  const { actions, tags, templatePreviewImageSrc, title, description } = props;
   const [showOverlay, setShowOverlay] = useState(false);
 
   return (
@@ -29,7 +29,7 @@ export const TemplateCard: React.FC<TemplateCardProps> = (props) => {
         component="img"
         // component={Image} <= Geht nicht
         height="176"
-        src={templatePreviewImage}
+        src={templatePreviewImageSrc}
         alt="green iguana"
         showOverlay={showOverlay}
       >

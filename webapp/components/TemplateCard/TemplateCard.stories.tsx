@@ -1,3 +1,4 @@
+/* eslint-disable react/no-multi-comp */
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
 import { teal } from '@mui/material/colors';
@@ -31,7 +32,7 @@ const ColorButton = styled(Button)<
 
 export const Default: ComponentStory<typeof TemplateCard> = () => (
   <TemplateCard
-    templatePreviewImage="http://placekitten.com/300/200"
+    templatePreviewImageSrc="http://placekitten.com/300/200"
     actions={[
       <ColorButton
         variant="contained"
@@ -58,7 +59,7 @@ export const Default: ComponentStory<typeof TemplateCard> = () => (
 
 export const NoDescription: ComponentStory<typeof TemplateCard> = () => (
   <TemplateCard
-    templatePreviewImage="http://placekitten.com/300/200"
+    templatePreviewImageSrc="http://placekitten.com/300/200"
     actions={[
       <ColorButton
         variant="contained"
@@ -84,7 +85,7 @@ export const NoDescription: ComponentStory<typeof TemplateCard> = () => (
 
 export const NoTags: ComponentStory<typeof TemplateCard> = () => (
   <TemplateCard
-    templatePreviewImage="http://placekitten.com/300/200"
+    templatePreviewImageSrc="http://placekitten.com/300/200"
     actions={[
       <ColorButton
         variant="contained"
@@ -109,7 +110,7 @@ export const TemplateCardGrid: ComponentStory<typeof TemplateCard> = () => (
     {[...Array(7)].map((i, j) => (
       <Grid item={true} xs={1}>
         <TemplateCard
-          templatePreviewImage={`https://placekitten.com/300/200?image=${j}`}
+          templatePreviewImageSrc={`https://placekitten.com/300/200?image=${j}`}
           actions={[
             <ColorButton
               variant="contained"
