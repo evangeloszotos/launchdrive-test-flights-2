@@ -40,8 +40,9 @@
     "react/no-multi-comp": "warn",
     "react/no-this-in-sfc": "error",
     "react/prefer-stateless-function": "error",
+    "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
-    "react/require-default-props": "error",
+    "react/require-default-props": "off",
     "react/jsx-boolean-value": ["error", "always"],
     "react/jsx-filename-extension": [
       2,
@@ -52,6 +53,7 @@
     "react/jsx-props-no-spreading": "off",
     "react/jsx-pascal-case": "error",
     "react/jsx-space-before-closing": "warn",
+
     //
     "unicorn/no-array-for-each": "error",
     "unicorn/no-for-loop": "error",
@@ -61,20 +63,24 @@
     "unicorn/prefer-array-find": "warn",
     "unicorn/prefer-array-some": "warn",
     "unicorn/prefer-includes": "warn",
+    "react/jsx-tag-spacing": [
+      "error",
+      {
+        "closingSlash": "never",
+        "beforeSelfClosing": "always",
+        "afterOpening": "never",
+        "beforeClosing": "never"
+      }
+    ],
     //
-    "prettier/prettier": "off",
+    "prettier/prettier": "error",
     //
     "curly": ["error", "multi-line"],
     "import/extensions": "off",
     "import/no-extraneous-dependencies": "off",
     "import/prefer-default-export": "off",
-    "import/no-named-as-default": "off",
     "jsx-a11y/no-static-element-interactions": "off",
-    "lines-between-class-members": [
-      "error",
-      "always",
-      { "exceptAfterSingleLine": true }
-    ],
+    "lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }],
     "no-console": "off",
     "no-restricted-syntax": [
       "error",
@@ -103,3 +109,4 @@
     }
   }
 }
+
