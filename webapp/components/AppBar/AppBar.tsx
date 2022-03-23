@@ -1,12 +1,11 @@
 import React from 'react';
-import MuiAppBar, { AppBarTypeMap } from '@mui/material/AppBar';
+import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import { Grid, styled, Toolbar } from '@mui/material';
-import { OverridableComponent } from '@mui/material/OverridableComponent';
 
-interface AppBarBaseProps {
+interface AppBarStyleProps {
   backgroundColor?: string;
 }
-interface AppBarProps extends AppBarBaseProps {
+interface AppBarProps extends AppBarStyleProps, MuiAppBarProps {
   logoWidth?: number;
   logo: React.ReactElement;
   startContent?: React.ReactElement;
@@ -14,7 +13,9 @@ interface AppBarProps extends AppBarBaseProps {
   endContent?: React.ReactElement;
 }
 
-const StyledMuiAppBar = styled<OverridableComponent<AppBarTypeMap<AppBarBaseProps>>>(MuiAppBar)((props) => ({
+//
+
+const StyledMuiAppBar = styled<React.FC<AppBarStyleProps>>(MuiAppBar)((props) => ({
   backgroundColor: props.backgroundColor,
 }));
 const StyledToolbar = styled(Toolbar)`
@@ -28,6 +29,8 @@ const ContentContainer = styled(Grid)`
   flex-grow: 1;
 `;
 
+//
+
 export const AppBar: React.VoidFunctionComponent<AppBarProps> = (props) => {
   const {
     logoWidth = 64,
@@ -40,7 +43,7 @@ export const AppBar: React.VoidFunctionComponent<AppBarProps> = (props) => {
   } = props;
 
   return (
-    <StyledMuiAppBar {...other} backgroundColor={backgroundColor}>
+    <StyledMuiAppBar backgroundColor={backgroundColor} {...other}>
       <StyledToolbar variant="dense">
         <Grid container={true} alignItems="center">
           {logo && (
