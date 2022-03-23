@@ -1,13 +1,14 @@
 import React from 'react';
 import { Box, styled } from '@mui/material';
 import { BoxProps } from '@mui/material/Box/Box';
-import Centered from '../Centered';
 import HoverOverlay from '../HoverOverlay';
 
 type ImageFileType = any;
 interface ImagePreviewStyleProps {
   border?: string;
   borderRadius?: string;
+  height: string | number;
+  width?: string | number;
 }
 interface ImagePreviewBaseProps extends ImagePreviewStyleProps {
   emptyContent: React.ReactElement;
@@ -18,7 +19,7 @@ interface ImagePreviewBaseProps extends ImagePreviewStyleProps {
   renderImage?: (value: ImageFileType) => React.ReactElement;
 }
 
-const StyledImageComponent = styled('img')`
+export const StyledImageComponent = styled('img')`
   display: block;
   width: 100%;
   height: 100%;
@@ -26,12 +27,14 @@ const StyledImageComponent = styled('img')`
 `;
 
 const StyledBox = styled<React.FC<ImagePreviewStyleProps>>(Box)((props) => {
-  const { border = '1px dashed #0000003b', borderRadius = '4px' } = props;
+  const { border = '1px dashed #0000003b', borderRadius = '4px', width = '100%', height } = props;
 
   return {
     border,
     borderRadius,
     overflow: 'hidden',
+    width,
+    height,
   };
 });
 
@@ -39,9 +42,7 @@ export const ImagePreviewBase: React.FC<BoxProps<'div', ImagePreviewBaseProps>> 
   const {
     border,
     borderRadius,
-    value,
-    emptyContent,
-    renderImage = (src) => <StyledImageComponent src={src} alt="logo" />,
+    children,
     overlayContent,
     overlayBackgroundColor = '#00000080',
     overlayEnabled = true,
@@ -55,7 +56,7 @@ export const ImagePreviewBase: React.FC<BoxProps<'div', ImagePreviewBaseProps>> 
         overlayContent={overlayContent}
         enabled={overlayEnabled}
       >
-        {value ? <Centered>{renderImage(value)}</Centered> : emptyContent}
+        {children}
       </HoverOverlay>
     </StyledBox>
   );

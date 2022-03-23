@@ -9,8 +9,6 @@ interface ImagePreviewSmallProps {
   label?: string;
   value?: any;
   onClick?: React.MouseEventHandler;
-  onClickEditLogo?: React.MouseEventHandler;
-  onClickNewLogo?: React.MouseEventHandler;
 }
 
 const WhiteButton = styled(Button)`
@@ -38,8 +36,8 @@ export const ImagePreviewSmall: React.VoidFunctionComponent<BoxProps<'div', Imag
             <WhiteButton
               variant="outlined"
               onClick={(e) => {
-                if (onClick) onClick(e);
-                if (onClickEditLogo) onClickEditLogo(e);
+                onClick?.(e);
+                onClickEditLogo?.(e);
               }}
             >
               <Edit />
@@ -50,8 +48,8 @@ export const ImagePreviewSmall: React.VoidFunctionComponent<BoxProps<'div', Imag
           <Box
             sx={{ height: '100%', cursor: 'pointer' }}
             onClick={(e) => {
-              if (onClick) onClick(e);
-              if (onClickNewLogo) onClickNewLogo(e);
+              onClick?.(e);
+              onClickNewLogo?.(e);
             }}
           >
             <Centered>Click here to select a logo</Centered>

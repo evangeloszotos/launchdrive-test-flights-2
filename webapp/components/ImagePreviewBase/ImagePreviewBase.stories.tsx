@@ -45,6 +45,17 @@ export const Default: ComponentStory<typeof ImagePreviewBase> = () => (
   />
 );
 
+export const Default2: ComponentStory<typeof ImagePreviewBase> = () => (
+  <ImagePreviewBase
+    sx={{ width: 200, height: 200 }}
+    value={LogoPlaceholder}
+    emptyContent={<Box> Click here to select a logo </Box>}
+    overlayContent={<Centered> HELLO! </Centered>}
+  >
+    <StyledImageComponent src={LogoPlaceholder} alt="ABC" />
+  </ImagePreviewBase>
+);
+
 export const CustomOverlayColor: ComponentStory<typeof ImagePreviewBase> = () => (
   <ImagePreviewBase
     sx={{ width: 200, height: 200 }}
@@ -57,7 +68,7 @@ export const CustomOverlayColor: ComponentStory<typeof ImagePreviewBase> = () =>
 
 export const ButtonsInOverlay: ComponentStory<typeof ImagePreviewBase> = () => (
   <ImagePreviewBase
-    sx={{ width: 200, height: 200 }}
+    height={200}
     value={LogoPlaceholder}
     emptyContent={<Box> Click here to select a logo </Box>}
     overlayContent={

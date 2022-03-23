@@ -73,7 +73,7 @@
     //
     "prettier/prettier": "error",
     //
-    "curly": ["error", "multi-line"],
+    "curly": "error",
     "import/extensions": "off",
     "import/no-extraneous-dependencies": "off",
     "import/prefer-default-export": "off",
