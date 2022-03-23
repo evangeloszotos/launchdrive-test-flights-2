@@ -1,22 +1,22 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { Widgets } from '@mui/icons-material';
-import { TextWithIcon } from './TextWithIcon';
+import { IconText } from './IconText';
 
 export default {
-  title: 'Components/TextWithIcon',
-  component: TextWithIcon,
+  title: 'Components/IconText',
+  component: IconText,
   argTypes: {
     fontWeight: {
       options: ['bolder', 'bold', 'medium', 'normal', 'light', 'lighter'],
       control: { type: 'radio' },
     },
   },
-} as ComponentMeta<typeof TextWithIcon>;
+} as ComponentMeta<typeof IconText>;
 
 // eslint-disable-next-line react/prop-types
-const Template: ComponentStory<typeof TextWithIcon> = (props) => (
-  <TextWithIcon icon={<Widgets />} label="LaunchDrive" {...props} />
+const Template: ComponentStory<typeof IconText> = (props) => (
+  <IconText icon={<Widgets />} label="LaunchDrive" {...props} />
 );
 
 export const Default = Template.bind({});

@@ -4,7 +4,7 @@ import { ArrowBackIosNew, Notifications, Widgets } from '@mui/icons-material';
 import React from 'react';
 import { IconButton, IconButtonTypeMap, styled } from '@mui/material';
 import { OverridableComponent } from '@mui/material/OverridableComponent';
-import TextWithIcon from '../TextWithIcon';
+import IconText from '../IconText';
 import { AppBar } from './AppBar';
 import Leslie from './Leslie.png';
 import Logo from './Logo.svg';
@@ -23,7 +23,7 @@ export const Default = () => (
   <AppBar
     logo={<img src={Logo} alt="Logo" />}
     startContent={
-      <TextWithIcon
+      <IconText
         color="white"
         label="LaunchDrive"
         icon={
@@ -46,7 +46,7 @@ export const Default = () => (
           <Widgets sx={{ fontSize: 20 }} />
         </StyledIconButton>
 
-        <TextWithIcon color="white" label="Leslie" icon={<img src={String(Leslie)} alt="Leslie" />} fontSize={12} />
+        <IconText color="white" label="Leslie" icon={<img src={String(Leslie)} alt="Leslie" />} fontSize={12} />
       </>
     }
   />
@@ -55,7 +55,7 @@ export const Default = () => (
 export const NoLogo = () => (
   <AppBar
     startContent={
-      <TextWithIcon
+      <IconText
         color="white"
         label="LaunchDrive"
         icon={
@@ -78,7 +78,7 @@ export const NoLogo = () => (
           <Widgets sx={{ fontSize: 20 }} />
         </StyledIconButton>
 
-        <TextWithIcon color="white" label="Leslie" icon={<img src={String(Leslie)} alt="Leslie" />} fontSize={12} />
+        <IconText color="white" label="Leslie" icon={<img src={String(Leslie)} alt="Leslie" />} fontSize={12} />
       </>
     }
   />
@@ -89,7 +89,7 @@ export const WideLogo = () => (
     logoWidth={128}
     logo={<img src={Logo} alt="Logo" />}
     startContent={
-      <TextWithIcon
+      <IconText
         color="white"
         label="LaunchDrive"
         icon={
@@ -112,7 +112,7 @@ export const WideLogo = () => (
           <Widgets sx={{ fontSize: 20 }} />
         </StyledIconButton>
 
-        <TextWithIcon color="white" label="Leslie" icon={<img src={String(Leslie)} alt="Leslie" />} fontSize={12} />
+        <IconText color="white" label="Leslie" icon={<img src={String(Leslie)} alt="Leslie" />} fontSize={12} />
       </>
     }
   />

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Box, Grid } from '@mui/material';
 
-export const TextWithIcon = (props) => {
+export const IconText = (props) => {
   const { icon, label, color, fontSize, letterSpacing, fontWeight, textSx } = props;
 
   return (
@@ -21,7 +21,7 @@ export const TextWithIcon = (props) => {
     </Box>
   );
 };
-TextWithIcon.propTypes = {
+IconText.propTypes = {
   icon: PropTypes.node.isRequired,
   label: PropTypes.string.isRequired,
   color: PropTypes.string,
@@ -30,7 +30,7 @@ TextWithIcon.propTypes = {
   fontWeight: PropTypes.string,
   textSx: PropTypes.object,
 };
-TextWithIcon.defaultProps = {
+IconText.defaultProps = {
   color: 'primary.main',
   fontSize: 16,
   letterSpacing: 0,
@@ -38,4 +38,4 @@ TextWithIcon.defaultProps = {
   textSx: {},
 };
 
-export default TextWithIcon;
+export default IconText;
