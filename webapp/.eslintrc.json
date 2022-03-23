@@ -45,10 +45,7 @@
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
     "react/require-default-props": "off",
-    "react/jsx-boolean-value": [
-      "error",
-      "always"
-    ],
+    "react/jsx-boolean-value": "off",
     "react/jsx-filename-extension": [
       2,
       {

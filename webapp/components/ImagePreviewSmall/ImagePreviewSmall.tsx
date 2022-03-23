@@ -7,8 +7,9 @@ import Centered from '../Centered';
 
 interface ImagePreviewSmallProps {
   label?: string;
-  value?: any;
   onClick?: React.MouseEventHandler;
+  icon?: React.ReactElement;
+  noOverlay?: boolean;
 }
 
 const WhiteButton = styled(Button)`
@@ -18,7 +19,7 @@ const WhiteButton = styled(Button)`
 `;
 
 export const ImagePreviewSmall: React.VoidFunctionComponent<BoxProps<'div', ImagePreviewSmallProps>> = (props) => {
-  const { label, value, onClick, onClickNewLogo, onClickEditLogo } = props;
+  const { label, icon = <Edit />, noOverlay = false, onClick, children } = props;
 
   return (
     <Box>
@@ -28,34 +29,23 @@ export const ImagePreviewSmall: React.VoidFunctionComponent<BoxProps<'div', Imag
         </Typography>
       ) : null}
       <ImagePreviewBase
-        value={value}
-        overlayEnabled={!!value}
-        sx={{ height: '138px' }}
+        height={138}
+        overlayEnabled={!noOverlay}
         overlayContent={
           <Centered>
             <WhiteButton
               variant="outlined"
               onClick={(e) => {
                 onClick?.(e);
-                onClickEditLogo?.(e);
               }}
             >
-              <Edit />
+              {icon}
             </WhiteButton>
           </Centered>
         }
-        emptyContent={
-          <Box
-            sx={{ height: '100%', cursor: 'pointer' }}
-            onClick={(e) => {
-              onClick?.(e);
-              onClickNewLogo?.(e);
-            }}
-          >
-            <Centered>Click here to select a logo</Centered>
-          </Box>
-        }
-      />
+      >
+        {children}
+      </ImagePreviewBase>
     </Box>
   );
 };

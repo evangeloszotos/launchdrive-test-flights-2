@@ -1,7 +1,11 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
+import { Box } from '@mui/material';
+import { Abc } from '@mui/icons-material';
 import { ImagePreviewSmall } from './ImagePreviewSmall';
 import LogoPlaceholder from '../ImagePreviewBase/LogoPlaceholder.png';
+import Centered from '../Centered';
+import ImagePreviewImage from '../ImagePreviewImage';
 
 export default {
   title: 'Components/ImagePreviewSmall',
@@ -9,36 +13,42 @@ export default {
   argTypes: {},
 } as ComponentMeta<typeof ImagePreviewSmall>;
 
-const Template: ComponentStory<typeof ImagePreviewSmall> = (args) => <ImagePreviewSmall {...args} />;
-export const Playground = Template.bind({});
-Playground.args = {
-  // onClick: action('onClick'),
-};
-
 export const Empty: ComponentStory<typeof ImagePreviewSmall> = () => (
-  <ImagePreviewSmall
-    label="Logo"
-    onClick={action('onClick')}
-    onClickEditLogo={action('onClickEditLogo')}
-    onClickNewLogo={action('onClickNewLogo')}
-  />
+  <ImagePreviewSmall label="Logo" onClick={action('onClick')} noOverlay>
+    <Box onClick={action('onClickEmpty')} height="100%">
+      <Centered>
+        <Box> Click here to select a logo </Box>
+      </Centered>
+    </Box>
+  </ImagePreviewSmall>
 );
+
+//
 
 export const Default: ComponentStory<typeof ImagePreviewSmall> = () => (
-  <ImagePreviewSmall
-    label="Logo"
-    value={LogoPlaceholder}
-    onClick={action('onClick')}
-    onClickEditLogo={action('onClickEditLogo')}
-    onClickNewLogo={action('onClickNewLogo')}
-  />
+  <ImagePreviewSmall label="Logo" onClick={action('onClick')}>
+    <Centered>
+      <ImagePreviewImage src={LogoPlaceholder} />
+    </Centered>
+  </ImagePreviewSmall>
 );
 
+//
+
 export const NoLabel: ComponentStory<typeof ImagePreviewSmall> = () => (
-  <ImagePreviewSmall
-    value={LogoPlaceholder}
-    onClick={action('onClick')}
-    onClickEditLogo={action('onClickEditLogo')}
-    onClickNewLogo={action('onClickNewLogo')}
-  />
+  <ImagePreviewSmall onClick={action('onClick')}>
+    <Centered>
+      <ImagePreviewImage src={LogoPlaceholder} />
+    </Centered>
+  </ImagePreviewSmall>
+);
+
+//
+
+export const CustomIcon: ComponentStory<typeof ImagePreviewSmall> = () => (
+  <ImagePreviewSmall label="Logo" icon={<Abc />} onClick={action('onClick')}>
+    <Centered>
+      <ImagePreviewImage src={LogoPlaceholder} />
+    </Centered>
+  </ImagePreviewSmall>
 );
