@@ -1,6 +1,6 @@
-import { useRouter } from "next/router";
-import SideBar from "../../../components/SideBar";
-import SideBarItem from "../../../components/SideBarItem";
+import { useRouter } from 'next/router';
+import SideBar from '../../../components/SideBarLegacy';
+import SideBarItem from '../../../components/SideBarItem';
 
 export default function ColumnsExample() {
   const { query } = useRouter();
@@ -8,17 +8,13 @@ export default function ColumnsExample() {
   return (
     <div className="flex flex-row">
       <SideBar className="myclass">
-        <SideBarItem name="Home" onClick={() => console.log("Clicked")} />
-        <SideBarItem
-          selected={true}
-          name="Home"
-          onClick={() => console.log("Clicked")}
-        />
-        <SideBarItem name="Home" onClick={() => console.log("Clicked")} />
-        <SideBarItem name="Home" onClick={() => console.log("Clicked")} />
-        <SideBarItem name="Home" onClick={() => console.log("Clicked")} />
-        <SideBarItem name="Home" onClick={() => console.log("Clicked")} />
-        <SideBarItem name="Home" onClick={() => console.log("Clicked")} />
+        <SideBarItem name="Home" onClick={() => console.log('Clicked')} />
+        <SideBarItem selected={true} name="Home" onClick={() => console.log('Clicked')} />
+        <SideBarItem name="Home" onClick={() => console.log('Clicked')} />
+        <SideBarItem name="Home" onClick={() => console.log('Clicked')} />
+        <SideBarItem name="Home" onClick={() => console.log('Clicked')} />
+        <SideBarItem name="Home" onClick={() => console.log('Clicked')} />
+        <SideBarItem name="Home" onClick={() => console.log('Clicked')} />
       </SideBar>
 
       <div className="w-64 bg-green-100">
