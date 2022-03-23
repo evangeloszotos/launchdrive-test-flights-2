@@ -1,3 +1,4 @@
+/* eslint-disable react/no-multi-comp */
 import { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
@@ -17,8 +18,31 @@ Default.args = {
   onChange: action('onChange'),
 };
 
-// eslint-disable-next-line react/no-multi-comp
 export const Type = () => {
+  const [value, setValue] = useState('#ff0000');
+  const [valid, setValid] = useState(true);
+
+  return (
+    <>
+      <ColorTextField
+        label="Primary"
+        value={value}
+        onChange={(e, codeValid) => {
+          action('CodeValid')(codeValid);
+
+          console.log('value', e?.target?.value);
+
+          setValid(codeValid);
+          setValue(e?.target?.value);
+        }}
+      />
+
+      <span>valid: {JSON.stringify(valid)}</span>
+    </>
+  );
+};
+
+export const DefaultProps = () => {
   const [value, setValue] = useState('#ff0000');
   const [valid, setValid] = useState(true);
 

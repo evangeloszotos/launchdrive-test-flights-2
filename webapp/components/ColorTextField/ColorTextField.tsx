@@ -1,15 +1,6 @@
-import { Box, Grid, TextField } from '@mui/material';
-import { styled } from '@mui/system';
+import { Box, Grid, TextField, TextFieldProps } from '@mui/material';
+import { BoxProps, styled } from '@mui/system';
 import React from 'react';
-
-interface ColorTextFieldBoxProps {
-  value: string;
-  regex?: RegExp;
-}
-interface ColorTextFieldProps extends ColorTextFieldBoxProps {
-  label?: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>, hexCodeValid: boolean) => void;
-}
 
 /* ============
       Styles
@@ -38,20 +29,40 @@ const StyledTextField = styled(TextField)`
      Component
    ============= */
 
+interface ColorTextFieldProps {
+  // regex: RegExp;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>, hexCodeValid: boolean) => void;
+  value: string;
+  label: string;
+  regex?: RegExp;
+}
+
 const validHexRegex = /^#([0-9a-fA-F]{3}){1,2}$/;
+// const defaultProps = {
+//   regex: validHexRegex,
+//   onChange: (e: React.ChangeEvent<HTMLInputElement>, hexCodeValid: boolean) => {},
+// };
+
 export const ColorTextField: React.VoidFunctionComponent<ColorTextFieldProps> = (props) => {
-  const { label, onChange, value, regex = validHexRegex, ...other } = props;
+  const {
+    label,
+    onChange = (e: React.ChangeEvent<HTMLInputElement>, hexCodeValid: boolean) => {},
+    regex = validHexRegex,
+    value,
+  } = props;
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     onChange(event, regex.test(event.target.value));
   };
 
   return (
-    <StyledGrid {...other} container={true}>
+    <StyledGrid container={true}>
       <StyledTextField label={label} value={value} onChange={handleChange} size="small" />
       <ColorBox sx={{ bgcolor: regex.test(value) ? value : '#000' }} />
     </StyledGrid>
   );
 };
+
+// ColorTextField.defaultProps = defaultProps;
 
 export default ColorTextField;
