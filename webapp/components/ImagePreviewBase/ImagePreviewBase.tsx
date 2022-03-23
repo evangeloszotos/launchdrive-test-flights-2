@@ -36,7 +36,7 @@ export const ImagePreviewBase: React.FC<BoxProps<'div', ImagePreviewBaseProps>> 
       <HoverOverlay
         overlayBackgroundColor={overlayBackgroundColor}
         overlayContent={overlayContent}
-        enabled={overlayEnabled}
+        disabled={!overlayEnabled}
       >
         {children}
       </HoverOverlay>

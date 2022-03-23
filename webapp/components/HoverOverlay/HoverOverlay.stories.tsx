@@ -1,5 +1,4 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-// import { action } from '@storybook/addon-actions';
 import { Box, Paper } from '@mui/material';
 import { HoverOverlay } from './HoverOverlay';
 import Centered from '../Centered';
@@ -37,4 +36,18 @@ export const UsingChildren: ComponentStory<typeof HoverOverlay> = () => (
       </Centered>
     </Box>
   </HoverOverlay>
+);
+
+export const Disabled: ComponentStory<typeof HoverOverlay> = () => (
+  <HoverOverlay
+    overlayContent={<Centered>HELLO</Centered>}
+    activatorContent={
+      <Box sx={{ border: '1px solid red', width: 200, height: 200 }}>
+        <Centered>
+          <Paper sx={{ width: 32, height: 32 }} />
+        </Centered>
+      </Box>
+    }
+    disabled
+  />
 );
