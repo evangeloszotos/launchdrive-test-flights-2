@@ -1,8 +1,9 @@
 import React from 'react';
-import { Box } from '@mui/material';
+import { Box, BoxProps } from '@mui/material';
 import { styled } from '@mui/system';
 
-interface {{name}}Props {
+// Extending BoxProps enables theusage of all parameters available for a mui box
+interface {{name}}Props extends BoxProps {
   propName1: string;
   propName2: number;
   propName3: unknown;
@@ -46,7 +47,7 @@ export const {{name}}: React.FC<{{name}}Props> = (props) => {
     ...other,
   } = props;
 
-  return <StyledBox {...props}> {children} </StyledBox>;
+  return <StyledBox {...other}> {children} </StyledBox>;
 };
 
 export default {{name}};
