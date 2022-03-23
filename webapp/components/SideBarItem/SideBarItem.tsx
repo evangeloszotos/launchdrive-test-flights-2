@@ -1,4 +1,4 @@
-import { alpha, Box, BoxProps, Grid, styled } from '@mui/material';
+import { alpha, Box, BoxProps, Grid, styled, Tooltip } from '@mui/material';
 import React from 'react';
 import { theme } from '../../mui-theme';
 
@@ -10,6 +10,7 @@ export interface SideBarItemProperties extends BoxProps {
   color?: string;
   colorSelected?: string;
   justifyContent?: 'flex-start' | 'flex-end' | 'center';
+  tooltip?: string;
 }
 
 const SidebarItemBase = styled<React.FC<SideBarItemProperties>>(Box)((props) => {
@@ -30,14 +31,16 @@ const SidebarItemBase = styled<React.FC<SideBarItemProperties>>(Box)((props) => 
 });
 
 export const SideBarItem: React.FC<SideBarItemProperties> = (props) => {
-  const { children, onClick, justifyContent = 'center', ...other } = props;
+  const { tooltip = '', children, justifyContent = 'center', ...other } = props;
 
   return (
-    <SidebarItemBase {...other} onClick={onClick}>
-      <Grid container={true} justifyContent={justifyContent} alignItems="center">
-        {children}
-      </Grid>
-    </SidebarItemBase>
+    <Tooltip title={tooltip} placement="right">
+      <SidebarItemBase {...other}>
+        <Grid container={true} justifyContent={justifyContent} alignItems="center">
+          {children}
+        </Grid>
+      </SidebarItemBase>
+    </Tooltip>
   );
 };
 

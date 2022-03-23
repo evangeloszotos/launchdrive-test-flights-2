@@ -3,7 +3,6 @@ import { action } from '@storybook/addon-actions';
 import { Adb, AirlineSeatLegroomNormal } from '@mui/icons-material';
 import React, { useState } from 'react';
 import { SideBar } from './SideBar';
-import SideBarItemPrefabTestbuilder from '../SideBarItemPrefabTestbuilder';
 import SideBarItemLink from '../SideBarItemLink';
 import SideBarItem from '../SideBarItem';
 import SideBarItemLabel from '../SideBarItemLabel';
@@ -40,28 +39,6 @@ export const Default: ComponentStory<typeof SideBar> = () => (
 
 //
 
-export const UsingPrefabs: ComponentStory<typeof SideBar> = () => (
-  <SideBar>
-    <SideBarItemLink href="/home">
-      <SideBarItemPrefabTestbuilder icon={<Adb />} label="Home" />
-    </SideBarItemLink>
-    <SideBarItemLink href="/trending" selected={true}>
-      <SideBarItemPrefabTestbuilder icon={<AirlineSeatLegroomNormal />} label="Trending" />
-    </SideBarItemLink>
-    <SideBarItemLink href="/bookmarks">
-      <SideBarItemPrefabTestbuilder icon={<Adb />} label="Landing Page" />
-    </SideBarItemLink>
-    <SideBarItem onClick={action('onClick')}>
-      <SideBarItemPrefabTestbuilder icon={<Adb />} label="Event" />
-    </SideBarItem>
-    <SideBarItem onClick={action('onClick')}>
-      <SideBarItemPrefabTestbuilder icon={<Adb />} />
-    </SideBarItem>
-  </SideBar>
-);
-
-//
-
 export const CustomColors: ComponentStory<typeof SideBar> = () => (
   <SideBar>
     <SideBarItemLink href="/home" selected={true} colorSelected="#347C3C" backgroundColorSelected="#347C3C1E">
@@ -88,7 +65,7 @@ export const CustomColors: ComponentStory<typeof SideBar> = () => (
 
 //
 
-export const Expanded: ComponentStory<typeof SideBar> = () => {
+export const Expandable: ComponentStory<typeof SideBar> = () => {
   const [expanded, setExpanded] = useState(true);
 
   return (
@@ -118,3 +95,29 @@ export const Expanded: ComponentStory<typeof SideBar> = () => {
     </SideBar>
   );
 };
+
+//
+
+export const Tooltip: ComponentStory<typeof SideBar> = () => (
+  <SideBar>
+    <SideBarItemLink href="/home" tooltip="Home">
+      <Adb />
+      <SideBarItemLabel> Home </SideBarItemLabel>
+    </SideBarItemLink>
+    <SideBarItemLink href="/trending" tooltip="Trending" selected={true}>
+      <AirlineSeatLegroomNormal />
+      <SideBarItemLabel> Trending </SideBarItemLabel>
+    </SideBarItemLink>
+    <SideBarItemLink href="/bookmarks" tooltip="Landing Page">
+      <Adb />
+      <SideBarItemLabel> Landing Page </SideBarItemLabel>
+    </SideBarItemLink>
+    <SideBarItem onClick={action('onClick')} tooltip="Event">
+      <Adb />
+      <SideBarItemLabel> Event </SideBarItemLabel>
+    </SideBarItem>
+    <SideBarItem onClick={action('onClick')} tooltip="FooBar">
+      <Adb />
+    </SideBarItem>
+  </SideBar>
+);
