@@ -18,7 +18,7 @@ export const TemplateCard: React.FC<TemplateCardProps> = (props) => {
   return (
     <Card
       sx={{
-        maxWidth: 450,
+        maxWidth: 374,
         borderRadius: '10px',
       }}
       variant="outlined"
@@ -33,7 +33,9 @@ export const TemplateCard: React.FC<TemplateCardProps> = (props) => {
         alt="green iguana"
         showOverlay={showOverlay}
       >
-        <Box sx={{ backgroundColor: '#00000080', width: '100%', height: '100%' }}>
+        <Box
+          sx={{ backgroundColor: '#00000080', width: '100%', height: '100%' }}
+        >
           <Centered>
             <Stack direction="row" spacing={1}>
               {actions}
@@ -43,7 +45,10 @@ export const TemplateCard: React.FC<TemplateCardProps> = (props) => {
       </CardMediaWithOverlay>
       <CardContent>
         <Typography sx={{ fontSize: 24, mb: 0.5 }}> {title} </Typography>
-        <Typography sx={{ fontSize: 14, lineHeight: '20px', mb: 0.75 }}> {description} </Typography>
+        <Typography sx={{ fontSize: 14, lineHeight: '20px', mb: 0.75 }}>
+          {' '}
+          {description}{' '}
+        </Typography>
         <Stack direction="row" spacing={0.75}>
           {tags}
         </Stack>

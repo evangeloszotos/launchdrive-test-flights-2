@@ -38,7 +38,7 @@ export const TestFlightVariantPage: NextPage = () => {
   const variant = useSelector(selectors.selectTestFlightVariant);
 
   return (
-    <Stack>
+    <Stack sx={{ height: '100vh' }}>
       <Head>
         <title>TestFlightVariantPage</title>
         <meta name="description" content="" />

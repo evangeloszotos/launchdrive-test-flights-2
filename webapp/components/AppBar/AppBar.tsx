@@ -15,9 +15,11 @@ interface AppBarProps extends AppBarStyleProps, MuiAppBarProps {
 
 //
 
-const StyledMuiAppBar = styled<React.FC<AppBarStyleProps>>(MuiAppBar)((props) => ({
-  backgroundColor: props.backgroundColor,
-}));
+const StyledMuiAppBar = styled<React.FC<AppBarStyleProps>>(MuiAppBar)(
+  (props) => ({
+    backgroundColor: props.backgroundColor,
+  })
+);
 const StyledToolbar = styled(Toolbar)`
   padding-left: 0 !important;
 `;
@@ -43,24 +45,48 @@ export const AppBar: React.VoidFunctionComponent<AppBarProps> = (props) => {
   } = props;
 
   return (
-    <StyledMuiAppBar backgroundColor={backgroundColor} {...other}>
+    <StyledMuiAppBar backgroundColor={backgroundColor} elevation={0} {...other}>
       <StyledToolbar variant="dense">
         <Grid container={true} alignItems="center">
           {logo && (
-            <LogoContainer container={true} justifyContent="center" width={logoWidth}>
+            <LogoContainer
+              container={true}
+              justifyContent="center"
+              width={logoWidth}
+            >
               {logo}
             </LogoContainer>
           )}
-          <ContentContainer container={true} justifyContent="space-between" alignItems="center" height="100%">
-            <Grid container={true} width="auto" alignItems="center" justifyContent="flex-start">
+          <ContentContainer
+            container={true}
+            justifyContent="space-between"
+            alignItems="center"
+            height="100%"
+          >
+            <Grid
+              container={true}
+              width="auto"
+              alignItems="center"
+              justifyContent="flex-start"
+            >
               {startContent}
             </Grid>
 
-            <Grid container={true} width="auto" alignItems="center" justifyContent="center">
+            <Grid
+              container={true}
+              width="auto"
+              alignItems="center"
+              justifyContent="center"
+            >
               {centerContent}
             </Grid>
 
-            <Grid container={true} width="auto" alignItems="center" justifyContent="flex-end">
+            <Grid
+              container={true}
+              width="auto"
+              alignItems="center"
+              justifyContent="flex-end"
+            >
               {endContent}
             </Grid>
           </ContentContainer>
