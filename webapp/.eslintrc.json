@@ -72,7 +72,7 @@
     "unicorn/prefer-array-some": "warn",
     "unicorn/prefer-includes": "warn",
     //
-    "prettier/prettier": "error",
+    "prettier/prettier": "off",
     //
     "curly": "error",
     "import/extensions": "off",
@@ -108,3 +108,4 @@
     }
   }
 }
+
