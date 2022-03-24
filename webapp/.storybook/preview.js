@@ -3,6 +3,7 @@ import * as NextImage from 'next/image';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
 import { ThemeProvider } from '@mui/material/styles';
 import { theme } from '../mui-theme';
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 
 const OriginalNextImage = NextImage.default;
 
@@ -19,6 +20,17 @@ export const decorators = [
   ),
 ];
 
+const customViewports = {
+  ...INITIAL_VIEWPORTS,
+  macBookPro: {
+    name: 'MacBook Pro',
+    styles: {
+      width: '1512px',
+      height: '928px',
+    },
+  },
+};
+
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
@@ -30,4 +42,5 @@ export const parameters = {
   nextRouter: {
     Provider: RouterContext.Provider,
   },
+  viewport: { viewports: customViewports },
 };
