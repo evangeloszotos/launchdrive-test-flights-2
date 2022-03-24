@@ -52,7 +52,11 @@ export const AppBar: React.VoidFunctionComponent<AppBarProps> = (props) => {
   } = props;
 
   return (
-    <StyledMuiAppBar backgroundColor={backgroundColor} {...other}>
+    <StyledMuiAppBar
+      position="static"
+      backgroundColor={backgroundColor}
+      {...other}
+    >
       <StyledToolbar variant="dense">
         <Grid container alignItems="center">
           {logo && (
