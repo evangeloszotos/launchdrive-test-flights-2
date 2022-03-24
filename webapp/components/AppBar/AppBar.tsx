@@ -1,11 +1,15 @@
 import React from 'react';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
-import { Grid, styled, Toolbar } from '@mui/material';
+import { Grid, GridTypeMap, styled, Toolbar } from '@mui/material';
+import { OverridableComponent } from '@mui/types';
 
 interface AppBarStyleProps {
   backgroundColor?: string;
 }
-interface AppBarProps extends AppBarStyleProps, MuiAppBarProps {
+interface LogoStyleProps {
+  dividerColor?: string;
+}
+interface AppBarProps extends AppBarStyleProps, LogoStyleProps, MuiAppBarProps {
   logoWidth?: number;
   logo: React.ReactElement;
   startContent?: React.ReactElement;
@@ -15,15 +19,19 @@ interface AppBarProps extends AppBarStyleProps, MuiAppBarProps {
 
 //
 
-const StyledMuiAppBar = styled<React.FC<AppBarStyleProps>>(MuiAppBar)((props) => ({
-  backgroundColor: props.backgroundColor,
-}));
+const StyledMuiAppBar = styled<React.FC<AppBarStyleProps>>(MuiAppBar)(
+  (props) => ({
+    backgroundColor: props.backgroundColor,
+  })
+);
 const StyledToolbar = styled(Toolbar)`
   padding-left: 0 !important;
 `;
-const LogoContainer = styled(Grid)`
-  border-right: 1px solid rgba(255, 255, 255, 0.3);
-`;
+const LogoContainer = styled<
+  OverridableComponent<GridTypeMap<LogoStyleProps, 'div'>>
+>(Grid)((props) => ({
+  borderRight: `1px solid ${props.dividerColor}`,
+}));
 const ContentContainer = styled(Grid)`
   width: auto;
   flex-grow: 1;
@@ -35,6 +43,7 @@ export const AppBar: React.VoidFunctionComponent<AppBarProps> = (props) => {
   const {
     logoWidth = 64,
     backgroundColor = '#010D31',
+    dividerColor = '#4d556e',
     logo,
     startContent,
     centerContent,
@@ -45,22 +54,47 @@ export const AppBar: React.VoidFunctionComponent<AppBarProps> = (props) => {
   return (
     <StyledMuiAppBar backgroundColor={backgroundColor} {...other}>
       <StyledToolbar variant="dense">
-        <Grid container={true} alignItems="center">
+        <Grid container alignItems="center">
           {logo && (
-            <LogoContainer container={true} justifyContent="center" width={logoWidth}>
+            <LogoContainer
+              container
+              justifyContent="center"
+              width={logoWidth}
+              dividerColor={dividerColor}
+            >
               {logo}
             </LogoContainer>
           )}
-          <ContentContainer container={true} justifyContent="space-between" alignItems="center" height="100%">
-            <Grid container={true} width="auto" alignItems="center" justifyContent="flex-start">
+          <ContentContainer
+            container
+            justifyContent="space-between"
+            alignItems="center"
+            height="100%"
+          >
+            <Grid
+              container
+              width="auto"
+              alignItems="center"
+              justifyContent="flex-start"
+            >
               {startContent}
             </Grid>
 
-            <Grid container={true} width="auto" alignItems="center" justifyContent="center">
+            <Grid
+              container
+              width="auto"
+              alignItems="center"
+              justifyContent="center"
+            >
               {centerContent}
             </Grid>
 
-            <Grid container={true} width="auto" alignItems="center" justifyContent="flex-end">
+            <Grid
+              container
+              width="auto"
+              alignItems="center"
+              justifyContent="flex-end"
+            >
               {endContent}
             </Grid>
           </ContentContainer>
