@@ -1,33 +1,40 @@
 /* eslint-disable no-use-before-define */
-import React from 'react';
 import {
-  Box,
   Grid,
   Stack,
   Stepper,
   styled,
   Step,
   StepLabel,
-  StepContent,
   Typography,
   Button,
-  GlobalStyles,
   ButtonProps,
   Chip,
+  IconButton,
 } from '@mui/material';
 import {
-  BorderColor,
-  DynamicForm,
-  Menu,
-  MenuTwoTone,
+  AutoFixHighOutlined,
+  BorderColorOutlined,
+  Close,
+  ContentPasteSearch,
+  DynamicFormOutlined,
+  FactCheckOutlined,
 } from '@mui/icons-material';
+import { teal } from '@mui/material/colors';
+import { useDispatch, useSelector } from 'react-redux';
 import SideBar from '../components/SideBar';
 import SideBarItem from '../components/SideBarItem';
 import SideBarItemLabel from '../components/SideBarItemLabel';
 import TemplateCard from '../components/TemplateCard';
-import { teal } from '@mui/material/colors';
+import TemplatePreviewDialog from '../components/TemplatePreviewDialog';
+import TemplatePreviewDialogAppBar from '../components/TemplatePreviewDialog/TemplatePreviewDialogAppBar';
+import DesktopMobileToggle from '../components/DeskopMobileToggle';
+import TemplatePreviewDialogImage from '../components/TemplatePreviewDialog/TemplatePreviewImage';
+import TemplatePreviewDialogContent from '../components/TemplatePreviewDialog/TemplatePreviewDialogContent';
+import templatePreviewSlice from '../store/test-flight/templatePreviewSlice';
+import { selectTemplatePreviewState } from '../store/test-flight/selectors';
 
-const separatorColor = '#010d31';
+const separatorColor = '#E0E0E0';
 // const separatorColor = 'red';
 const SideBarPane = styled(Grid)`
   /* background-color: red; */
@@ -82,129 +89,255 @@ const ColorButton = styled(Button)<
   })
 );
 
-export const TestFlightVariantDetail = () => (
-  <Stack sx={{ height: '100%' }} direction="row">
-    <SideBarPane>
-      <SideBar>
-        <SideBarItem selected>
-          <BorderColor />
-          <SideBarItemLabel>Setup</SideBarItemLabel>
-        </SideBarItem>
-        <SideBarItem>
-          <DynamicForm />
-          <SideBarItemLabel>Landing Page</SideBarItemLabel>
-        </SideBarItem>
-      </SideBar>
-    </SideBarPane>
+interface TestFlightTemplate {
+  name: string;
+  description: string;
+  coverUrl: string; // posterUrl?
+  desktopUrl: string;
+  mobileUrl: string;
+  tags: string[];
+}
 
-    <StepperPane>
-      <Typography variant="h6" sx={{ mt: '16px', mb: '32px' }}>
-        Setup
-      </Typography>
+const templates: TestFlightTemplate[] = [
+  {
+    name: 'Tropical Lift',
+    description: 'Lorem ipsum dolor sit amet.',
 
-      <Stepper orientation="vertical">
-        <Step>
-          <StepLabel>Template</StepLabel>
-        </Step>
-        <Step>
-          <StepLabel>Name &amp; Logo</StepLabel>
-        </Step>
-        <Step>
-          <StepLabel>Color</StepLabel>
-        </Step>
-        <Step>
-          <StepLabel>Font</StepLabel>
-        </Step>
-      </Stepper>
-    </StepperPane>
+    coverUrl:
+      'https://www.gettyimages.de/gi-resources/images/500px/983794168.jpg',
 
-    <ContentPane>
-      <Typography sx={{ mt: '32px', mb: '20px' }} variant="h5">
-        Select a template
-      </Typography>
+    desktopUrl:
+      'https://images.pexels.com/photos/594452/pexels-photo-594452.jpeg',
 
-      {/* TemplateSelectionContainer */}
-      <Grid container={true} spacing={2} columns={3}>
-        {/* Card */}
-        {renderGridItem({
-          title: 'Tropical Lift',
-          description: 'Lorem ipsum dolor sit amet.',
-          imageSrc:
-            'https://www.gettyimages.de/gi-resources/images/500px/983794168.jpg',
-          tags: ['Automotive', 'Energy'],
-        })}
-        {/* Card */}
-        {renderGridItem({
-          title: 'Rocket Science',
-          description: 'Lorem ipsum dolor sit amet.',
+    mobileUrl:
+      'https://images.pexels.com/photos/11463999/pexels-photo-11463999.jpeg',
 
-          imageSrc:
-            'https://images.pexels.com/photos/674010/pexels-photo-674010.jpeg?cs=srgb&dl=pexels-anjana-c-674010.jpg&fm=jpg',
-          tags: ['Art'],
-        })}
-        {renderGridItem({
-          title: 'Template 3',
-          description: 'Lorem ipsum dolor sit amet,',
-          imageSrc:
-            'https://www.gettyimages.de/gi-resources/images/500px/983794168.jpg',
-          tags: ['Production'],
-        })}
-        {renderGridItem({
-          title: 'Template 4',
-          description: 'Lorem ipsum dolor sit amet,',
-          imageSrc:
-            'https://www.gettyimages.de/gi-resources/images/500px/983794168.jpg',
-          tags: ['Industry'],
-        })}
-        {renderGridItem({
-          title: 'Template 5',
-          description: 'Lorem ipsum dolor sit amet,',
-          imageSrc:
-            'https://www.gettyimages.de/gi-resources/images/500px/983794168.jpg',
-          tags: ['Industry'],
-        })}
-      </Grid>
-    </ContentPane>
-  </Stack>
-);
+    tags: ['Automotive', 'Energy'],
+  },
+  {
+    name: 'Rocket Science',
+    description: 'Lorem ipsum dolor sit amet.',
+
+    coverUrl:
+      'https://www.gettyimages.de/gi-resources/images/500px/983794168.jpg',
+
+    desktopUrl:
+      'https://images.pexels.com/photos/594452/pexels-photo-594452.jpeg',
+
+    mobileUrl:
+      'https://images.pexels.com/photos/11463999/pexels-photo-11463999.jpeg',
+    tags: ['Art'],
+  },
+  {
+    name: 'Daily Scrum',
+    description: 'Lorem ipsum dolor sit amet.',
+
+    coverUrl:
+      'https://www.gettyimages.de/gi-resources/images/500px/983794168.jpg',
+
+    desktopUrl:
+      'https://images.pexels.com/photos/594452/pexels-photo-594452.jpeg',
+
+    mobileUrl:
+      'https://images.pexels.com/photos/11463999/pexels-photo-11463999.jpeg',
+
+    tags: ['Production'],
+  },
+  {
+    name: 'San Tropez',
+    description: 'Lorem ipsum dolor sit amet.',
+
+    coverUrl:
+      'https://www.gettyimages.de/gi-resources/images/500px/983794168.jpg',
+
+    desktopUrl:
+      'https://images.pexels.com/photos/594452/pexels-photo-594452.jpeg',
+
+    mobileUrl:
+      'https://images.pexels.com/photos/11463999/pexels-photo-11463999.jpeg',
+
+    tags: ['Travel'],
+  },
+  {
+    name: 'Generic Template',
+    description: 'Lorem ipsum dolor sit amet.',
+    coverUrl:
+      'https://www.gettyimages.de/gi-resources/images/500px/983794168.jpg',
+
+    desktopUrl:
+      'https://images.pexels.com/photos/594452/pexels-photo-594452.jpeg',
+
+    mobileUrl:
+      'https://images.pexels.com/photos/11463999/pexels-photo-11463999.jpeg',
+
+    tags: ['AllStars'],
+  },
+];
+
+const macBookStyleProps = {
+  width: '1512px',
+  borderRight: `thin solid ${separatorColor}`,
+};
+
+export const TestFlightVariantDetail = () => {
+  const dispatch = useDispatch();
+  const templatePreviewState = useSelector(selectTemplatePreviewState);
+
+  return (
+    <Stack height="100%" sx={macBookStyleProps} direction="row">
+      {/*  Overlays */}
+      <TemplatePreviewDialog open={templatePreviewState.open}>
+        <TemplatePreviewDialogAppBar
+          startContent={
+            <Typography variant="h6" noWrap={true}>
+              {templatePreviewState.title}
+            </Typography>
+          }
+          centerContent={
+            <DesktopMobileToggle
+              value={templatePreviewState.format}
+              // TODO: adjust onChange format type 'desktop' | 'mobile'
+              onChange={(e, format) => {
+                // Check to compensate Bug in DesktopMobileToggle
+                if (format) {
+                  dispatch(templatePreviewSlice.actions.formatChanged(format));
+                }
+              }}
+            />
+          }
+          endContent={
+            <IconButton
+              onClick={() => {
+                console.log('Close Template Preview');
+                dispatch(templatePreviewSlice.actions.closed());
+              }}
+            >
+              <Close />
+            </IconButton>
+          }
+        />
+        <TemplatePreviewDialogContent>
+          {/* TODO:  TemplatePreviewDialogImage.src should accept [null or undefined]  */}
+          {templatePreviewState.activeSrc && (
+            <TemplatePreviewDialogImage src={templatePreviewState.activeSrc} />
+          )}
+        </TemplatePreviewDialogContent>
+      </TemplatePreviewDialog>
+
+      <SideBarPane>
+        {/* This will become a standalone connected sidebar */}
+        <SideBar>
+          <SideBarItem selected>
+            <BorderColorOutlined />
+            <SideBarItemLabel>Setup</SideBarItemLabel>
+          </SideBarItem>
+          <SideBarItem>
+            <DynamicFormOutlined />
+            <SideBarItemLabel>Landing Page</SideBarItemLabel>
+          </SideBarItem>
+          <SideBarItem>
+            <ContentPasteSearch />
+            <SideBarItemLabel>Landing Page</SideBarItemLabel>
+          </SideBarItem>
+          <SideBarItem>
+            <FactCheckOutlined />
+            <SideBarItemLabel>Campaign</SideBarItemLabel>
+          </SideBarItem>
+          <SideBarItem>
+            <AutoFixHighOutlined />
+            <SideBarItemLabel>Landing Page</SideBarItemLabel>
+          </SideBarItem>
+        </SideBar>
+      </SideBarPane>
+
+      <StepperPane>
+        <Typography variant="h6" sx={{ mt: '16px', mb: '32px' }}>
+          Setup
+        </Typography>
+
+        <Stepper orientation="vertical">
+          <Step>
+            <StepLabel>Template</StepLabel>
+          </Step>
+          <Step>
+            <StepLabel>Name &amp; Logo</StepLabel>
+          </Step>
+          <Step>
+            <StepLabel>Color</StepLabel>
+          </Step>
+          <Step>
+            <StepLabel>Font</StepLabel>
+          </Step>
+        </Stepper>
+      </StepperPane>
+
+      <ContentPane>
+        <Typography sx={{ mt: '32px', mb: '20px' }} variant="h5">
+          Select a template
+        </Typography>
+
+        {/* TemplateSelectionContainer */}
+        <Grid container={true} spacing={2} columns={3}>
+          {templates.map(
+            ({
+              name = '',
+              description = '',
+              coverUrl,
+              tags = ['Industry'],
+              desktopUrl,
+              mobileUrl,
+            }) => (
+              <Grid item={true} xs={1}>
+                <TemplateCard
+                  templatePreviewImageSrc={coverUrl}
+                  // TODO: Rename to overlayContent?
+                  // TODO: Allow react node, multiple elements
+                  // can be provided with Fragment (<></>) naturally
+                  actions={[
+                    <ColorButton
+                      variant="contained"
+                      color="primary"
+                      mainColor={teal[500]}
+                      mainColorHover={teal[700]}
+                      textColor="#fff"
+                      onClick={() => {
+                        console.log('Selected:', name);
+                      }}
+                    >
+                      Select
+                    </ColorButton>,
+
+                    <ColorButton
+                      variant="outlined"
+                      color="primary"
+                      textColor="#fff"
+                      borderColor="#fff"
+                      onClick={() => {
+                        dispatch(
+                          templatePreviewSlice.actions.opened({
+                            title: name,
+                            desktopUrl,
+                            mobileUrl,
+                          })
+                        );
+                      }}
+                    >
+                      Preview
+                    </ColorButton>,
+                  ]}
+                  title={name}
+                  description={description}
+                  tags={tags.map((tag) => (
+                    <Chip label={tag} variant="outlined" size="small" />
+                  ))}
+                />
+              </Grid>
+            )
+          )}
+        </Grid>
+      </ContentPane>
+    </Stack>
+  );
+};
 
 export default TestFlightVariantDetail;
-
-function renderGridItem({
-  title = '',
-  description = '',
-  imageSrc,
-  tags = ['Industry'],
-}) {
-  return (
-    <Grid item={true} xs={1}>
-      <TemplateCard
-        templatePreviewImageSrc={imageSrc}
-        actions={[
-          <ColorButton
-            variant="contained"
-            color="primary"
-            mainColor={teal[500]}
-            mainColorHover={teal[700]}
-            textColor="#fff"
-          >
-            Select
-          </ColorButton>,
-          <ColorButton
-            variant="outlined"
-            color="primary"
-            textColor="#fff"
-            borderColor="#fff"
-          >
-            Preview
-          </ColorButton>,
-        ]}
-        title={title}
-        description={description}
-        tags={tags.map((tag) => (
-          <Chip label={tag} variant="outlined" size="small" />
-        ))}
-      />
-    </Grid>
-  );
-}

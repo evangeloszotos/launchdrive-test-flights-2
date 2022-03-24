@@ -23,7 +23,9 @@ export const DesktopViewSelected = () => (
           Startup Website
         </Typography>
       }
-      centerContent={<DesktopMobileToggle state="desktop" onChange={action('onChange')} />}
+      centerContent={
+        <DesktopMobileToggle value="desktop" onChange={action('onChange')} />
+      }
       endContent={
         <IconButton onClick={action('onClose')}>
           <CloseIcon />
@@ -44,7 +46,9 @@ export const MobileViewSelected = () => (
           Startup Website
         </Typography>
       }
-      centerContent={<DesktopMobileToggle state="mobile" onChange={action('onChange')} />}
+      centerContent={
+        <DesktopMobileToggle value="mobile" onChange={action('onChange')} />
+      }
       endContent={
         <IconButton onClick={action('onClose')}>
           <CloseIcon />
@@ -62,11 +66,14 @@ export const VeryLongTitle = () => (
     <TemplatePreviewDialogAppBar
       startContent={
         <Typography variant="h6" noWrap={true}>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-          dolore magna aliquyam erat, sed diam voluptua.
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
+          sed diam voluptua.
         </Typography>
       }
-      centerContent={<DesktopMobileToggle state="desktop" onChange={action('onChange')} />}
+      centerContent={
+        <DesktopMobileToggle value="desktop" onChange={action('onChange')} />
+      }
       endContent={
         <IconButton onClick={action('onClose')}>
           <CloseIcon />
@@ -88,7 +95,9 @@ export const SmallPicture = () => (
           Startup Website
         </Typography>
       }
-      centerContent={<DesktopMobileToggle state="desktop" onChange={action('onChange')} />}
+      centerContent={
+        <DesktopMobileToggle value="desktop" onChange={action('onChange')} />
+      }
       endContent={
         <IconButton onClick={action('onClose')}>
           <CloseIcon />
@@ -109,7 +118,9 @@ export const OversizedPicture = () => (
           Startup Website
         </Typography>
       }
-      centerContent={<DesktopMobileToggle state="desktop" onChange={action('onChange')} />}
+      centerContent={
+        <DesktopMobileToggle value="desktop" onChange={action('onChange')} />
+      }
       endContent={
         <IconButton onClick={action('onClose')}>
           <CloseIcon />
@@ -132,8 +143,8 @@ export const MultipleCenterContent = () => (
       }
       centerContent={
         <>
-          <DesktopMobileToggle state="desktop" onChange={action('onChange')} />
-          <DesktopMobileToggle state="desktop" onChange={action('onChange')} />
+          <DesktopMobileToggle value="desktop" onChange={action('onChange')} />
+          <DesktopMobileToggle value="desktop" onChange={action('onChange')} />
         </>
       }
       endContent={

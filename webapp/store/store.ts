@@ -5,6 +5,7 @@ import testFlightSlice from './test-flight/testFlightSlice';
 import testFlightVariantSlice from './test-flight/testFlightVariantSlice';
 import testFlightSaga from './test-flight/testFlightSaga';
 import selectedVariantSlice from './test-flight/variantSelectionSlice';
+import templatePreviewSlice from './test-flight/templatePreviewSlice';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -15,6 +16,7 @@ export const store = configureStore({
     testFlights: testFlightSlice.reducer,
     testFlightVariants: testFlightVariantSlice.reducer,
     selectedVariantId: selectedVariantSlice.reducer,
+    templatePreview: templatePreviewSlice.reducer,
   }),
 });
 

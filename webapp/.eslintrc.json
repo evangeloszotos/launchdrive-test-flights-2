@@ -16,7 +16,7 @@
     "@typescript-eslint/array-type": [
       "error",
       {
-        "default": "generic"
+        "default": "array-simple"
       }
     ],
     "@typescript-eslint/consistent-type-definitions": ["error", "interface"],
@@ -74,12 +74,20 @@
     //
     "prettier/prettier": "off",
     //
+    "no-param-reassign": [
+      "error",
+      { "props": true, "ignorePropertyModificationsFor": ["state"] }
+    ],
     "curly": "error",
     "import/extensions": "off",
     "import/no-extraneous-dependencies": "off",
     "import/prefer-default-export": "off",
     "jsx-a11y/no-static-element-interactions": "off",
-    "lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }],
+    "lines-between-class-members": [
+      "error",
+      "always",
+      { "exceptAfterSingleLine": true }
+    ],
     "no-console": "off",
     "no-restricted-syntax": [
       "error",
@@ -108,4 +116,3 @@
     }
   }
 }
-

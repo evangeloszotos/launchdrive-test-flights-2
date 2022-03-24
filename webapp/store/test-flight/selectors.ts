@@ -20,3 +20,7 @@ export const selectTestFlightVariant = createSelector(
   selectedVariantId,
   (state, id) => testFlightVariantById(state, id)
 );
+
+// TemplatePreview
+export const selectTemplatePreviewState = (state: RootState) =>
+  state.templatePreview;
