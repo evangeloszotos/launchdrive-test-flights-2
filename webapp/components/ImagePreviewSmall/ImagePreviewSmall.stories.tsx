@@ -14,7 +14,7 @@ export default {
 } as ComponentMeta<typeof ImagePreviewSmall>;
 
 export const Empty: ComponentStory<typeof ImagePreviewSmall> = () => (
-  <ImagePreviewSmall label="Logo" onClick={action('onClick')} noOverlay>
+  <ImagePreviewSmall label="Logo" onClick={action('onClick')} disableOverlay>
     <Box onClick={action('onClickEmpty')} height="100%">
       <Centered>
         <Box> Click here to select a logo </Box>

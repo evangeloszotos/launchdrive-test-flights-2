@@ -13,7 +13,7 @@ interface ImagePreviewStyleProps extends BoxProps {
 interface ImagePreviewBaseProps extends ImagePreviewStyleProps {
   overlayContent: React.ReactElement;
   overlayBackgroundColor?: string;
-  overlayEnabled?: boolean;
+  disableOverlay?: boolean;
 }
 
 const StyledBox = styled<React.FC<ImagePreviewStyleProps>>(Box)((props) => {
@@ -29,14 +29,14 @@ const StyledBox = styled<React.FC<ImagePreviewStyleProps>>(Box)((props) => {
 });
 
 export const ImagePreviewBase: React.FC<BoxProps<'div', ImagePreviewBaseProps>> = (props) => {
-  const { children, overlayContent, overlayBackgroundColor = '#00000080', overlayEnabled = true, ...other } = props;
+  const { children, overlayContent, overlayBackgroundColor = '#00000080', disableOverlay = false, ...other } = props;
 
   return (
     <StyledBox {...other}>
       <HoverOverlay
         overlayBackgroundColor={overlayBackgroundColor}
         overlayContent={overlayContent}
-        disabled={!overlayEnabled}
+        disabled={disableOverlay}
       >
         {children}
       </HoverOverlay>

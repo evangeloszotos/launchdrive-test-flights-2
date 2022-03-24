@@ -9,7 +9,7 @@ interface ImagePreviewSmallProps {
   label?: string;
   onClick?: React.MouseEventHandler;
   icon?: React.ReactElement;
-  noOverlay?: boolean;
+  disableOverlay?: boolean;
 }
 
 const WhiteButton = styled(Button)`
@@ -19,7 +19,7 @@ const WhiteButton = styled(Button)`
 `;
 
 export const ImagePreviewSmall: React.VoidFunctionComponent<BoxProps<'div', ImagePreviewSmallProps>> = (props) => {
-  const { label, icon = <Edit />, noOverlay = false, onClick, children } = props;
+  const { label, icon = <Edit />, disableOverlay = false, onClick, children } = props;
 
   return (
     <Box>
@@ -30,7 +30,7 @@ export const ImagePreviewSmall: React.VoidFunctionComponent<BoxProps<'div', Imag
       ) : null}
       <ImagePreviewBase
         height={138}
-        overlayEnabled={!noOverlay}
+        disableOverlay={disableOverlay}
         overlayContent={
           <Centered>
             <WhiteButton

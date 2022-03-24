@@ -7,7 +7,6 @@ interface HoverOverlayStyleProps {
 }
 interface HoverOverlayProps extends HoverOverlayStyleProps, BoxProps {
   overlayContent: React.ReactElement;
-  activatorContent?: React.ReactElement;
   disabled?: boolean;
 }
 
@@ -32,7 +31,6 @@ const OverlayBackgroundBox = styled<React.FC<HoverOverlayStyleProps>>(Box)((prop
 
 export const HoverOverlay: React.FC<HoverOverlayProps> = (props) => {
   const {
-    activatorContent,
     children,
     overlayContent,
     overlayBackgroundColor,
@@ -55,7 +53,7 @@ export const HoverOverlay: React.FC<HoverOverlayProps> = (props) => {
       }}
       {...other}
     >
-      {activatorContent ?? children}
+      {children}
       <Fade in={showOverlay}>
         <OverlayBackgroundBox overlayBackgroundColor={overlayBackgroundColor}>{overlayContent}</OverlayBackgroundBox>
       </Fade>
