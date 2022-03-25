@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
 import { teal } from '@mui/material/colors';
 import { styled } from '@mui/system';
-import { Box, Button, ButtonProps, Chip, Grid } from '@mui/material';
+import { Button, ButtonProps, Chip, Grid } from '@mui/material';
 import { TemplateCard } from './TemplateCard';
 
 export default {
@@ -20,15 +20,23 @@ const ColorButton = styled(Button)<
     borderColor?: string;
     borderColorHover?: string;
   }
->(({ mainColor, mainColorHover, textColor, borderColor, borderColorHover }) => ({
-  color: textColor,
-  borderColor,
-  backgroundColor: mainColor,
-  '&:hover': {
-    backgroundColor: mainColorHover,
-    borderColor: borderColor || borderColorHover,
-  },
-}));
+>(
+  ({
+    mainColor,
+    mainColorHover,
+    textColor,
+    borderColor,
+    borderColorHover,
+  }) => ({
+    color: textColor,
+    borderColor,
+    backgroundColor: mainColor,
+    '&:hover': {
+      backgroundColor: mainColorHover,
+      borderColor: borderColor || borderColorHover,
+    },
+  })
+);
 
 export const Default: ComponentStory<typeof TemplateCard> = () => (
   <TemplateCard
@@ -43,7 +51,12 @@ export const Default: ComponentStory<typeof TemplateCard> = () => (
       >
         Select
       </ColorButton>,
-      <ColorButton variant="outlined" color="primary" textColor="#fff" borderColor="#fff">
+      <ColorButton
+        variant="outlined"
+        color="primary"
+        textColor="#fff"
+        borderColor="#fff"
+      >
         Preview
       </ColorButton>,
     ]}
@@ -70,7 +83,12 @@ export const NoDescription: ComponentStory<typeof TemplateCard> = () => (
       >
         Select
       </ColorButton>,
-      <ColorButton variant="outlined" color="primary" textColor="#fff" borderColor="#fff">
+      <ColorButton
+        variant="outlined"
+        color="primary"
+        textColor="#fff"
+        borderColor="#fff"
+      >
         Preview
       </ColorButton>,
     ]}
@@ -96,7 +114,12 @@ export const NoTags: ComponentStory<typeof TemplateCard> = () => (
       >
         Select
       </ColorButton>,
-      <ColorButton variant="outlined" color="primary" textColor="#fff" borderColor="#fff">
+      <ColorButton
+        variant="outlined"
+        color="primary"
+        textColor="#fff"
+        borderColor="#fff"
+      >
         Preview
       </ColorButton>,
     ]}
@@ -106,9 +129,9 @@ export const NoTags: ComponentStory<typeof TemplateCard> = () => (
 );
 
 export const TemplateCardGrid: ComponentStory<typeof TemplateCard> = () => (
-  <Grid container={true} spacing={2} columns={3}>
+  <Grid maxWidth={1560} container spacing={2}>
     {[...Array(7)].map((i, j) => (
-      <Grid item={true} xs={1}>
+      <Grid item>
         <TemplateCard
           templatePreviewImageSrc={`https://placekitten.com/300/200?image=${j}`}
           actions={[
@@ -121,7 +144,12 @@ export const TemplateCardGrid: ComponentStory<typeof TemplateCard> = () => (
             >
               Select
             </ColorButton>,
-            <ColorButton variant="outlined" color="primary" textColor="#fff" borderColor="#fff">
+            <ColorButton
+              variant="outlined"
+              color="primary"
+              textColor="#fff"
+              borderColor="#fff"
+            >
               Preview
             </ColorButton>,
           ]}
