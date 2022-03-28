@@ -23,8 +23,8 @@ export const TemplateCard: React.FC<TemplateCardProps> = (props) => {
         borderRadius: '10px',
       }}
       variant="outlined"
-      onMouseOver={() => setShowOverlay(true)}
-      onMouseOut={() => setShowOverlay(false)}
+      onMouseOver={() => !showOverlay && setShowOverlay(true)}
+      onMouseLeave={() => setShowOverlay(false)}
     >
       <CardMediaWithOverlay
         component="img"
@@ -45,6 +45,7 @@ export const TemplateCard: React.FC<TemplateCardProps> = (props) => {
         </Box>
       </CardMediaWithOverlay>
       <CardContent>
+        {showOverlay ? 'ON' : 'OFF'}
         <Typography sx={{ fontSize: 24, mb: 0.5 }}> {title} </Typography>
         <Typography sx={{ fontSize: 14, lineHeight: '20px', mb: 0.75 }}>
           {description}
