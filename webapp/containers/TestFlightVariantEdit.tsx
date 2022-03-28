@@ -65,19 +65,19 @@ const ContentPane = styled(Grid)`
 
 const ColorButton = styled(Button)<
   ButtonProps & {
-    mainColor?: string;
-    mainColorHover?: string;
-    textColor: string;
-    borderColor?: string;
-    borderColorHover?: string;
+    'main-color'?: string;
+    'main-color-hover'?: string;
+    'text-color': string;
+    'border-color'?: string;
+    'border-color-hover'?: string;
   }
 >(
   ({
-    mainColor,
-    mainColorHover,
-    textColor,
-    borderColor,
-    borderColorHover,
+    'main-color': mainColor,
+    'main-color-hover': mainColorHover,
+    'text-color': textColor,
+    'border-color': borderColor,
+    'border-color-hover': borderColorHover,
   }) => ({
     color: textColor,
     borderColor,
@@ -279,15 +279,18 @@ export const TestFlightVariantDetail = () => {
         {/* TemplateSelectionContainer */}
         <Grid container={true} spacing={2} columns={3}>
           {templates.map(
-            ({
-              name = '',
-              description = '',
-              coverUrl,
-              tags = ['Industry'],
-              desktopUrl,
-              mobileUrl,
-            }) => (
-              <Grid item={true} xs={1}>
+            (
+              {
+                name = '',
+                description = '',
+                coverUrl,
+                tags = ['Industry'],
+                desktopUrl,
+                mobileUrl,
+              },
+              index
+            ) => (
+              <Grid key={`template-${index}`} item={true} xs={1}>
                 <TemplateCard
                   templatePreviewImageSrc={coverUrl}
                   // TODO: Rename to overlayContent?
@@ -297,9 +300,9 @@ export const TestFlightVariantDetail = () => {
                     <ColorButton
                       variant="contained"
                       color="primary"
-                      mainColor={teal[500]}
-                      mainColorHover={teal[700]}
-                      textColor="#fff"
+                      main-color={teal[500]}
+                      main-color-hover={teal[700]}
+                      text-color="#fff"
                       onClick={() => {
                         console.log('Selected:', name);
                       }}
@@ -310,8 +313,8 @@ export const TestFlightVariantDetail = () => {
                     <ColorButton
                       variant="outlined"
                       color="primary"
-                      textColor="#fff"
-                      borderColor="#fff"
+                      text-color="#fff"
+                      border-color="#fff"
                       onClick={() => {
                         dispatch(
                           templatePreviewSlice.actions.opened({

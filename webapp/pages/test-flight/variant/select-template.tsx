@@ -4,11 +4,11 @@ import { styled, Stack, IconButton, IconButtonTypeMap } from '@mui/material';
 import { ArrowBackIosNew } from '@mui/icons-material';
 import { useSelector } from 'react-redux';
 
+import { OverridableComponent } from '@mui/material/OverridableComponent';
 import TestFlightVariantDetail from '../../../containers/TestFlightVariantEdit';
 import * as selectors from '../../../store/test-flight/selectors';
 import MainAppBar from '../../../components/AppBar';
 import IconText from '../../../components/IconText';
-import { OverridableComponent } from '@mui/material/OverridableComponent';
 
 const StyledIconButton = styled<
   OverridableComponent<IconButtonTypeMap<{ mr: number }>>
@@ -51,6 +51,7 @@ export const TestFlightVariantPage: NextPage = () => {
         <meta name="description" content="" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       {MainAppBarMockUp}
 
       <TestFlightVariantDetail />
