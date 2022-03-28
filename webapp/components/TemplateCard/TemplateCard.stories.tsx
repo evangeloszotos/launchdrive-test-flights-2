@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
 import { teal } from '@mui/material/colors';
 import { styled } from '@mui/system';
-import { Box, Button, ButtonProps, Chip, Grid } from '@mui/material';
+import { Button, ButtonProps, Chip, Grid } from '@mui/material';
 import { TemplateCard } from './TemplateCard';
 
 export default {
@@ -14,21 +14,29 @@ export default {
 
 const ColorButton = styled(Button)<
   ButtonProps & {
-    mainColor?: string;
-    mainColorHover?: string;
-    textColor: string;
-    borderColor?: string;
-    borderColorHover?: string;
+    'main-color'?: string;
+    'main-color-hover'?: string;
+    'text-color': string;
+    'border-color'?: string;
+    'border-color-hover'?: string;
   }
->(({ mainColor, mainColorHover, textColor, borderColor, borderColorHover }) => ({
-  color: textColor,
-  borderColor,
-  backgroundColor: mainColor,
-  '&:hover': {
-    backgroundColor: mainColorHover,
-    borderColor: borderColor || borderColorHover,
-  },
-}));
+>(
+  ({
+    'main-color': mainColor,
+    'main-color-hover': mainColorHover,
+    'text-color': textColor,
+    'border-color': borderColor,
+    'border-color-hover': borderColorHover,
+  }) => ({
+    color: textColor,
+    borderColor,
+    backgroundColor: mainColor,
+    '&:hover': {
+      backgroundColor: mainColorHover,
+      borderColor: borderColor || borderColorHover,
+    },
+  })
+);
 
 export const Default: ComponentStory<typeof TemplateCard> = () => (
   <TemplateCard
@@ -37,13 +45,18 @@ export const Default: ComponentStory<typeof TemplateCard> = () => (
       <ColorButton
         variant="contained"
         color="primary"
-        mainColor={teal[500]}
-        mainColorHover={teal[700]}
-        textColor="#fff"
+        main-color={teal[500]}
+        main-color-hover={teal[700]}
+        text-color="#fff"
       >
         Select
       </ColorButton>,
-      <ColorButton variant="outlined" color="primary" textColor="#fff" borderColor="#fff">
+      <ColorButton
+        variant="outlined"
+        color="primary"
+        text-color="#fff"
+        border-color="#fff"
+      >
         Preview
       </ColorButton>,
     ]}
@@ -64,13 +77,18 @@ export const NoDescription: ComponentStory<typeof TemplateCard> = () => (
       <ColorButton
         variant="contained"
         color="primary"
-        mainColor={teal[500]}
-        mainColorHover={teal[700]}
-        textColor="#fff"
+        main-color={teal[500]}
+        main-color-hover={teal[700]}
+        text-color="#fff"
       >
         Select
       </ColorButton>,
-      <ColorButton variant="outlined" color="primary" textColor="#fff" borderColor="#fff">
+      <ColorButton
+        variant="outlined"
+        color="primary"
+        text-color="#fff"
+        border-color="#fff"
+      >
         Preview
       </ColorButton>,
     ]}
@@ -90,13 +108,18 @@ export const NoTags: ComponentStory<typeof TemplateCard> = () => (
       <ColorButton
         variant="contained"
         color="primary"
-        mainColor={teal[500]}
-        mainColorHover={teal[700]}
-        textColor="#fff"
+        main-color={teal[500]}
+        main-color-hover={teal[700]}
+        text-color="#fff"
       >
         Select
       </ColorButton>,
-      <ColorButton variant="outlined" color="primary" textColor="#fff" borderColor="#fff">
+      <ColorButton
+        variant="outlined"
+        color="primary"
+        text-color="#fff"
+        border-color="#fff"
+      >
         Preview
       </ColorButton>,
     ]}
@@ -115,13 +138,18 @@ export const TemplateCardGrid: ComponentStory<typeof TemplateCard> = () => (
             <ColorButton
               variant="contained"
               color="primary"
-              mainColor={teal[500]}
-              mainColorHover={teal[700]}
-              textColor="#fff"
+              main-color={teal[500]}
+              main-color-hover={teal[700]}
+              text-color="#fff"
             >
               Select
             </ColorButton>,
-            <ColorButton variant="outlined" color="primary" textColor="#fff" borderColor="#fff">
+            <ColorButton
+              variant="outlined"
+              color="primary"
+              text-color="#fff"
+              border-color="#fff"
+            >
               Preview
             </ColorButton>,
           ]}

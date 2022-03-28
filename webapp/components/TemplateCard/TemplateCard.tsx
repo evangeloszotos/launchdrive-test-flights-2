@@ -2,6 +2,7 @@ import React, { ReactElement, useState } from 'react';
 import { Box, Card, CardContent, Stack, Typography } from '@mui/material';
 import CardMediaWithOverlay from '../CardMediaWithOverlay';
 import Centered from '../Centered';
+import addKeysToReactElements from '../../utils/addKeysToReactElements';
 
 interface TemplateCardProps {
   actions: Array<ReactElement>;
@@ -22,7 +23,7 @@ export const TemplateCard: React.FC<TemplateCardProps> = (props) => {
         borderRadius: '10px',
       }}
       variant="outlined"
-      onMouseEnter={() => setShowOverlay(true)}
+      onMouseOver={() => !showOverlay && setShowOverlay(true)}
       onMouseLeave={() => setShowOverlay(false)}
     >
       <CardMediaWithOverlay
@@ -38,7 +39,7 @@ export const TemplateCard: React.FC<TemplateCardProps> = (props) => {
         >
           <Centered>
             <Stack direction="row" spacing={1}>
-              {actions}
+              {addKeysToReactElements(actions, 'cardActions')}
             </Stack>
           </Centered>
         </Box>
@@ -46,11 +47,10 @@ export const TemplateCard: React.FC<TemplateCardProps> = (props) => {
       <CardContent>
         <Typography sx={{ fontSize: 24, mb: 0.5 }}> {title} </Typography>
         <Typography sx={{ fontSize: 14, lineHeight: '20px', mb: 0.75 }}>
-          {' '}
-          {description}{' '}
+          {description}
         </Typography>
         <Stack direction="row" spacing={0.75}>
-          {tags}
+          {addKeysToReactElements(tags, 'cardTags')}
         </Stack>
       </CardContent>
     </Card>
