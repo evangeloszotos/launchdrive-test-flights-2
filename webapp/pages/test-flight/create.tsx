@@ -10,8 +10,8 @@ import {
   Button,
   Typography,
 } from '@mui/material';
-import { testFlightCreated } from '../../store/test-flight/testFlightSaga';
 import { useRouter } from 'next/router';
+import { testFlightCreated } from '../../store/test-flight/testFlightSaga';
 
 export const CreateTestFlightPage: NextPage = () => {
   const dispatch = useDispatch();
@@ -40,8 +40,8 @@ export const CreateTestFlightPage: NextPage = () => {
           <Grid container justifyContent="flex-end">
             <Button
               onClick={() => {
-                dispatch(testFlightCreated(testFlightName));
-                // router.push('variant/main');
+                // dispatch(testFlightCreated(testFlightName));
+                router.push('variant/select-template');
               }}
             >
               Create

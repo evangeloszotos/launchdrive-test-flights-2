@@ -103,74 +103,51 @@ const templates: TestFlightTemplate[] = [
     name: 'Tropical Lift',
     description: 'Lorem ipsum dolor sit amet.',
 
-    coverUrl:
-      'https://www.gettyimages.de/gi-resources/images/500px/983794168.jpg',
+    coverUrl: 'http://placekitten.com/374/176?image=5',
+    desktopUrl: 'http://placekitten.com/1000/2600?image=5',
+    mobileUrl: 'http://placekitten.com/400/2600?image=5',
 
-    desktopUrl:
-      'https://images.pexels.com/photos/594452/pexels-photo-594452.jpeg',
-
-    mobileUrl:
-      'https://images.pexels.com/photos/11463999/pexels-photo-11463999.jpeg',
-
-    tags: ['Automotive', 'Energy'],
+    tags: ['Automotive', 'Energy', '1000x2600'],
   },
   {
     name: 'Rocket Science',
     description: 'Lorem ipsum dolor sit amet.',
 
-    coverUrl:
-      'https://www.gettyimages.de/gi-resources/images/500px/983794168.jpg',
+    coverUrl: 'http://placekitten.com/374/176?image=1',
+    desktopUrl: 'http://placekitten.com/800/800?image=1',
+    mobileUrl: 'http://placekitten.com/400/800?image=1',
 
-    desktopUrl:
-      'https://images.pexels.com/photos/594452/pexels-photo-594452.jpeg',
-
-    mobileUrl:
-      'https://images.pexels.com/photos/11463999/pexels-photo-11463999.jpeg',
-    tags: ['Art'],
+    tags: ['Art', '800x800'],
   },
   {
     name: 'Daily Scrum',
     description: 'Lorem ipsum dolor sit amet.',
 
-    coverUrl:
-      'https://www.gettyimages.de/gi-resources/images/500px/983794168.jpg',
+    coverUrl: 'http://placekitten.com/374/176?image=2',
+    desktopUrl: 'http://placekitten.com/800/1000?image=2',
+    mobileUrl: 'http://placekitten.com/400/1000?image=2',
 
-    desktopUrl:
-      'https://images.pexels.com/photos/594452/pexels-photo-594452.jpeg',
-
-    mobileUrl:
-      'https://images.pexels.com/photos/11463999/pexels-photo-11463999.jpeg',
-
-    tags: ['Production'],
+    tags: ['Production', '800x1000'],
   },
   {
     name: 'San Tropez',
     description: 'Lorem ipsum dolor sit amet.',
 
-    coverUrl:
-      'https://www.gettyimages.de/gi-resources/images/500px/983794168.jpg',
+    coverUrl: 'http://placekitten.com/374/176?image=3',
+    desktopUrl: 'http://placekitten.com/800/1200?image=3',
+    mobileUrl: 'http://placekitten.com/400/1200?image=3',
 
-    desktopUrl:
-      'https://images.pexels.com/photos/594452/pexels-photo-594452.jpeg',
-
-    mobileUrl:
-      'https://images.pexels.com/photos/11463999/pexels-photo-11463999.jpeg',
-
-    tags: ['Travel'],
+    tags: ['Travel', '800x1200'],
   },
   {
     name: 'Generic Template',
     description: 'Lorem ipsum dolor sit amet.',
-    coverUrl:
-      'https://www.gettyimages.de/gi-resources/images/500px/983794168.jpg',
 
-    desktopUrl:
-      'https://images.pexels.com/photos/594452/pexels-photo-594452.jpeg',
+    coverUrl: 'http://placekitten.com/374/176?image=4',
+    desktopUrl: 'http://placekitten.com/800/1400?image=4',
+    mobileUrl: 'http://placekitten.com/400/1400?image=4',
 
-    mobileUrl:
-      'https://images.pexels.com/photos/11463999/pexels-photo-11463999.jpeg',
-
-    tags: ['AllStars'],
+    tags: ['AllStars', '800x1400'],
   },
 ];
 
