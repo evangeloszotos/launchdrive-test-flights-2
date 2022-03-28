@@ -3,34 +3,30 @@ import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import { Grid, GridTypeMap, styled, Toolbar } from '@mui/material';
 import { OverridableComponent } from '@mui/types';
 
-interface AppBarStyleProps {
-  backgroundColor?: string;
-}
-interface LogoStyleProps {
-  dividerColor?: string;
-}
-interface AppBarProps extends AppBarStyleProps, LogoStyleProps, MuiAppBarProps {
+interface AppBarProps extends MuiAppBarProps {
   logoWidth?: number;
   logo: React.ReactElement;
   startContent?: React.ReactElement;
   centerContent?: React.ReactElement;
   endContent?: React.ReactElement;
+  dividerColor?: string;
+  backgroundColor?: string;
 }
 
 //
 
-const StyledMuiAppBar = styled<React.FC<AppBarStyleProps>>(MuiAppBar)(
-  (props) => ({
-    backgroundColor: props.backgroundColor,
-  })
-);
+const StyledMuiAppBar = styled<React.FC<{ 'background-color': string }>>(
+  MuiAppBar
+)((props) => ({
+  backgroundColor: props['background-color'],
+}));
 const StyledToolbar = styled(Toolbar)`
   padding-left: 0 !important;
 `;
 const LogoContainer = styled<
-  OverridableComponent<GridTypeMap<LogoStyleProps, 'div'>>
+  OverridableComponent<GridTypeMap<{ 'divider-color': string }>>
 >(Grid)((props) => ({
-  borderRight: `1px solid ${props.dividerColor}`,
+  borderRight: `1px solid ${props['divider-color']}`,
 }));
 const ContentContainer = styled(Grid)`
   width: auto;
@@ -54,7 +50,7 @@ export const AppBar: React.VoidFunctionComponent<AppBarProps> = (props) => {
   return (
     <StyledMuiAppBar
       position="static"
-      backgroundColor={backgroundColor}
+      background-color={backgroundColor}
       {...other}
     >
       <StyledToolbar variant="dense">
@@ -64,7 +60,7 @@ export const AppBar: React.VoidFunctionComponent<AppBarProps> = (props) => {
               container
               justifyContent="center"
               width={logoWidth}
-              dividerColor={dividerColor}
+              divider-color={dividerColor}
             >
               {logo}
             </LogoContainer>
