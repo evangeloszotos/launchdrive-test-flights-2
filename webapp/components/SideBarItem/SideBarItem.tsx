@@ -13,22 +13,24 @@ export interface SideBarItemProperties extends BoxProps {
   tooltip?: string;
 }
 
-const SidebarItemBase = styled<React.FC<SideBarItemProperties>>(Box)((props) => {
-  const {
-    selected,
-    backgroundColor = 'transparent',
-    backgroundColorSelected = alpha(theme.palette.primary.main, 0.12),
-    color = theme.palette.grey['600'],
-    colorSelected = theme.palette.primary.main,
-  } = props;
+const SidebarItemBase = styled<React.FC<SideBarItemProperties>>(Box)(
+  (props) => {
+    const {
+      selected,
+      backgroundColor = 'transparent',
+      backgroundColorSelected = alpha(theme.palette.primary.main, 0.12),
+      color = theme.palette.grey['600'],
+      colorSelected = theme.palette.primary.main,
+    } = props;
 
-  return {
-    cursor: 'pointer',
-    backgroundColor: selected ? backgroundColorSelected : backgroundColor,
-    color: selected ? colorSelected : color,
-    padding: '0.5rem',
-  };
-});
+    return {
+      cursor: 'pointer',
+      backgroundColor: selected ? backgroundColorSelected : backgroundColor,
+      color: selected ? colorSelected : color,
+      padding: '0.5rem',
+    };
+  }
+);
 
 export const SideBarItem: React.FC<SideBarItemProperties> = (props) => {
   const { tooltip = '', children, justifyContent = 'center', ...other } = props;
@@ -36,7 +38,11 @@ export const SideBarItem: React.FC<SideBarItemProperties> = (props) => {
   return (
     <Tooltip title={tooltip} placement="right">
       <SidebarItemBase {...other}>
-        <Grid container={true} justifyContent={justifyContent} alignItems="center">
+        <Grid
+          container={true}
+          justifyContent={justifyContent}
+          alignItems="center"
+        >
           {children}
         </Grid>
       </SidebarItemBase>

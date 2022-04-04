@@ -9,7 +9,11 @@ export default function ColumnsExample() {
     <div className="flex flex-row">
       <SideBar className="myclass">
         <SideBarItem name="Home" onClick={() => console.log('Clicked')} />
-        <SideBarItem selected={true} name="Home" onClick={() => console.log('Clicked')} />
+        <SideBarItem
+          selected={true}
+          name="Home"
+          onClick={() => console.log('Clicked')}
+        />
         <SideBarItem name="Home" onClick={() => console.log('Clicked')} />
         <SideBarItem name="Home" onClick={() => console.log('Clicked')} />
         <SideBarItem name="Home" onClick={() => console.log('Clicked')} />

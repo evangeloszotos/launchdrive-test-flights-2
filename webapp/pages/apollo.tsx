@@ -1,7 +1,7 @@
-import { gql } from "@apollo/client";
+import { gql } from '@apollo/client';
 
 // local
-import client from "../apollo-client";
+import client from '../apollo-client';
 
 function ApolloPage({ countries }) {
   return (

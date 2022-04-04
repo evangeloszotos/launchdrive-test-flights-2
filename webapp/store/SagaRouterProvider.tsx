@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { useRouter } from 'next/router';
 import routerRef from './sagaRouterReference';
 
-export const SagaRouterProvider: React.FC = (props) => {
+interface EmptyProps {
+  children: ReactElement<any, any> | null;
+}
+
+export const SagaRouterProvider: React.FC<EmptyProps> = (props) => {
   const router = useRouter();
   routerRef.router = router;
 
-  return <>{props.children}</>;
+  return props.children;
 };
 
 export default SagaRouterProvider;

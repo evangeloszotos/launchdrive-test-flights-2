@@ -13,7 +13,9 @@ interface TemplatePreviewDialogAppBarProps extends AppBarProps {
   endContent: React.ReactNode;
 }
 
-export const TemplatePreviewDialogAppBar: React.FC<TemplatePreviewDialogAppBarProps> = (props) => {
+export const TemplatePreviewDialogAppBar: React.FC<
+  TemplatePreviewDialogAppBarProps
+> = (props) => {
   const { startContent, centerContent, endContent, ...other } = { ...props };
 
   return (

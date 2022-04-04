@@ -2,7 +2,8 @@ import PropTypes from 'prop-types';
 import { Box, Grid } from '@mui/material';
 
 export const IconText = (props) => {
-  const { icon, label, color, fontSize, letterSpacing, fontWeight, textSx } = props;
+  const { icon, label, color, fontSize, letterSpacing, fontWeight, textSx } =
+    props;
 
   return (
     <Box sx={{ flexShrink: 0 }}>
@@ -12,7 +13,13 @@ export const IconText = (props) => {
           <Grid
             container={true}
             alignItems="center"
-            sx={{ height: '100%', fontSize, letterSpacing, fontWeight, ...textSx }}
+            sx={{
+              height: '100%',
+              fontSize,
+              letterSpacing,
+              fontWeight,
+              ...textSx,
+            }}
           >
             {label}
           </Grid>

@@ -18,8 +18,16 @@ const WhiteButton = styled(Button)`
   padding: 5px 10px;
 `;
 
-export const ImagePreviewSmall: React.VoidFunctionComponent<BoxProps<'div', ImagePreviewSmallProps>> = (props) => {
-  const { label, icon = <Edit />, disableOverlay = false, onClick, children } = props;
+export const ImagePreviewSmall: React.VoidFunctionComponent<
+  BoxProps<'div', ImagePreviewSmallProps>
+> = (props) => {
+  const {
+    label,
+    icon = <Edit />,
+    disableOverlay = false,
+    onClick,
+    children,
+  } = props;
 
   return (
     <Box>

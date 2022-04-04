@@ -1,5 +1,10 @@
 import React from 'react';
-import { styled, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
+import {
+  styled,
+  ToggleButton,
+  ToggleButtonGroup,
+  Typography,
+} from '@mui/material';
 import { DesktopWindows, Smartphone } from '@mui/icons-material';
 
 interface DesktopMobileToggleProps {
@@ -19,11 +24,18 @@ const TypographyStyled = styled(Typography)`
   letter-spacing: 0.46px;
 `;
 
-export const DesktopMobileToggle: React.FC<DesktopMobileToggleProps> = (props) => {
+export const DesktopMobileToggle: React.FC<DesktopMobileToggleProps> = (
+  props
+) => {
   const { onChange, value = 'desktop' } = props;
 
   return (
-    <ToggleButtonGroup size="small" value={value} exclusive={true} onChange={onChange}>
+    <ToggleButtonGroup
+      size="small"
+      value={value}
+      exclusive={true}
+      onChange={onChange}
+    >
       <ToggleButton value="desktop">
         <DesktopIconStyled />
         <TypographyStyled> Desktop </TypographyStyled>

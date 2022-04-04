@@ -1,23 +1,23 @@
-import { gql, useApolloClient, useQuery, useMutation } from "@apollo/client";
-import { Button, Stack, TextField, Grid, Typography } from "@mui/material";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { increment, selectCount } from "../counter-slice";
+import { gql, useApolloClient, useQuery, useMutation } from '@apollo/client';
+import { Button, Stack, TextField, Grid, Typography } from '@mui/material';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { increment, selectCount } from '../counter-slice';
 import {
   fakeDoorAdded,
   selectAllFakedoors,
   variantAddedToFakeDoor,
-} from "../fake-door-slice";
-import { ADD_FAKE_DOOR_TEST } from "../graphql/fake-door-test";
-import { FETCH_POSTS, UPDATE_POST } from "../graphql/others";
-import { FetchPosts } from "../graphql/types/FetchPosts";
-import { UpdatePostVariables } from "../graphql/types/UpdatePost";
+} from '../fake-door-slice';
+import { ADD_FAKE_DOOR_TEST } from '../graphql/fake-door-test';
+import { FETCH_POSTS, UPDATE_POST } from '../graphql/others';
+import { FetchPosts } from '../graphql/types/FetchPosts';
+import { UpdatePostVariables } from '../graphql/types/UpdatePost';
 import {
   selectUser,
   selectUserEmail,
   setEmail,
   setUserState,
-} from "../user-slice";
+} from '../user-slice';
 
 interface Tag {
   id: string;
@@ -44,11 +44,11 @@ interface Variant {
 }
 
 const fakeDoor: FakeDoor = {
-  id: "abc",
-  name: "MyFakeDoor",
+  id: 'abc',
+  name: 'MyFakeDoor',
   variants: [
-    { id: "abc1", name: "Variant1wewew" },
-    { id: "abc2", name: "Varidsdsdsdant2" },
+    { id: 'abc1', name: 'Variant1wewew' },
+    { id: 'abc2', name: 'Varidsdsdsdant2' },
   ],
 };
 
@@ -58,11 +58,11 @@ const state = {
 };
 
 const updates = {
-  myId: "mutation LKJA",
-  myId2: "mutation LKJA",
+  myId: 'mutation LKJA',
+  myId2: 'mutation LKJA',
   myId3: {
-    $$type: "variant",
-    operation: "create",
+    $$type: 'variant',
+    operation: 'create',
   },
 };
 
@@ -70,7 +70,7 @@ export default function Users(props): JSX.Element {
   const dispatch = useDispatch();
 
   const { data }: { data?: FetchPosts } = useQuery(FETCH_POSTS, {
-    fetchPolicy: "no-cache",
+    fetchPolicy: 'no-cache',
   });
 
   const [updatePost] = useMutation<UpdatePostVariables>(UPDATE_POST, {
@@ -94,8 +94,8 @@ export default function Users(props): JSX.Element {
               dispatch(
                 variantAddedToFakeDoor({
                   fakeDoorId: fd.id,
-                  variantData: { name: "First Variant" },
-                }),
+                  variantData: { name: 'First Variant' },
+                })
               );
             }}
           >
@@ -109,7 +109,7 @@ export default function Users(props): JSX.Element {
 
       <Button
         onClick={() => {
-          dispatch(fakeDoorAdded("First Fakedoor"));
+          dispatch(fakeDoorAdded('First Fakedoor'));
         }}
       >
         Add Fakedoor
@@ -149,7 +149,7 @@ export default function Users(props): JSX.Element {
                   name: value,
                   viewsCount: post.viewsCount + 1,
                   comments: {
-                    create: [{ name: "Some Fancy Comment" }],
+                    create: [{ name: 'Some Fancy Comment' }],
                   },
                 },
               };
@@ -164,7 +164,7 @@ export default function Users(props): JSX.Element {
 }
 
 export function EditItem({
-  initValue = "",
+  initValue = '',
   viewsCount = 0,
   post = {},
   onUpdate = (data: any) => {},

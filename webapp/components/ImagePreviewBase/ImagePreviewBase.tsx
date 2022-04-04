@@ -17,7 +17,12 @@ interface ImagePreviewBaseProps extends ImagePreviewStyleProps {
 }
 
 const StyledBox = styled<React.FC<ImagePreviewStyleProps>>(Box)((props) => {
-  const { border = '1px dashed #0000003b', borderRadius = '4px', width = '100%', height } = props;
+  const {
+    border = '1px dashed #0000003b',
+    borderRadius = '4px',
+    width = '100%',
+    height,
+  } = props;
 
   return {
     border,
@@ -28,8 +33,16 @@ const StyledBox = styled<React.FC<ImagePreviewStyleProps>>(Box)((props) => {
   };
 });
 
-export const ImagePreviewBase: React.FC<BoxProps<'div', ImagePreviewBaseProps>> = (props) => {
-  const { children, overlayContent, overlayBackgroundColor = '#00000080', disableOverlay = false, ...other } = props;
+export const ImagePreviewBase: React.FC<
+  BoxProps<'div', ImagePreviewBaseProps>
+> = (props) => {
+  const {
+    children,
+    overlayContent,
+    overlayBackgroundColor = '#00000080',
+    disableOverlay = false,
+    ...other
+  } = props;
 
   return (
     <StyledBox {...other}>

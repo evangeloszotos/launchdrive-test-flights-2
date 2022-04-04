@@ -52,7 +52,6 @@
     ],
     "react/jsx-props-no-spreading": "off",
     "react/jsx-pascal-case": "error",
-    "react/jsx-space-before-closing": "warn",
     "react/jsx-tag-spacing": [
       "error",
       {
@@ -71,14 +70,15 @@
     "unicorn/prefer-array-find": "warn",
     "unicorn/prefer-array-some": "warn",
     "unicorn/prefer-includes": "warn",
+    "import/no-named-as-default": "off",
     //
-    "prettier/prettier": "off",
+    "prettier/prettier": "warn",
     //
     "no-param-reassign": [
       "error",
       { "props": true, "ignorePropertyModificationsFor": ["state"] }
     ],
-    "curly": "error",
+    "curly": ["error", "all"],
     "import/extensions": "off",
     "import/no-extraneous-dependencies": "off",
     "import/prefer-default-export": "off",

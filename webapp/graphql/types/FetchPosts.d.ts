@@ -8,13 +8,13 @@
 // ====================================================
 
 export interface FetchPosts_posts_comments {
-  __typename: "Comment";
+  __typename: 'Comment';
   id: string;
   name: string | null;
 }
 
 export interface FetchPosts_posts {
-  __typename: "Post";
+  __typename: 'Post';
   id: string;
   name: string | null;
   viewsCount: number | null;

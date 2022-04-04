@@ -16,18 +16,20 @@ const OverlayContainer = styled(Box)`
   height: 100%;
 `;
 
-const OverlayBackgroundBox = styled<React.FC<HoverOverlayStyleProps>>(Box)((props) => {
-  const { overlayBackgroundColor = '#00000080' } = props;
+const OverlayBackgroundBox = styled<React.FC<HoverOverlayStyleProps>>(Box)(
+  (props) => {
+    const { overlayBackgroundColor = '#00000080' } = props;
 
-  return {
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-    backgroundColor: overlayBackgroundColor,
-  };
-});
+    return {
+      position: 'absolute',
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
+      backgroundColor: overlayBackgroundColor,
+    };
+  }
+);
 
 export const HoverOverlay: React.FC<HoverOverlayProps> = (props) => {
   const {
@@ -55,7 +57,9 @@ export const HoverOverlay: React.FC<HoverOverlayProps> = (props) => {
     >
       {children}
       <Fade in={showOverlay}>
-        <OverlayBackgroundBox overlayBackgroundColor={overlayBackgroundColor}>{overlayContent}</OverlayBackgroundBox>
+        <OverlayBackgroundBox overlayBackgroundColor={overlayBackgroundColor}>
+          {overlayContent}
+        </OverlayBackgroundBox>
       </Fade>
     </OverlayContainer>
   );

@@ -8,7 +8,7 @@
 // ====================================================
 
 export interface FakeDoorTests_testFlights {
-  __typename: "TestFlight";
+  __typename: 'TestFlight';
   id: string;
   name: string | null;
 }

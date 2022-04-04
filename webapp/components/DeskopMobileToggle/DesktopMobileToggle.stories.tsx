@@ -13,7 +13,9 @@ export default {
   },
 } as ComponentMeta<typeof DesktopMobileToggle>;
 
-const Template: ComponentStory<typeof DesktopMobileToggle> = (args) => <DesktopMobileToggle {...args} />;
+const Template: ComponentStory<typeof DesktopMobileToggle> = (args) => (
+  <DesktopMobileToggle {...args} />
+);
 
 export const Default = Template.bind({});
 Default.args = {

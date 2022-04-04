@@ -3,14 +3,14 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { PostUpdateInput } from "./../../types/globalTypes";
+import { PostUpdateInput } from './../../types/globalTypes';
 
 // ====================================================
 // GraphQL mutation operation: UpdatePost
 // ====================================================
 
 export interface UpdatePost_updatePost {
-  __typename: "Post";
+  __typename: 'Post';
   name: string | null;
 }
 

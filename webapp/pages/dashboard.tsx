@@ -89,7 +89,10 @@ export default function Example() {
               ))}
             </select>
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center justify-center pr-2">
-              <ChevronDownIcon className="h-5 w-5 text-gray-500" aria-hidden="true" />
+              <ChevronDownIcon
+                className="h-5 w-5 text-gray-500"
+                aria-hidden="true"
+              />
             </div>
           </div>
         </div>
@@ -139,7 +142,10 @@ export default function Example() {
             </nav>
             <div className="flex items-center space-x-8">
               <span className="inline-flex">
-                <a href="#" className="-mx-1 bg-white p-1 rounded-full text-gray-400 hover:text-gray-500">
+                <a
+                  href="#"
+                  className="-mx-1 bg-white p-1 rounded-full text-gray-400 hover:text-gray-500"
+                >
                   <span className="sr-only">View notifications</span>
                   <BellIcon className="h-6 w-6" aria-hidden="true" />
                 </a>
@@ -148,7 +154,11 @@ export default function Example() {
               <Menu as="div" className="relative inline-block text-left">
                 <Menu.Button className="bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600">
                   <span className="sr-only">Open user menu</span>
-                  <img className="h-8 w-8 rounded-full" src={user.imageUrl} alt="" />
+                  <img
+                    className="h-8 w-8 rounded-full"
+                    src={user.imageUrl}
+                    alt=""
+                  />
                 </Menu.Button>
 
                 <Transition
@@ -166,7 +176,10 @@ export default function Example() {
                         {({ active }) => (
                           <a
                             href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                            className={classNames(
+                              active ? 'bg-gray-100' : '',
+                              'block px-4 py-2 text-sm text-gray-700'
+                            )}
                           >
                             Your Profile
                           </a>
@@ -176,7 +189,10 @@ export default function Example() {
                         {({ active }) => (
                           <a
                             href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                            className={classNames(
+                              active ? 'bg-gray-100' : '',
+                              'block px-4 py-2 text-sm text-gray-700'
+                            )}
                           >
                             Sign Out
                           </a>
@@ -196,13 +212,42 @@ export default function Example() {
         {/* Narrow sidebar */}
 
         <SideBar>
-          <SideBarItem name="Home" icon={BanIcon} onClick={() => console.log('Clicked')} />
-          <SideBarItem selected={true} name="Home" icon={BellIcon} onClick={() => console.log('Clicked')} />
-          <SideBarItem name="Home" icon={InboxIcon} onClick={() => console.log('Clicked')} />
-          <SideBarItem name="Home" icon={ArchiveIcon} onClick={() => console.log('Clicked')} />
-          <SideBarItem name="Home" icon={UserCircleIcon} onClick={() => console.log('Clicked')} />
-          <SideBarItem name="Home" icon={FlagIcon} onClick={() => console.log('Clicked')} />
-          <SideBarItem name="Home" icon={PencilAltIcon} onClick={() => console.log('Clicked')} />
+          <SideBarItem
+            name="Home"
+            icon={BanIcon}
+            onClick={() => console.log('Clicked')}
+          />
+          <SideBarItem
+            selected={true}
+            name="Home"
+            icon={BellIcon}
+            onClick={() => console.log('Clicked')}
+          />
+          <SideBarItem
+            name="Home"
+            icon={InboxIcon}
+            onClick={() => console.log('Clicked')}
+          />
+          <SideBarItem
+            name="Home"
+            icon={ArchiveIcon}
+            onClick={() => console.log('Clicked')}
+          />
+          <SideBarItem
+            name="Home"
+            icon={UserCircleIcon}
+            onClick={() => console.log('Clicked')}
+          />
+          <SideBarItem
+            name="Home"
+            icon={FlagIcon}
+            onClick={() => console.log('Clicked')}
+          />
+          <SideBarItem
+            name="Home"
+            icon={PencilAltIcon}
+            onClick={() => console.log('Clicked')}
+          />
         </SideBar>
 
         {/* Main area */}

@@ -10,7 +10,9 @@ export default {
   argTypes: {},
 } as ComponentMeta<typeof ColorTextField>;
 
-const Template: ComponentStory<typeof ColorTextField> = (args) => <ColorTextField {...args} />;
+const Template: ComponentStory<typeof ColorTextField> = (args) => (
+  <ColorTextField {...args} />
+);
 export const Default = Template.bind({});
 Default.args = {
   label: 'Primary',

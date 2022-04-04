@@ -1,5 +1,5 @@
 import cuid from 'cuid';
-import { select, call, put, takeLeading } from 'redux-saga/effects';
+import { put, takeLeading } from 'redux-saga/effects';
 import { createAction, PayloadAction } from '@reduxjs/toolkit';
 import testFlightSlice from './testFlightSlice';
 import testFlightVariantSlice from './testFlightVariantSlice';
@@ -7,6 +7,12 @@ import routerRef from '../sagaRouterReference';
 import selectedVariantSlice from './variantSelectionSlice';
 
 export const testFlightCreated = createAction<string>('*/testFlight/create');
+
+const aaa = true;
+
+if (aaa) {
+  console.log('');
+}
 
 function* createTestFlight(action: PayloadAction<string>) {
   try {
@@ -35,7 +41,9 @@ function* createTestFlight(action: PayloadAction<string>) {
 
     // Navigate
     routerRef.router?.push(`variant/${testFlightVariantId}`);
-  } catch (e) {}
+  } catch (e) {
+    console.error('Error', e);
+  }
 }
 
 function* testFlightSaga() {

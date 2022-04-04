@@ -1,7 +1,7 @@
 /**
  * THIS FILE WILL BE DELETED BY THE CREATOR: Evangelos Zotos
  */
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 export default function ClientOnly({ children, ...delegated }) {
   const [hasMounted, setHasMounted] = useState(false);

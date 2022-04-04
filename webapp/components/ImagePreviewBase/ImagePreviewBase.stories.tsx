@@ -32,8 +32,14 @@ export const Default: ComponentStory<typeof ImagePreviewBase> = () => (
   </ImagePreviewBase>
 );
 
-export const CustomOverlayColor: ComponentStory<typeof ImagePreviewBase> = () => (
-  <ImagePreviewBase height={200} overlayContent={<Centered> HELLO! </Centered>} overlayBackgroundColor="#fcba0380">
+export const CustomOverlayColor: ComponentStory<
+  typeof ImagePreviewBase
+> = () => (
+  <ImagePreviewBase
+    height={200}
+    overlayContent={<Centered> HELLO! </Centered>}
+    overlayBackgroundColor="#fcba0380"
+  >
     <Centered>
       <ImagePreviewImage src={LogoPlaceholder} />
     </Centered>
@@ -41,7 +47,11 @@ export const CustomOverlayColor: ComponentStory<typeof ImagePreviewBase> = () =>
 );
 
 export const CustomWidth: ComponentStory<typeof ImagePreviewBase> = () => (
-  <ImagePreviewBase height={200} width={200} overlayContent={<Centered> HELLO! </Centered>}>
+  <ImagePreviewBase
+    height={200}
+    width={200}
+    overlayContent={<Centered> HELLO! </Centered>}
+  >
     <Centered>
       <ImagePreviewImage src={LogoPlaceholder} />
     </Centered>
@@ -54,7 +64,11 @@ export const ButtonsInOverlay: ComponentStory<typeof ImagePreviewBase> = () => (
     overlayContent={
       <Centered>
         <Stack direction="row" spacing={2}>
-          <Button variant="contained" color="success" onClick={action('Success')}>
+          <Button
+            variant="contained"
+            color="success"
+            onClick={action('Success')}
+          >
             Success
           </Button>
           <Button variant="outlined" color="error" onClick={action('Error')}>
@@ -77,7 +91,9 @@ const StyledImageComponent = styled('img')`
   border: 1px double dodgerblue;
   object-fit: contain;
 `;
-export const CustomRenderImageFunction: ComponentStory<typeof ImagePreviewBase> = () => (
+export const CustomRenderImageFunction: ComponentStory<
+  typeof ImagePreviewBase
+> = () => (
   <ImagePreviewBase height={200} overlayContent={<Centered> HELLO! </Centered>}>
     <Centered>
       <StyledImageComponent src={LogoPlaceholder} />

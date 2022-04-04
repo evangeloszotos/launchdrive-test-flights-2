@@ -7,9 +7,9 @@ interface CardMediaWithOverlayProps {
   showOverlay: boolean;
 }
 
-export const CardMediaWithOverlay: OverridableComponent<CardMediaTypeMap<CardMediaWithOverlayProps, 'div'>> = (
-  props
-) => {
+export const CardMediaWithOverlay: OverridableComponent<
+  CardMediaTypeMap<CardMediaWithOverlayProps, 'div'>
+> = (props) => {
   const { children, showOverlay = true, ...other } = props;
   return (
     <Box sx={{ position: 'relative' }}>

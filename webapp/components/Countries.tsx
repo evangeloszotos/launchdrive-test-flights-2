@@ -1,8 +1,8 @@
 /**
  * THIS FILE WILL BE DELETED BY THE CREATOR: Evangelos Zotos
  */
-import { useQuery, gql } from "@apollo/client";
-import styles from "../styles/Home.module.css";
+import { useQuery, gql } from '@apollo/client';
+import styles from '../styles/Home.module.css';
 
 const QUERY = gql`
   query Countries {

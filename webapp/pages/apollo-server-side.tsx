@@ -1,10 +1,10 @@
-import Head from "next/head";
-import { gql } from "@apollo/client";
+import Head from 'next/head';
+import { gql } from '@apollo/client';
 
 // local
-import styles from "../styles/Home.module.css";
-import client from "../apollo-client";
-import Countries from "../components/Countries";
+import styles from '../styles/Home.module.css';
+import client from '../apollo-client';
+import Countries from '../components/Countries';
 
 function ApolloPage({ countries }) {
   return (

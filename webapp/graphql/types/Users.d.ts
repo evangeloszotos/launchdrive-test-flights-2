@@ -8,7 +8,7 @@
 // ====================================================
 
 export interface Users_users {
-  __typename: "User";
+  __typename: 'User';
   id: string;
   name: string | null;
   email: string | null;

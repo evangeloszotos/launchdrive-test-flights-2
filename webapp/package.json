@@ -11,7 +11,8 @@
     "build-storybook": "build-storybook -s public",
     "apollo:generate": "apollo codegen:generate --target typescript --tsFileExtension=d.ts types",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(tsx|jsx|ts|js)\"",
-    "plop": "plop"
+    "plop": "plop",
+    "eslint": "eslint store/** --fix"
   },
   "dependencies": {
     "@apollo/client": "^3.5.10",

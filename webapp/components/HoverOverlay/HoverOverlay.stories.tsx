@@ -9,7 +9,9 @@ export default {
   argTypes: {},
 } as ComponentMeta<typeof HoverOverlay>;
 
-const Template: ComponentStory<typeof HoverOverlay> = (args) => <HoverOverlay {...args} />;
+const Template: ComponentStory<typeof HoverOverlay> = (args) => (
+  <HoverOverlay {...args} />
+);
 export const Playground = Template.bind({});
 Playground.args = {
   // onClick: action('onClick'),

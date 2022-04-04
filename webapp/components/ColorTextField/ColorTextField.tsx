@@ -31,7 +31,10 @@ const StyledTextField = styled(TextField)`
 
 interface ColorTextFieldProps {
   // regex: RegExp;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>, hexCodeValid: boolean) => void;
+  onChange?: (
+    e: React.ChangeEvent<HTMLInputElement>,
+    hexCodeValid: boolean
+  ) => void;
   value: string;
   label: string;
   regex?: RegExp;
@@ -43,10 +46,15 @@ const validHexRegex = /^#([0-9a-fA-F]{3}){1,2}$/;
 //   onChange: (e: React.ChangeEvent<HTMLInputElement>, hexCodeValid: boolean) => {},
 // };
 
-export const ColorTextField: React.VoidFunctionComponent<ColorTextFieldProps> = (props) => {
+export const ColorTextField: React.VoidFunctionComponent<
+  ColorTextFieldProps
+> = (props) => {
   const {
     label,
-    onChange = (e: React.ChangeEvent<HTMLInputElement>, hexCodeValid: boolean) => {},
+    onChange = (
+      e: React.ChangeEvent<HTMLInputElement>,
+      hexCodeValid: boolean
+    ) => {},
     regex = validHexRegex,
     value,
   } = props;
@@ -57,7 +65,12 @@ export const ColorTextField: React.VoidFunctionComponent<ColorTextFieldProps> = 
 
   return (
     <StyledGrid container={true}>
-      <StyledTextField label={label} value={value} onChange={handleChange} size="small" />
+      <StyledTextField
+        label={label}
+        value={value}
+        onChange={handleChange}
+        size="small"
+      />
       <ColorBox sx={{ bgcolor: regex.test(value) ? value : '#000' }} />
     </StyledGrid>
   );

@@ -42,7 +42,12 @@ export const Default: ComponentStory<typeof SideBar> = () => (
 
 export const CustomColors: ComponentStory<typeof SideBar> = () => (
   <SideBar>
-    <SideBarItemLink href="/home" selected={true} colorSelected="#347C3C" backgroundColorSelected="#347C3C1E">
+    <SideBarItemLink
+      href="/home"
+      selected={true}
+      colorSelected="#347C3C"
+      backgroundColorSelected="#347C3C1E"
+    >
       <Adb />
       <SideBarItemLabel> Home </SideBarItemLabel>
     </SideBarItemLink>
@@ -50,7 +55,12 @@ export const CustomColors: ComponentStory<typeof SideBar> = () => (
       <AirlineSeatLegroomNormal />
       <SideBarItemLabel> Trending </SideBarItemLabel>
     </SideBarItemLink>
-    <SideBarItemLink href="/bookmarks" selected={true} colorSelected="#ebd63d" backgroundColorSelected="#ebd63d1E">
+    <SideBarItemLink
+      href="/bookmarks"
+      selected={true}
+      colorSelected="#ebd63d"
+      backgroundColorSelected="#ebd63d1E"
+    >
       <Adb />
       <SideBarItemLabel> Landing Page </SideBarItemLabel>
     </SideBarItemLink>
@@ -75,7 +85,11 @@ export const Expandable: ComponentStory<typeof SideBar> = () => {
         <Adb sx={{ mr: 1 }} />
         <SideBarItemLabel> Home </SideBarItemLabel>
       </SideBarItemLink>
-      <SideBarItemLink href="/trending" justifyContent="flex-start" selected={true}>
+      <SideBarItemLink
+        href="/trending"
+        justifyContent="flex-start"
+        selected={true}
+      >
         <AirlineSeatLegroomNormal sx={{ mr: 1 }} />
         <SideBarItemLabel> Trending </SideBarItemLabel>
       </SideBarItemLink>
@@ -90,7 +104,10 @@ export const Expandable: ComponentStory<typeof SideBar> = () => {
       <SideBarItem onClick={action('onClick')} justifyContent="flex-start">
         <Adb sx={{ mr: 1 }} />
       </SideBarItem>
-      <SideBarItem onClick={() => setExpanded(!expanded)} justifyContent="flex-start">
+      <SideBarItem
+        onClick={() => setExpanded(!expanded)}
+        justifyContent="flex-start"
+      >
         Toggle
       </SideBarItem>
     </SideBar>
